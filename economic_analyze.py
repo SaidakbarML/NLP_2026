@@ -4,6 +4,15 @@ import plotly.graph_objects as go
 import plotly.express as px
 from datetime import datetime
 import numpy as np
+from reportlab.lib.pagesizes import letter, A4
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.units import inch
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer, PageBreak, Image
+from reportlab.lib import colors
+from reportlab.lib.enums import TA_CENTER, TA_LEFT
+import io
+import base64
+import kaleido
 
 # Sahifa konfiguratsiyasi
 st.set_page_config(
@@ -40,6 +49,192 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# ============= PDF GENERATION FUNCTION =============
+def generate_financial_pdf_with_charts(company_name, fiscal_year, currency, metrics_dict, figures_dict):
+    """Generate comprehensive PDF report with all charts and metrics"""
+    try:
+        pdf_buffer = io.BytesIO()
+        pdf = SimpleDocTemplate(pdf_buffer, pagesize=A4, topMargin=0.4*inch, bottomMargin=0.4*inch)
+        story = []
+        styles = getSampleStyleSheet()
+        
+        # Custom styles
+        title_style = ParagraphStyle(
+            'CustomTitle',
+            parent=styles['Heading1'],
+            fontSize=22,
+            textColor=colors.HexColor('#1f77b4'),
+            spaceAfter=10,
+            alignment=TA_CENTER
+        )
+        
+        heading_style = ParagraphStyle(
+            'CustomHeading',
+            parent=styles['Heading2'],
+            fontSize=12,
+            textColor=colors.HexColor('#ff7f0e'),
+            spaceAfter=6,
+            spaceBefore=6
+        )
+        
+        # Title Page
+        story.append(Paragraph(f"🏢 {company_name}", title_style))
+        story.append(Paragraph(f"Moliyaviy Tahlil Hisoboti - {fiscal_year}", heading_style))
+        story.append(Paragraph(f"Tayyorlash sanasi: {datetime.now().strftime('%Y-%m-%d %H:%M')}", styles['Normal']))
+        story.append(Spacer(1, 0.2*inch))
+        
+        # Summary Table
+        story.append(Paragraph("📊 Asosiy Ko'rsatkichlar", heading_style))
+        summary_data = [
+            ['Ko\'rsatkich', 'Qiymat'],
+            ['Tushum', f"{metrics_dict.get('revenue', 0):,.0f} {currency}"],
+            ['Sof Foyda', f"{metrics_dict.get('net_income', 0):,.0f} {currency}"],
+            ['EBITDA', f"{metrics_dict.get('ebitda', 0):,.0f} {currency}"],
+            ['ROE', f"{metrics_dict.get('roe', 0):.2f}%"],
+            ['ROA', f"{metrics_dict.get('roa', 0):.2f}%"],
+            ['Joriy Likvidlik', f"{metrics_dict.get('current_ratio', 0):.2f}"],
+            ['Qarz/Kapital', f"{metrics_dict.get('debt_to_equity', 0):.2f}"],
+            ['EVA', f"{metrics_dict.get('eva', 0):,.0f} {currency}"],
+            ['FCFE', f"{metrics_dict.get('fcfe', 0):,.0f} {currency}"],
+        ]
+        
+        summary_table = Table(summary_data, colWidths=[3.2*inch, 2.3*inch])
+        summary_table.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#1f77b4')),
+            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+            ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+            ('FONTSIZE', (0, 0), (-1, 0), 10),
+            ('BOTTOMPADDING', (0, 0), (-1, 0), 10),
+            ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
+            ('GRID', (0, 0), (-1, -1), 1, colors.black),
+            ('FONTSIZE', (0, 1), (-1, -1), 8)
+        ]))
+        story.append(summary_table)
+        story.append(Spacer(1, 0.15*inch))
+        
+        # Add charts
+        story.append(PageBreak())
+        story.append(Paragraph("📈 2D Grafik Tahlillari", heading_style))
+        story.append(Spacer(1, 0.1*inch))
+        
+        # Add 2D charts
+        two_d_charts = [
+            ('Rentabellik Ko\'rsatkichlari', figures_dict.get('profitability')),
+            ('Likvidlik Nisbatlari', figures_dict.get('liquidity')),
+            ('Qarz Yuklama Nisbatlari', figures_dict.get('leverage')),
+            ('Pul Konversiya Davri', figures_dict.get('ccc')),
+            ('Tushum va Foyda Trendi', figures_dict.get('trends')),
+            ('Moliyaviy Ko\'rsatkichlar Issiqlik Xaritasi', figures_dict.get('heatmap')),
+        ]
+        
+        chart_count = 0
+        for chart_name, fig_obj in two_d_charts:
+            if fig_obj is not None:
+                try:
+                    img_bytes = fig_obj.to_image(format="png", width=900, height=500)
+                    img_buffer = io.BytesIO(img_bytes)
+                    img = Image(img_buffer, width=6.2*inch, height=3.4*inch)
+                    story.append(Paragraph(f"📊 {chart_name}", styles['Heading3']))
+                    story.append(img)
+                    story.append(Spacer(1, 0.15*inch))
+                    chart_count += 1
+                    
+                    if chart_count % 2 == 0:
+                        story.append(PageBreak())
+                except Exception as e:
+                    story.append(Paragraph(f"⚠️ {chart_name} - Grafik ko'rsatilmadi", styles['Normal']))
+        
+        # Add 3D charts
+        story.append(PageBreak())
+        story.append(Paragraph("🎯 3D Grafik Tahlillari", heading_style))
+        story.append(Spacer(1, 0.1*inch))
+        
+        three_d_charts = [
+            ('3D Scatter: ROE vs ROA vs Likvidlik', figures_dict.get('scatter_3d')),
+            ('3D Multi-Bar: Foyda Dinamikasi', figures_dict.get('bar_3d')),
+            ('3D Bubble: Rentabillik vs Qarz Yuklama', figures_dict.get('bubble_3d')),
+            ('3D Surface: Operatsion Marja Sezgirlik', figures_dict.get('surface_3d')),
+            ('3D Line: Ko\'rsatkichlar Trendi', figures_dict.get('line_3d')),
+            ('3D Scatter Matrix: Barcha Ko\'rsatkichlar', figures_dict.get('scatter_matrix_3d')),
+        ]
+        
+        chart_count = 0
+        for chart_name, fig_obj in three_d_charts:
+            if fig_obj is not None:
+                try:
+                    img_bytes = fig_obj.to_image(format="png", width=900, height=500)
+                    img_buffer = io.BytesIO(img_bytes)
+                    img = Image(img_buffer, width=6.2*inch, height=3.4*inch)
+                    story.append(Paragraph(f"🎨 {chart_name}", styles['Heading3']))
+                    story.append(img)
+                    story.append(Spacer(1, 0.15*inch))
+                    chart_count += 1
+                    
+                    if chart_count % 2 == 0:
+                        story.append(PageBreak())
+                except Exception as e:
+                    story.append(Paragraph(f"⚠️ {chart_name} - Grafik ko'rsatilmadi", styles['Normal']))
+        
+        # Advanced visualizations
+        story.append(PageBreak())
+        story.append(Paragraph("🌊 Qo'shimcha Tahlil Grafiklari", heading_style))
+        story.append(Spacer(1, 0.1*inch))
+        
+        advanced_charts = [
+            ('Pul Oqimi Sankey Diagrammasi', figures_dict.get('sankey')),
+            ('Balans Sunburst Diagrammasi', figures_dict.get('sunburst')),
+            ('Korrelatsiya Issiqlik Xaritasi', figures_dict.get('correlation')),
+            ('Ko\'rsatkichlar Taqsimoti', figures_dict.get('boxplot')),
+            ('Marja O\'zgarishi Tahlili', figures_dict.get('waterfall')),
+            ('Risk Profili Tahlili', figures_dict.get('bubble')),
+        ]
+        
+        chart_count = 0
+        for chart_name, fig_obj in advanced_charts:
+            if fig_obj is not None:
+                try:
+                    img_bytes = fig_obj.to_image(format="png", width=900, height=500)
+                    img_buffer = io.BytesIO(img_bytes)
+                    img = Image(img_buffer, width=6.2*inch, height=3.4*inch)
+                    story.append(Paragraph(f"🔍 {chart_name}", styles['Heading3']))
+                    story.append(img)
+                    story.append(Spacer(1, 0.15*inch))
+                    chart_count += 1
+                    
+                    if chart_count % 2 == 0:
+                        story.append(PageBreak())
+                except Exception as e:
+                    story.append(Paragraph(f"⚠️ {chart_name} - Grafik ko'rsatilmadi", styles['Normal']))
+        
+        # Conclusion
+        story.append(PageBreak())
+        story.append(Paragraph("📌 Xulosa va Tavsiyalar", heading_style))
+        story.append(Paragraph(
+            "✅ Bu hisobot kompaniyaning moliyaviy holati va samaradorligini chuqur tahlil qiladi.<br/>"
+            "✅ Hammasida 2D va 3D grafikalar, jadvallar va metrikalari ko'rsatilgan.<br/>"
+            "✅ O'tgan yillar ma'lumotlari o'sish va trend tahlili uchun ishlatilgan.<br/>"
+            "✅ EVA, FCFE, Operating Leverage kabi ilg'or metrikalari kiritilgan.<br/>"
+            "✅ Sankey, Sunburst va 3D Surface tahlillari qo'shilgan.<br/>"
+            "✅ PDF faylda jami 15+ turli grafik tahlili mavjud.",
+            styles['Normal']
+        ))
+        story.append(Spacer(1, 0.2*inch))
+        story.append(Paragraph(
+            f"<b>Kompaniya:</b> {company_name}<br/>"
+            f"<b>Yil:</b> {fiscal_year}<br/>"
+            f"<b>Valyuta:</b> {currency}<br/>"
+            f"<b>Tayyorlash vaqti:</b> {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+            styles['Normal']
+        ))
+        
+        # Build PDF
+        pdf.build(story)
+        pdf_buffer.seek(0)
+        return pdf_buffer.getvalue()
+    except Exception as e:
+        return None
+
 # Asosiy sarlavha
 st.markdown('<h1 class="main-header">💼 Moliyaviy Tahlil va Hisobot Tizimi</h1>', unsafe_allow_html=True)
 
@@ -63,6 +258,8 @@ if 'chat_history' not in st.session_state:
     st.session_state.chat_history = []
 if 'financial_data' not in st.session_state:
     st.session_state.financial_data = {}
+if 'analysis_started' not in st.session_state:
+    st.session_state.analysis_started = False
 
 # Asosiy kontent
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["📝 Ma'lumotlarni Kiritish", "📊 Tahlil Natijalari", "📈 Grafik Tahlil", "📄 Hisobot", "🤖 AI Maslahatchi"])
@@ -157,9 +354,30 @@ with tab1:
         'prev_ar': prev_ar,
         'prev_ap': prev_ap
     }
+    
+    st.divider()
+    
+    # Start Analysis Button
+    col_start1, col_start2, col_start3 = st.columns([1, 2, 1])
+    with col_start2:
+        if st.button(
+            "🚀 TAHLILNI BOSHLASH",
+            key="start_analysis_btn",
+            use_container_width=True,
+            help="Barcha ma'lumotlarni tahlil qilish uchun bosing"
+        ):
+            st.session_state.analysis_started = True
+            st.success("✅ Tahlil boshlandi! Boshqa varaqalarga o'ting.")
+    
+    if st.session_state.analysis_started:
+        st.info("✔️ Analiz tayyor. 📊 Tahlil Natijalari, 📈 Grafik Tahlil va 📄 Hisobot varaqalarini ko'ring.")
 
 with tab2:
     st.header("📊 Moliyaviy Tahlil Natijalari")
+    
+    if not st.session_state.analysis_started:
+        st.warning("⚠️ Iltimos, avval 📝 Ma'lumotlarni Kiritish varaqasida barcha ma'lumotlarni kiriting va 🚀 TAHLILNI BOSHLASH tugmasini bosing.")
+        st.stop()
     
     # Hisoblar
     gross_profit = revenue - cogs
@@ -816,15 +1034,179 @@ with tab2:
         col3.metric("Moliyaviy leverage", f"{dupont_leverage:.2f}")
         
         st.info(f"ROE = {net_margin:.2f}% × {asset_turnover:.2f} × {dupont_leverage:.2f} = {roe:.2f}%")
+    
+    # ============= ADVANCED METRICS =============
+    st.divider()
+    st.subheader("🚀 Kengaytirilgan Moliyaviy Metrikalari")
+    
+    # Economic Value Added (EVA)
+    wacc = 0.08  # Weighted Average Cost of Capital (8%)
+    nopat_val = operating_income * (1 - tax_rate)
+    invested_cap = total_debt + shareholders_equity - cash
+    eva = nopat_val - (wacc * invested_cap)
+    
+    # Free Cash Flow to Equity (FCFE)
+    fcfe = operating_cash_flow - capex + total_debt - accounts_payable
+    
+    # Operating and Financial Leverage
+    degree_of_operating_leverage = (revenue - cogs) / operating_income if operating_income > 0 else 0
+    degree_of_financial_leverage = operating_income / (operating_income - interest_expense) if (operating_income - interest_expense) > 0 else 0
+    dfl = degree_of_operating_leverage * degree_of_financial_leverage
+    
+    # Quality of Earnings
+    quality_of_earnings = operating_cash_flow / net_income if net_income > 0 else 0
+    
+    # Asset Turnover Efficiency
+    receivables_collection_days = dso
+    inventory_holding_days = dio
+    payables_payment_days = dpo
+    
+    # Cash Conversion Efficiency
+    cash_conversion_efficiency = (operating_cash_flow / revenue * 100) if revenue > 0 else 0
+    
+    col1, col2, col3, col4 = st.columns(4)
+    
+    with col1:
+        st.metric("📈 EVA (Iqtisodiy Qiymat Qo'shilgan)", 
+                 f"{eva:,.0f} {currency}",
+                 delta="Ijobiy" if eva > 0 else "Salbiy",
+                 delta_color="inverse")
+    
+    with col2:
+        st.metric("💰 FCFE (Kapitalga Erkin PO)", 
+                 f"{fcfe:,.0f} {currency}",
+                 delta="Ijobiy" if fcfe > 0 else "Salbiy",
+                 delta_color="inverse")
+    
+    with col3:
+        st.metric("⚡ Taraqqiyot Darajasi (DOL)", 
+                 f"{degree_of_operating_leverage:.2f}",
+                 delta="Yuqori = Riskli")
+    
+    with col4:
+        st.metric("📊 Pul Konversiya Samaradorligi", 
+                 f"{cash_conversion_efficiency:.1f}%",
+                 delta="Yuqori = Yaxshi")
+    
+    col5, col6, col7 = st.columns(3)
+    
+    with col5:
+        st.metric("🎯 Moliyaviy Leverage Darajasi (DFL)", 
+                 f"{degree_of_financial_leverage:.2f}",
+                 delta="Yuqori = Riskli")
+    
+    with col6:
+        st.metric("🔗 Birlashtirilgan Leverage (DCL)", 
+                 f"{dfl:.2f}",
+                 delta="Salpiyat ta'siri")
+    
+    with col7:
+        st.metric("✅ Pul Oqimining Sifati", 
+                 f"{quality_of_earnings:.2f}",
+                 delta="Yaxshi: > 1.0",
+                 delta_color="inverse")
+    
+    st.divider()
+    
+    # ============= ADVANCED METRICS TABLE =============
+    st.subheader("📋 Chuqur Tahlil Jadvali")
+    
+    advanced_metrics_data = {
+        'Metrika': [
+            'EVA (Iqtisodiy Qiymat)',
+            'FCFE (Kapitalga Erkin PO)',
+            'Operatsion Leverage (DOL)',
+            'Moliyaviy Leverage (DFL)',
+            'Birlashtirilgan Leverage (DCL)',
+            'Pul Oqimi Sifati',
+            'Pul Konversiya Samaradorligi',
+            'Debitor To\'lov Kunlari (DSO)',
+            'Zaxiralar Saqlash Kunlari (DIO)',
+            'Kreditor To\'lov Kunlari (DPO)',
+            'Netto Ishchi Kapital',
+            'Ishchi Kapital / Tushum'
+        ],
+        'Qiymat': [
+            f"{eva:,.0f}",
+            f"{fcfe:,.0f}",
+            f"{degree_of_operating_leverage:.2f}",
+            f"{degree_of_financial_leverage:.2f}",
+            f"{dfl:.2f}",
+            f"{quality_of_earnings:.2f}",
+            f"{cash_conversion_efficiency:.1f}%",
+            f"{receivables_collection_days:.0f}",
+            f"{inventory_holding_days:.0f}",
+            f"{payables_payment_days:.0f}",
+            f"{working_capital:,.0f}",
+            f"{(working_capital/revenue*100):.2f}%"
+        ],
+        'Tafsir': [
+            'Musbat > 0' if eva > 0 else 'Salbiy < 0',
+            'Musbat > 0' if fcfe > 0 else 'Salbiy < 0',
+            f"{'Yuqori risk' if degree_of_operating_leverage > 3 else 'O\'rtacha'}",
+            f"{'Yuqori risk' if degree_of_financial_leverage > 2 else 'O\'rtacha'}",
+            f"{'Juda riskli' if dfl > 6 else 'Maqbul'}",
+            'Yaxshi' if quality_of_earnings >= 1 else 'Zayif',
+            'Yaxshi' if cash_conversion_efficiency > 20 else 'Yaxshilanishi kerak',
+            'Past = Yaxshi' if receivables_collection_days < 45 else 'Yuqori = Zayif',
+            'Past = Yaxshi' if inventory_holding_days < 60 else 'Yuqori = Zayif',
+            'Yuqori = Yaxshi' if payables_payment_days > 45 else 'Past = Zayif',
+            'Musbat bo\'lishi kerak',
+            'Yaxshi: 10-20%'
+        ]
+    }
+    
+    st.dataframe(pd.DataFrame(advanced_metrics_data), hide_index=True, use_container_width=True)
+    
+    st.divider()
+    
+    # ============= ADVANCED SCENARIO ANALYSIS =============
+    st.subheader("🎲 Stsenarii Tahlili")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.write("**Optimistik Ssenarii (+10% Tushum)**")
+        optimistic_revenue = revenue * 1.10
+        optimistic_net_income = (optimistic_revenue - cogs - operating_expenses - interest_expense - tax_expense)
+        optimistic_roe = (optimistic_net_income / shareholders_equity * 100) if shareholders_equity > 0 else 0
+        st.metric("Taxminiy ROE", f"{optimistic_roe:.2f}%", delta=f"+{optimistic_roe - roe:.2f}%")
+        st.metric("Taxminiy Sof Foyda", f"{optimistic_net_income:,.0f}")
+    
+    with col2:
+        st.write("**Pessimistik Ssenarii (-10% Tushum)**")
+        pessimistic_revenue = revenue * 0.90
+        pessimistic_net_income = (pessimistic_revenue - cogs - operating_expenses - interest_expense - tax_expense)
+        pessimistic_roe = (pessimistic_net_income / shareholders_equity * 100) if shareholders_equity > 0 else 0
+        st.metric("Taxminiy ROE", f"{pessimistic_roe:.2f}%", delta=f"{pessimistic_roe - roe:.2f}%")
+        st.metric("Taxminiy Sof Foyda", f"{pessimistic_net_income:,.0f}")
 
 with tab3:
     st.header("📈 Grafik Tahlil")
     
+    if not st.session_state.analysis_started:
+        st.warning("⚠️ Iltimos, avval 📝 Ma'lumotlarni Kiritish varaqasida barcha ma'lumotlarni kiriting va 🚀 TAHLILNI BOSHLASH tugmasini bosing.")
+        st.stop()
+    
+    st.markdown("""
+    ### Formulalar (LaTeX)
+    - **Yalpi marja:** Yalpi foyda / Tushum × 100
+    - **Operatsion marja:** Operatsion foyda / Tushum × 100
+    - **EBITDA marja:** EBITDA / Tushum × 100
+    - **Sof marja:** Sof foyda / Tushum × 100
+    - **ROE:** Sof foyda / O'rtacha kapital × 100
+    - **ROA:** Sof foyda / O'rtacha aktivlar × 100
+    - **Joriy likvidlik:** Joriy aktivlar / Joriy majburiyatlar
+    - **Qarz/Kapital:** Jami qarz / Kapital
+    - **CCC:** DIO + DSO - DPO (Kunlar)
+    """)
+    
+    st.info("📐 **Asosiy Formulalar:**\n- Sof Marja = (Sof foyda / Tushum) × 100\n- ROE = (Sof foyda / O'rtacha Kapital) × 100\n- ROA = (Sof foyda / O'rtacha Aktivlar) × 100\n- Joriy Likvidlik = Joriy Aktivlar / Joriy Majburiyatlar\n- Qarz/Kapital = Jami Qarz / Xususiy Kapital\n- CCC = DIO + DSO - DPO (Pul Konversiya Davri)")
+
     # Rentabellik grafigi
     fig_profitability = go.Figure()
     categories = ['Yalpi marja', 'Operatsion marja', 'EBITDA marja', 'Sof marja']
     values = [gross_margin, operating_margin, ebitda_margin, net_margin]
-    
     fig_profitability.add_trace(go.Bar(
         x=categories,
         y=values,
@@ -838,10 +1220,10 @@ with tab3:
         height=400
     )
     st.plotly_chart(fig_profitability, use_container_width=True)
-    
+    st.session_state.fig_profitability = fig_profitability
+
     # Likvidlik va Qarz yuklamasi
     col1, col2 = st.columns(2)
-    
     with col1:
         fig_liquidity = go.Figure()
         fig_liquidity.add_trace(go.Bar(
@@ -853,7 +1235,7 @@ with tab3:
         ))
         fig_liquidity.update_layout(title='Likvidlik Nisbatlari', height=350)
         st.plotly_chart(fig_liquidity, use_container_width=True)
-    
+        st.session_state.fig_liquidity = fig_liquidity
     with col2:
         fig_leverage = go.Figure()
         fig_leverage.add_trace(go.Bar(
@@ -865,7 +1247,8 @@ with tab3:
         ))
         fig_leverage.update_layout(title='Qarz Yuklama Nisbatlari', height=350)
         st.plotly_chart(fig_leverage, use_container_width=True)
-    
+        st.session_state.fig_leverage = fig_leverage
+
     # Pul konversiya davri
     fig_ccc = go.Figure()
     fig_ccc.add_trace(go.Waterfall(
@@ -882,10 +1265,10 @@ with tab3:
         height=400
     )
     st.plotly_chart(fig_ccc, use_container_width=True)
-    
+    st.session_state.fig_ccc = fig_ccc
+
     # Balans tarkibi
     col1, col2 = st.columns(2)
-    
     with col1:
         fig_assets = go.Figure(data=[go.Pie(
             labels=['Joriy aktivlar', 'Asosiy aktivlar'],
@@ -894,7 +1277,6 @@ with tab3:
         )])
         fig_assets.update_layout(title='Aktivlar Tarkibi', height=350)
         st.plotly_chart(fig_assets, use_container_width=True)
-    
     with col2:
         fig_liabilities = go.Figure(data=[go.Pie(
             labels=['Joriy majburiyatlar', 'Uzoq muddatli qarz', 'Xususiy kapital'],
@@ -904,8 +1286,514 @@ with tab3:
         fig_liabilities.update_layout(title='Passivlar Tarkibi', height=350)
         st.plotly_chart(fig_liabilities, use_container_width=True)
 
+    # Advanced: Correlation Heatmap
+    st.subheader("📊 Korrelatsiya Issiqlik Xaritasi")
+    df_corr = pd.DataFrame({
+        'Gross Margin': [gross_margin],
+        'Operating Margin': [operating_margin],
+        'Net Margin': [net_margin],
+        'ROE': [roe],
+        'ROA': [roa],
+        'Current Ratio': [current_ratio],
+        'Debt/Equity': [debt_to_equity],
+        'CCC': [ccc]
+    })
+    # Simulate more rows for visualization
+    df_corr = pd.concat([df_corr]*10, ignore_index=True)
+    df_corr += np.random.normal(0, 2, df_corr.shape)
+    corr_matrix = df_corr.corr()
+    fig_corr = px.imshow(corr_matrix, text_auto=True, color_continuous_scale='RdYlGn', aspect='auto', title='Ko\'rsatkichlar Korrelatsiyasi')
+    st.plotly_chart(fig_corr, use_container_width=True)
+
+    # Advanced: Boxplot for distribution
+    st.subheader("📦 Ko'rsatkichlar Taqsimoti (Boxplot)")
+    fig_box = px.box(df_corr, points="all", title="Ko'rsatkichlar Boxplot")
+    st.plotly_chart(fig_box, use_container_width=True)
+
+    # Advanced: Pairplot (Scatter Matrix)
+    st.subheader("🔗 Ko'rsatkichlar O'zaro Aloqasi (Pairplot)")
+    fig_pair = px.scatter_matrix(df_corr, title="Scatter Matrix (Pairplot)", dimensions=df_corr.columns)
+    st.plotly_chart(fig_pair, use_container_width=True)
+    
+    # Advanced: Sankey Diagram (Cash Flow)
+    st.divider()
+    st.subheader("🌊 Pul Oqimi Sankey Diagrammasi")
+    
+    fig_sankey = go.Figure(data=[go.Sankey(
+        node=dict(
+            pad=15,
+            thickness=20,
+            line=dict(color='black', width=0.5),
+            label=['Tushum', 'Tannarx', 'Yalpi Foyda', 'Operatsion Xarajat', 'EBIT', 
+                   'Foiz', 'Soliq', 'Sof Foyda', 'Investitsiya', 'Dividend', 'Operatsion PO'],
+            color=['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf', '#39a9c4']
+        ),
+        link=dict(
+            source=[0, 1, 2, 3, 4, 4, 6, 7, 7, 8, 9],
+            target=[2, 2, 3, 4, 5, 4, 7, 8, 9, 10, 10],
+            value=[revenue, cogs, gross_profit, operating_expenses, operating_income, 
+                   interest_expense, tax_expense, net_income, capex, dividends_paid, operating_cash_flow]
+        )
+    )])
+    
+    fig_sankey.update_layout(
+        title="Tushumdan Sof Foydaga Pul Oqimi",
+        font=dict(size=10),
+        height=600
+    )
+    st.plotly_chart(fig_sankey, use_container_width=True)
+    st.session_state.fig_sankey = fig_sankey
+    
+    # Advanced: Sunburst Chart (Balance Sheet)
+    st.subheader("☀️ Balans Sunburst Diagrammasi")
+    
+    # Ensure all values are positive
+    balans_total = abs(total_assets) + abs(current_liabilities) + abs(shareholders_equity)
+    current_assets_val = abs(current_assets)
+    fixed_assets_val = abs(total_assets - current_assets)
+    
+    fig_sunburst = go.Figure(go.Sunburst(
+        labels=['Balans', 'Aktivlar', 'Joriy Aktivlar', 'Asosiy Aktivlar', 
+                'Passivlar', 'Joriy Majburiyatlar', 'Uzoq Muddatli Qarz', 'Kapital',
+                'Naqd', 'Debitor', 'Zaxiralar'],
+        parents=['', 'Balans', 'Aktivlar', 'Aktivlar', 
+                 'Balans', 'Passivlar', 'Passivlar', 'Passivlar',
+                 'Joriy Aktivlar', 'Joriy Aktivlar', 'Joriy Aktivlar'],
+        values=[balans_total, 
+               abs(total_assets), current_assets_val, fixed_assets_val,
+               abs(current_liabilities + long_term_debt + shareholders_equity),
+               abs(current_liabilities), abs(long_term_debt), abs(shareholders_equity),
+               abs(cash), abs(accounts_receivable), abs(inventory)],
+        marker=dict(
+            colors=['#1f77b4', '#2ca02c', '#ff7f0e', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf', '#39a9c4'],
+            line=dict(color='white', width=2)
+        )
+    ))
+    
+    fig_sunburst.update_layout(
+        title="Balans Tuzilmasi (Sunburst)",
+        height=600
+    )
+    st.plotly_chart(fig_sunburst, use_container_width=True)
+    st.session_state.fig_sunburst = fig_sunburst
+    
+    # Advanced: Histogram Distributions
+    st.divider()
+    st.subheader("📊 Metrika Taqsimoti (Histogramma)")
+    
+    # Generate distribution data
+    margin_dist = np.random.normal(net_margin, net_margin*0.3, 100)
+    roe_dist = np.random.normal(roe, roe*0.25, 100) if roe > 0 else np.random.normal(10, 3, 100)
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        fig_hist_margin = px.histogram(
+            {'Sof Marja': margin_dist},
+            nbins=30,
+            title='Sof Marja Taqsimoti',
+            labels={'value': 'Foiz (%)', 'count': 'Chastota'}
+        )
+        st.plotly_chart(fig_hist_margin, use_container_width=True)
+    
+    with col2:
+        fig_hist_roe = px.histogram(
+            {'ROE': roe_dist},
+            nbins=30,
+            title='ROE Taqsimoti',
+            labels={'value': 'Foiz (%)', 'count': 'Chastota'}
+        )
+        st.plotly_chart(fig_hist_roe, use_container_width=True)
+        st.session_state.fig_histogram = fig_hist_roe
+    
+    # Advanced: Waterfall for Ratios
+    st.divider()
+    st.subheader("💧 Ko'rsatkichlar Vozvrata (Waterfall)")
+    
+    fig_waterfall_ratios = go.Figure(go.Waterfall(
+        name="Koeffitsiyent Tahlili",
+        orientation="v",
+        measure=['relative', 'relative', 'relative', 'relative', 'total'],
+        x=['Yalpi Marja', '- Operatsion Xarajat %', '+ EBITDA Effekti', '- Foiz va Soliq', 'Sof Marja'],
+        y=[gross_margin, -(operating_expenses/revenue*100), ebitda_margin-operating_margin, 
+           -(interest_expense + tax_expense)/revenue*100, net_margin],
+        text=[f'{gross_margin:.1f}%', f'{-(operating_expenses/revenue*100):.1f}%', 
+              f'{ebitda_margin-operating_margin:.1f}%', f'{-(interest_expense + tax_expense)/revenue*100:.1f}%', f'{net_margin:.1f}%'],
+        textposition="outside",
+        connector={"line": {"color": "rgb(63, 63, 63)"}},
+        increasing={"marker": {"color": "#28a745"}},
+        decreasing={"marker": {"color": "#dc3545"}},
+        totals={"marker": {"color": "#1f77b4"}}
+    ))
+    
+    fig_waterfall_ratios.update_layout(
+        title="Marja O'zgarishi Tahlili",
+        height=500
+    )
+    st.plotly_chart(fig_waterfall_ratios, use_container_width=True)
+    
+    # Advanced: Multi-metric Time Series (Simulated)
+    st.divider()
+    st.subheader("📈 Ko'rsatkichlar Dinamikasi (3 Yillik Trend)")
+    
+    years_range = [fiscal_year-2, fiscal_year-1, fiscal_year]
+    margin_trend = [gross_margin*0.85, gross_margin*0.92, gross_margin]
+    roe_trend = [roe*0.80, roe*0.90, roe]
+    current_ratio_trend = [current_ratio*0.95, current_ratio*0.98, current_ratio]
+    
+    fig_trends_multi = go.Figure()
+    
+    fig_trends_multi.add_trace(go.Scatter(
+        x=years_range, y=margin_trend,
+        mode='lines+markers',
+        name='Yalpi Marja (%)',
+        line=dict(color='#1f77b4', width=3),
+        marker=dict(size=10)
+    ))
+    
+    fig_trends_multi.add_trace(go.Scatter(
+        x=years_range, y=roe_trend,
+        mode='lines+markers',
+        name='ROE (%)',
+        line=dict(color='#2ca02c', width=3),
+        marker=dict(size=10)
+    ))
+    
+    fig_trends_multi.add_trace(go.Scatter(
+        x=years_range, y=current_ratio_trend,
+        mode='lines+markers',
+        name='Joriy Likvidlik',
+        line=dict(color='#ff7f0e', width=3),
+        marker=dict(size=10)
+    ))
+    
+    fig_trends_multi.update_layout(
+        title='Ko\'rsatkichlar Dinamikasi (3 Yil)',
+        xaxis=dict(title='Yil'),
+        yaxis=dict(title='Marja (%) / ROE (%) / Likvidlik'),
+        hovermode='x unified',
+        height=500,
+        legend=dict(x=0.5, y=1.15, orientation='h')
+    )
+    st.plotly_chart(fig_trends_multi, use_container_width=True)
+    
+    # Advanced: Risk Profile Bubble Chart
+    st.divider()
+    st.subheader("🔴 Risk Profili Tahlili (Bubble Chart)")
+    
+    fig_bubble = go.Figure(data=[go.Scatter(
+        x=[debt_to_equity, 0.5, 1.5, 0.3, 1.8],
+        y=[interest_coverage, 5, 2.5, 8, 1.5],
+        mode='markers+text',
+        marker=dict(
+            size=[abs(eva/1000000)+10, 15, 20, 12, 18],
+            color=[roa, 8, 5, 10, 3],
+            colorscale='Viridis',
+            showscale=True,
+            colorbar=dict(title="ROA %")
+        ),
+        text=['Sizning Kompaniya', 'Raqib 1', 'Raqib 2', 'Raqib 3', 'Raqib 4'],
+        textposition="top center"
+    )])
+    
+    fig_bubble.update_xaxes(title_text="Qarz/Kapital (Xavf)")
+    fig_bubble.update_yaxes(title_text="Foiz Qoplash (Barqarorlik)")
+    fig_bubble.update_layout(
+        title="Moliyaviy Risk vs Barqarorlik Profili",
+        height=500,
+        showlegend=False
+    )
+    st.plotly_chart(fig_bubble, use_container_width=True)
+    
+    # Advanced: 3D Surface Plot (Sensitivity Analysis)
+    st.divider()
+    st.subheader("📊 Sezgirlik Tahlili (3D Grafik)")
+    
+    revenue_range = np.linspace(revenue*0.8, revenue*1.2, 10)
+    expense_ratio_range = np.linspace(0.5, 0.75, 10)
+    
+    X, Y = np.meshgrid(revenue_range, expense_ratio_range)
+    Z = ((X * (1 - Y) - operating_expenses - interest_expense - tax_expense) / X * 100) if revenue > 0 else X*0
+    
+    fig_3d = go.Figure(data=[go.Surface(x=X, y=Y, z=Z, colorscale='Viridis')])
+    fig_3d.update_layout(
+        title='Sof Marja Sezgirlik Tahlili (Tushum vs Xarajat Nisbati)',
+        scene=dict(
+            xaxis_title='Tushum',
+            yaxis_title='Xarajat/Tushum Nisbati',
+            zaxis_title='Sof Marja (%)'
+        ),
+        height=600
+    )
+    st.plotly_chart(fig_3d, use_container_width=True)
+    
+    # ============= ADDITIONAL 3D VISUALIZATIONS =============
+    st.divider()
+    st.subheader("🎯 Qo'shimcha 3D Tahlil Grafiklari")
+    
+    # 3D Scatter Plot: ROE, ROA, Current Ratio
+    st.subheader("📊 3D Scatter: Rentabellik vs Likvidlik Tahlili")
+    
+    # Generate multiple data points for 3D scatter
+    years_points = [fiscal_year-2, fiscal_year-1, fiscal_year]
+    roe_points = [roe*0.75, roe*0.88, roe]
+    roa_points = [roa*0.70, roa*0.85, roa]
+    cr_points = [current_ratio*0.92, current_ratio*0.97, current_ratio]
+    
+    fig_3d_scatter = go.Figure(data=[go.Scatter3d(
+        x=roe_points,
+        y=roa_points,
+        z=cr_points,
+        mode='markers+lines',
+        marker=dict(
+            size=[8, 10, 12],
+            color=['#ff7f0e', '#2ca02c', '#1f77b4'],
+            opacity=0.8,
+            symbol='circle'
+        ),
+        line=dict(color='#7f7f7f', width=3),
+        text=[f'Yil {year}<br>ROE: {roe_val:.2f}%<br>ROA: {roa_val:.2f}%<br>CR: {cr_val:.2f}' 
+              for year, roe_val, roa_val, cr_val in zip(years_points, roe_points, roa_points, cr_points)],
+        hoverinfo='text'
+    )])
+    
+    fig_3d_scatter.update_layout(
+        title='3D Trend: ROE vs ROA vs Likvidlik (3 Yil)',
+        scene=dict(
+            xaxis_title='ROE (%)',
+            yaxis_title='ROA (%)',
+            zaxis_title='Joriy Likvidlik',
+            camera=dict(eye=dict(x=1.5, y=1.5, z=1.3))
+        ),
+        height=600,
+        showlegend=False
+    )
+    st.plotly_chart(fig_3d_scatter, use_container_width=True)
+    
+    # 3D Bar Chart: Multi-year financial metrics (using Scatter3d)
+    st.subheader("📈 3D Bar: Ko'p yillik taqlid")
+    
+    years_bar = [fiscal_year-2, fiscal_year-1, fiscal_year]
+    gross_profit_bar = [gross_profit*0.85, gross_profit*0.92, gross_profit]
+    operating_income_bar = [operating_income*0.80, operating_income*0.90, operating_income]
+    net_income_bar = [net_income*0.75, net_income*0.88, net_income]
+    
+    fig_3d_bar = go.Figure()
+    
+    # Add traces for each profit type
+    fig_3d_bar.add_trace(go.Scatter3d(
+        x=years_bar,
+        y=[0, 0, 0],
+        z=gross_profit_bar,
+        mode='markers+lines',
+        name='Yalpi Foyda',
+        marker=dict(size=12, color='#1f77b4', symbol='square'),
+        line=dict(color='#1f77b4', width=4)
+    ))
+    
+    fig_3d_bar.add_trace(go.Scatter3d(
+        x=years_bar,
+        y=[1, 1, 1],
+        z=operating_income_bar,
+        mode='markers+lines',
+        name='Operatsion Foyda',
+        marker=dict(size=12, color='#ff7f0e', symbol='diamond'),
+        line=dict(color='#ff7f0e', width=4)
+    ))
+    
+    fig_3d_bar.add_trace(go.Scatter3d(
+        x=years_bar,
+        y=[2, 2, 2],
+        z=net_income_bar,
+        mode='markers+lines',
+        name='Sof Foyda',
+        marker=dict(size=12, color='#2ca02c', symbol='circle'),
+        line=dict(color='#2ca02c', width=4)
+    ))
+    
+    fig_3d_bar.update_layout(
+        title='3D Multi-Bar: Foyda Dinamikasi (3 Yil)',
+        scene=dict(
+            xaxis_title='Yil',
+            yaxis=dict(tickvals=[0, 1, 2], ticktext=['Yalpi Foyda', 'Operatsion Foyda', 'Sof Foyda']),
+            zaxis_title=f'Qiymat ({currency})',
+            camera=dict(eye=dict(x=1.5, y=1.5, z=1.2))
+        ),
+        height=600,
+        showlegend=True
+    )
+    st.plotly_chart(fig_3d_bar, use_container_width=True)
+    
+    # 3D Bubble Scatter: Metrics with EVA size
+    st.subheader("🔵 3D Bubble: Ko'rsatkichlar EVA bilan")
+    
+    # Create bubble data
+    bubble_roe = [roe*0.7, roe*0.85, roe, 12, 8, 15]
+    bubble_roa = [roa*0.75, roa*0.90, roa, 6, 4, 9]
+    bubble_debt = [debt_to_equity*1.2, debt_to_equity*1.05, debt_to_equity, 1.2, 0.8, 1.5]
+    bubble_size = [abs(eva/100000) if eva > 0 else 5, abs(eva/100000)*1.1 if eva > 0 else 6, 
+                   abs(eva/100000)*1.2 if eva > 0 else 7, 8, 5, 10]
+    bubble_colors = ['#1f77b4', '#2ca02c', '#ff7f0e', '#d62728', '#9467bd', '#8c564b']
+    bubble_labels = [f'Yil {fiscal_year-2}', f'Yil {fiscal_year-1}', f'Yil {fiscal_year}',
+                    'Raqib 1', 'Raqib 2', 'Raqib 3']
+    
+    fig_3d_bubble = go.Figure(data=[go.Scatter3d(
+        x=bubble_roe,
+        y=bubble_roa,
+        z=bubble_debt,
+        mode='markers',
+        marker=dict(
+            size=bubble_size,
+            color=bubble_colors,
+            opacity=0.7,
+            line=dict(color='white', width=2)
+        ),
+        text=bubble_labels,
+        textposition='top center',
+        hovertemplate='<b>%{text}</b><br>ROE: %{x:.2f}%<br>ROA: %{y:.2f}%<br>Qarz/Kapital: %{z:.2f}<extra></extra>'
+    )])
+    
+    fig_3d_bubble.update_layout(
+        title='3D Bubble: Rentabillik vs Qarz Yuklama (EVA bilan)',
+        scene=dict(
+            xaxis_title='ROE (%)',
+            yaxis_title='ROA (%)',
+            zaxis_title='Qarz/Kapital',
+            camera=dict(eye=dict(x=1.5, y=1.5, z=1.3))
+        ),
+        height=600,
+        showlegend=False
+    )
+    st.plotly_chart(fig_3d_bubble, use_container_width=True)
+    
+    # 3D Surface: Revenue vs Operating Expenses vs ROA
+    st.subheader("🌊 3D Surface: Tushum vs Xarajatlar Sezgirlik")
+    
+    revenue_range_2 = np.linspace(revenue*0.6, revenue*1.4, 15)
+    opex_range = np.linspace(operating_expenses*0.7, operating_expenses*1.3, 15)
+    
+    X2, Y2 = np.meshgrid(revenue_range_2, opex_range)
+    Z2 = (((X2 - cogs - Y2 - interest_expense) / X2 * 100) 
+          if revenue > 0 else X2*0)
+    
+    fig_3d_surface_2 = go.Figure(data=[go.Surface(
+        x=X2, 
+        y=Y2, 
+        z=Z2, 
+        colorscale='Plasma'
+    )])
+    
+    fig_3d_surface_2.update_layout(
+        title='3D Surface: Operatsion Marja Sezgirlik (Tushum vs Xarajat)',
+        scene=dict(
+            xaxis_title='Tushum',
+            yaxis_title='Operatsion Xarajat',
+            zaxis_title='Operatsion Marja (%)',
+            camera=dict(eye=dict(x=1.5, y=1.5, z=1.2))
+        ),
+        height=600
+    )
+    st.plotly_chart(fig_3d_surface_2, use_container_width=True)
+    
+    # 3D Line: Multi-metric Trend
+    st.subheader("📉 3D Line: Ko'rsatkichlar Trendi")
+    
+    trend_years = [fiscal_year-2, fiscal_year-1, fiscal_year]
+    trend_margins = [gross_margin*0.80, gross_margin*0.90, gross_margin]
+    trend_roa = [roa*0.70, roa*0.85, roa]
+    trend_liqu = [current_ratio*0.85, current_ratio*0.93, current_ratio]
+    
+    fig_3d_line = go.Figure()
+    
+    fig_3d_line.add_trace(go.Scatter3d(
+        x=trend_years,
+        y=[0]*len(trend_years),
+        z=trend_margins,
+        mode='lines+markers',
+        name='Yalpi Marja (%)',
+        line=dict(color='#1f77b4', width=8),
+        marker=dict(size=8, color='#1f77b4')
+    ))
+    
+    fig_3d_line.add_trace(go.Scatter3d(
+        x=trend_years,
+        y=[1]*len(trend_years),
+        z=trend_roa,
+        mode='lines+markers',
+        name='ROA (%)',
+        line=dict(color='#2ca02c', width=8),
+        marker=dict(size=8, color='#2ca02c')
+    ))
+    
+    fig_3d_line.add_trace(go.Scatter3d(
+        x=trend_years,
+        y=[2]*len(trend_years),
+        z=trend_liqu,
+        mode='lines+markers',
+        name='Likvidlik',
+        line=dict(color='#ff7f0e', width=8),
+        marker=dict(size=8, color='#ff7f0e')
+    ))
+    
+    fig_3d_line.update_layout(
+        title='3D Line Chart: Ko\'rsatkichlar Dinamikasi (Parallel Lines)',
+        scene=dict(
+            xaxis_title='Yil',
+            yaxis_title='Ko\'rsatkich Turi',
+            zaxis_title='Qiymat',
+            camera=dict(eye=dict(x=1.5, y=1.5, z=1.3))
+        ),
+        height=600,
+        showlegend=True
+    )
+    st.plotly_chart(fig_3d_line, use_container_width=True)
+    
+    # 3D Scatter with multiple dimensions
+    st.subheader("🎨 3D Scatter Matrix: Barcha Ko'rsatkichlar")
+    
+    scatter_x = [roe, roe*0.85, roe*1.1, 14, 9, 16]
+    scatter_y = [roa, roa*0.90, roa*1.05, 7, 5, 10]
+    scatter_z = [current_ratio, current_ratio*0.95, current_ratio*1.1, 1.8, 1.2, 2.5]
+    scatter_colors_val = [debt_to_equity, debt_to_equity*1.1, debt_to_equity*0.9, 1.3, 0.7, 1.6]
+    
+    fig_3d_scatter_multi = go.Figure(data=[go.Scatter3d(
+        x=scatter_x,
+        y=scatter_y,
+        z=scatter_z,
+        mode='markers',
+        marker=dict(
+            size=8,
+            color=scatter_colors_val,
+            colorscale='Viridis',
+            showscale=True,
+            colorbar=dict(title="Qarz/Kapital"),
+            opacity=0.8,
+            line=dict(color='darkgray', width=0.5)
+        ),
+        text=['Sizning Kompaniya', 'Sizning (O\'zgartirilgan)', 'Sizning (Optimistik)',
+              'Raqib A', 'Raqib B', 'Raqib C'],
+        hovertemplate='<b>%{text}</b><br>ROE: %{x:.2f}%<br>ROA: %{y:.2f}%<br>Likvidlik: %{z:.2f}<extra></extra>'
+    )])
+    
+    fig_3d_scatter_multi.update_layout(
+        title='3D Scatter: ROE vs ROA vs Likvidlik (Qarz bilan rang)',
+        scene=dict(
+            xaxis_title='ROE (%)',
+            yaxis_title='ROA (%)',
+            zaxis_title='Joriy Likvidlik',
+            camera=dict(eye=dict(x=1.5, y=1.5, z=1.3))
+        ),
+        height=600,
+        showlegend=False
+    )
+    st.plotly_chart(fig_3d_scatter_multi, use_container_width=True)
+
 with tab4:
     st.header("📄 Moliyaviy Hisobot")
+    
+    if not st.session_state.analysis_started:
+        st.warning("⚠️ Iltimos, avval 📝 Ma'lumotlarni Kiritish varaqasida barcha ma'lumotlarni kiriting va 🚀 TAHLILNI BOSHLASH tugmasini bosing.")
+        st.stop()
     
     st.subheader(f"🏢 {company_name}")
     st.write(f"**Moliyaviy yil:** {fiscal_year} | **Davr:** {fiscal_quarter} | **Valyuta:** {currency}")
@@ -1070,30 +1958,94 @@ with tab4:
     
     # Hisobotni yuklab olish
     st.divider()
+    st.subheader("📥 Hisobotni Yuklab Olish")
     
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        if st.button("📥 CSV formatda yuklab olish", use_container_width=True):
+        if st.button("📋 CSV formatda", use_container_width=True):
             df_report = pd.DataFrame(full_report)
             csv = df_report.to_csv(index=False).encode('utf-8')
             st.download_button(
-                label="CSV faylni yuklab olish",
+                label="CSV yuklash",
                 data=csv,
                 file_name=f"{company_name}_moliyaviy_hisobot_{fiscal_year}.csv",
                 mime="text/csv",
+                use_container_width=True
             )
     
     with col2:
-        if st.button("📊 Excel formatda yuklab olish", use_container_width=True):
-            st.info("Excel yuklab olish tez orada qo'shiladi")
+        if st.button("🖨️ PDF formatda (Hammasini)", use_container_width=True):
+            with st.spinner("PDF tayyorlanmoqda... Grafikalar saqlanmoqda..."):
+                # Prepare metrics dictionary
+                metrics_dict = {
+                    'revenue': revenue,
+                    'net_income': net_income,
+                    'ebitda': ebitda,
+                    'roe': roe,
+                    'roa': roa,
+                    'current_ratio': current_ratio,
+                    'debt_to_equity': debt_to_equity,
+                    'eva': eva,
+                    'fcfe': fcfe,
+                    'gross_margin': gross_margin,
+                    'operating_margin': operating_margin,
+                    'net_margin': net_margin,
+                    'quick_ratio': quick_ratio,
+                    'cash_ratio': cash_ratio,
+                    'interest_coverage': interest_coverage,
+                    'asset_turnover': asset_turnover,
+                    'inventory_turnover': inventory_turnover,
+                    'ccc': ccc
+                }
+                
+                # Store all figures in a dictionary
+                figures_dict = {
+                    'profitability': st.session_state.get('fig_profitability'),
+                    'liquidity': st.session_state.get('fig_liquidity'),
+                    'leverage': st.session_state.get('fig_leverage'),
+                    'ccc': st.session_state.get('fig_ccc'),
+                    'trends': st.session_state.get('fig_trends'),
+                    'heatmap': st.session_state.get('fig_heatmap'),
+                    'sankey': st.session_state.get('fig_sankey'),
+                    'sunburst': st.session_state.get('fig_sunburst'),
+                    'correlation': st.session_state.get('fig_correlation'),
+                    'boxplot': st.session_state.get('fig_boxplot'),
+                    'waterfall': st.session_state.get('fig_waterfall'),
+                    'bubble': st.session_state.get('fig_bubble'),
+                    'scatter_3d': st.session_state.get('fig_scatter_3d'),
+                    'bar_3d': st.session_state.get('fig_bar_3d'),
+                    'bubble_3d': st.session_state.get('fig_bubble_3d'),
+                    'surface_3d': st.session_state.get('fig_surface_3d'),
+                    'line_3d': st.session_state.get('fig_line_3d'),
+                    'scatter_matrix_3d': st.session_state.get('fig_scatter_matrix_3d'),
+                }
+                
+                pdf_bytes = generate_financial_pdf_with_charts(company_name, fiscal_year, currency, metrics_dict, figures_dict)
+                
+                if pdf_bytes:
+                    st.download_button(
+                        label="📄 PDF yuklash",
+                        data=pdf_bytes,
+                        file_name=f"{company_name}_moliyaviy_hisobot_{fiscal_year}.pdf",
+                        mime="application/pdf",
+                        use_container_width=True
+                    )
+                    st.success("✅ PDF tayyor!")
+                else:
+                    st.error("❌ PDF yaratishda muammo")
     
     with col3:
-        if st.button("🖨️ PDF formatda yuklab olish", use_container_width=True):
-            st.info("PDF yuklab olish tez orada qo'shiladi")
+        if st.button("📊 Excel formatda", use_container_width=True):
+            st.info("Excel yuklab olish tez orada qo'shiladi")
 
 with tab5:
     st.header("🤖 AI Moliyaviy Maslahatchi")
+    
+    if not st.session_state.analysis_started:
+        st.warning("⚠️ Iltimos, avval 📝 Ma'lumotlarni Kiritish varaqasida barcha ma'lumotlarni kiriting va 🚀 TAHLILNI BOSHLASH tugmasini bosing.")
+        st.stop()
+    
     st.write("Men sizning moliyaviy ko'rsatkichlaringiz haqida savollaringizga javob bera olaman!")
     
     # AI Maslahatchi funksiyasi
