@@ -236,7 +236,287 @@ with tab2:
     revenue_growth = ((revenue - prev_revenue) / prev_revenue * 100) if prev_revenue > 0 else 0
     net_income_growth = ((net_income - prev_net_income) / prev_net_income * 100) if prev_net_income > 0 else 0
     
-    # Natijalarni ko'rsatish
+    # ============= UMUMIY SIFAT BALLARI =============
+    st.subheader("🎯 Umumiy Moliyaviy Sifat Ballari")
+    
+    def calculate_score(value, thresholds, reverse=False):
+        """Ko'rsatkichga bal berish (0-100)"""
+        excellent, good, fair = thresholds
+        if reverse:
+            if value <= excellent: return 100
+            elif value <= good: return 75
+            elif value <= fair: return 50
+            else: return 25
+        else:
+            if value >= excellent: return 100
+            elif value >= good: return 75
+            elif value >= fair: return 50
+            else: return 25
+    
+    # Har bir kategoriya uchun ball
+    profitability_score = (
+        calculate_score(gross_margin, (40, 30, 20)) +
+        calculate_score(operating_margin, (20, 15, 10)) +
+        calculate_score(net_margin, (15, 10, 5)) +
+        calculate_score(roe, (20, 15, 10)) +
+        calculate_score(roa, (10, 7, 4))
+    ) / 5
+    
+    liquidity_score = (
+        calculate_score(current_ratio, (2.0, 1.5, 1.0)) +
+        calculate_score(quick_ratio, (1.5, 1.0, 0.7)) +
+        calculate_score(cash_ratio, (0.5, 0.3, 0.1))
+    ) / 3
+    
+    leverage_score = (
+        calculate_score(debt_to_equity, (0.5, 1.0, 2.0), reverse=True) +
+        calculate_score(debt_to_assets, (0.3, 0.5, 0.7), reverse=True) +
+        calculate_score(interest_coverage, (5, 3, 2))
+    ) / 3
+    
+    efficiency_score = (
+        calculate_score(asset_turnover, (1.5, 1.0, 0.7)) +
+        calculate_score(inventory_turnover, (8, 6, 4)) +
+        calculate_score(ccc, (30, 60, 90), reverse=True)
+    ) / 3
+    
+    growth_score = (
+        calculate_score(revenue_growth, (15, 10, 5)) +
+        calculate_score(net_income_growth, (20, 10, 5))
+    ) / 2
+    
+    cashflow_score = (
+        calculate_score(ocf_margin, (20, 15, 10)) +
+        (100 if fcff > 0 else 0)
+    ) / 2
+    
+    # Umumiy ball
+    overall_score = (profitability_score + liquidity_score + leverage_score + 
+                    efficiency_score + growth_score + cashflow_score) / 6
+    
+    # Ball vizualizatsiyasi
+    col1, col2, col3, col4 = st.columns(4)
+    
+    def get_score_color(score):
+        if score >= 80: return "#28a745"
+        elif score >= 60: return "#ffc107"
+        else: return "#dc3545"
+    
+    def get_score_emoji(score):
+        if score >= 80: return "🌟"
+        elif score >= 60: return "👍"
+        else: return "⚠️"
+    
+    with col1:
+        st.markdown(f"""
+        <div style='text-align: center; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+                    border-radius: 15px; color: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>
+            <h1 style='margin: 0; font-size: 3rem;'>{overall_score:.0f}</h1>
+            <p style='margin: 5px 0; font-size: 1.2rem;'>UMUMIY BALL</p>
+            <p style='margin: 0; font-size: 2rem;'>{get_score_emoji(overall_score)}</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.metric("💹 Rentabellik", f"{profitability_score:.0f}/100", 
+                 delta="A'lo" if profitability_score >= 80 else "Yaxshi" if profitability_score >= 60 else "O'rtacha")
+        st.metric("💧 Likvidlik", f"{liquidity_score:.0f}/100",
+                 delta="A'lo" if liquidity_score >= 80 else "Yaxshi" if liquidity_score >= 60 else "O'rtacha")
+    
+    with col3:
+        st.metric("⚖️ Moliyaviy Barqarorlik", f"{leverage_score:.0f}/100",
+                 delta="A'lo" if leverage_score >= 80 else "Yaxshi" if leverage_score >= 60 else "O'rtacha")
+        st.metric("⚡ Samaradorlik", f"{efficiency_score:.0f}/100",
+                 delta="A'lo" if efficiency_score >= 80 else "Yaxshi" if efficiency_score >= 60 else "O'rtacha")
+    
+    with col4:
+        st.metric("📈 O'sish", f"{growth_score:.0f}/100",
+                 delta="A'lo" if growth_score >= 80 else "Yaxshi" if growth_score >= 60 else "O'rtacha")
+        st.metric("💵 Pul Oqimi", f"{cashflow_score:.0f}/100",
+                 delta="A'lo" if cashflow_score >= 80 else "Yaxshi" if cashflow_score >= 60 else "O'rtacha")
+    
+    # Radar chart
+    st.subheader("📡 Ko'p O'lchovli Tahlil")
+    
+    fig_radar = go.Figure()
+    
+    categories = ['Rentabellik', 'Likvidlik', 'Barqarorlik', 'Samaradorlik', 'O\'sish', 'Pul Oqimi']
+    scores = [profitability_score, liquidity_score, leverage_score, efficiency_score, growth_score, cashflow_score]
+    
+    fig_radar.add_trace(go.Scatterpolar(
+        r=scores + [scores[0]],
+        theta=categories + [categories[0]],
+        fill='toself',
+        name='Sizning ko\'rsatkichlaringiz',
+        fillcolor='rgba(31, 119, 180, 0.3)',
+        line=dict(color='rgb(31, 119, 180)', width=2)
+    ))
+    
+    # Ideal ko'rsatkichlar
+    fig_radar.add_trace(go.Scatterpolar(
+        r=[90, 90, 90, 90, 90, 90, 90],
+        theta=categories + [categories[0]],
+        fill='toself',
+        name='Ideal ko\'rsatkichlar',
+        fillcolor='rgba(40, 167, 69, 0.1)',
+        line=dict(color='rgb(40, 167, 69)', width=2, dash='dash')
+    ))
+    
+    fig_radar.update_layout(
+        polar=dict(
+            radialaxis=dict(visible=True, range=[0, 100])
+        ),
+        showlegend=True,
+        height=500,
+        title="Moliyaviy Ko'rsatkichlar Radari"
+    )
+    
+    st.plotly_chart(fig_radar, use_container_width=True)
+    
+    # ============= ADVANCED SCORECARD =============
+    st.subheader("📊 Kengaytirilgan Ko'rsatkichlar Kartasi")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        # Altman Z-Score (Bankrotlik ehtimoli)
+        z_score_a = working_capital / total_assets if total_assets > 0 else 0
+        z_score_b = (net_income + prev_net_income) / (2 * total_assets) if total_assets > 0 else 0
+        z_score_c = operating_income / total_assets if total_assets > 0 else 0
+        z_score_d = shareholders_equity / total_debt if total_debt > 0 else 1
+        z_score_e = revenue / total_assets if total_assets > 0 else 0
+        
+        altman_z = 1.2*z_score_a + 1.4*z_score_b + 3.3*z_score_c + 0.6*z_score_d + 1.0*z_score_e
+        
+        z_status = "Xavfsiz zona" if altman_z > 2.99 else "Kulrang zona" if altman_z > 1.81 else "Xavf zonasi"
+        z_color = "#28a745" if altman_z > 2.99 else "#ffc107" if altman_z > 1.81 else "#dc3545"
+        
+        st.markdown(f"""
+        <div style='padding: 20px; background-color: {z_color}20; border-left: 5px solid {z_color}; border-radius: 10px;'>
+            <h3>🎯 Altman Z-Score</h3>
+            <h1 style='color: {z_color}; margin: 10px 0;'>{altman_z:.2f}</h1>
+            <p style='font-size: 1.2rem; margin: 0;'>{z_status}</p>
+            <small>Z > 2.99: Xavfsiz | 1.81-2.99: Kulrang | < 1.81: Xavf</small>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Piotroski F-Score (Moliyaviy kuch)
+        f_score = 0
+        f_score += 1 if net_income > 0 else 0
+        f_score += 1 if operating_cash_flow > 0 else 0
+        f_score += 1 if roa > (prev_net_income / prev_total_assets * 100 if prev_total_assets > 0 else 0) else 0
+        f_score += 1 if operating_cash_flow > net_income else 0
+        f_score += 1 if debt_to_assets < (prev_total_assets / (prev_total_assets + prev_equity) if (prev_total_assets + prev_equity) > 0 else 1) else 0
+        f_score += 1 if current_ratio > (current_assets / current_liabilities if current_liabilities > 0 else 0) else 0
+        f_score += 1 if gross_margin > ((prev_revenue - cogs) / prev_revenue * 100 if prev_revenue > 0 else 0) else 0
+        f_score += 1 if asset_turnover > (prev_revenue / prev_total_assets if prev_total_assets > 0 else 0) else 0
+        
+        f_status = "Kuchli" if f_score >= 7 else "O'rtacha" if f_score >= 4 else "Zaif"
+        f_color = "#28a745" if f_score >= 7 else "#ffc107" if f_score >= 4 else "#dc3545"
+        
+        st.markdown(f"""
+        <div style='padding: 20px; background-color: {f_color}20; border-left: 5px solid {f_color}; 
+                    border-radius: 10px; margin-top: 20px;'>
+            <h3>💪 Piotroski F-Score</h3>
+            <h1 style='color: {f_color}; margin: 10px 0;'>{f_score}/9</h1>
+            <p style='font-size: 1.2rem; margin: 0;'>Moliyaviy Kuch: {f_status}</p>
+            <small>7-9: Kuchli | 4-6: O'rtacha | 0-3: Zaif</small>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        # Beneish M-Score (Hisobot manipulyatsiyasi)
+        dsri = (accounts_receivable / revenue) / (prev_ar / prev_revenue) if prev_revenue > 0 and revenue > 0 else 1
+        gmi = ((prev_revenue - cogs) / prev_revenue) / (gross_margin / 100) if prev_revenue > 0 and gross_margin > 0 else 1
+        aqi = (1 - (current_assets + total_assets) / total_assets) / (1 - (current_assets + prev_total_assets) / prev_total_assets) if prev_total_assets > 0 else 1
+        
+        m_score = -4.84 + 0.92*dsri + 0.528*gmi + 0.404*aqi
+        m_status = "Xavf" if m_score > -1.78 else "Xavfsiz"
+        m_color = "#dc3545" if m_score > -1.78 else "#28a745"
+        
+        st.markdown(f"""
+        <div style='padding: 20px; background-color: {m_color}20; border-left: 5px solid {m_color}; border-radius: 10px;'>
+            <h3>🔍 Beneish M-Score</h3>
+            <h1 style='color: {m_color}; margin: 10px 0;'>{m_score:.2f}</h1>
+            <p style='font-size: 1.2rem; margin: 0;'>{m_status}</p>
+            <small>M > -1.78: Manipulyatsiya xavfi | M < -1.78: Normal</small>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Graham Number (Qiymat bahosi)
+        graham_number = (22.5 * eps * book_value_per_share) ** 0.5 if eps > 0 and book_value_per_share > 0 else 0
+        graham_status = "Arzon" if market_price_per_share < graham_number else "Qimmat"
+        graham_color = "#28a745" if market_price_per_share < graham_number else "#dc3545"
+        
+        st.markdown(f"""
+        <div style='padding: 20px; background-color: {graham_color}20; border-left: 5px solid {graham_color}; 
+                    border-radius: 10px; margin-top: 20px;'>
+            <h3>💎 Graham Raqami</h3>
+            <h1 style='color: {graham_color}; margin: 10px 0;'>{graham_number:.2f}</h1>
+            <p style='font-size: 1.2rem; margin: 0;'>Joriy narx: {market_price_per_share:.2f} - {graham_status}</p>
+            <small>Narx < Graham: Arzon | Narx > Graham: Qimmat</small>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    st.divider()
+    
+    # ============= TREND ANALYSIS =============
+    st.subheader("📈 Trend va O'sish Tahlili")
+    
+    # Simulated historical data for visualization
+    years = [fiscal_year-2, fiscal_year-1, fiscal_year]
+    revenue_trend = [prev_revenue * 0.9, prev_revenue, revenue]
+    profit_trend = [prev_net_income * 0.85, prev_net_income, net_income]
+    
+    fig_trends = go.Figure()
+    
+    fig_trends.add_trace(go.Scatter(
+        x=years, y=revenue_trend,
+        mode='lines+markers',
+        name='Tushum',
+        line=dict(color='#1f77b4', width=3),
+        marker=dict(size=10)
+    ))
+    
+    fig_trends.add_trace(go.Scatter(
+        x=years, y=profit_trend,
+        mode='lines+markers',
+        name='Sof Foyda',
+        line=dict(color='#2ca02c', width=3),
+        marker=dict(size=10)
+    ))
+    
+    fig_trends.update_layout(
+        title='Tushum va Foyda Trendi',
+        xaxis_title='Yil',
+        yaxis_title=f'Qiymat ({currency})',
+        hovermode='x unified',
+        height=400
+    )
+    
+    st.plotly_chart(fig_trends, use_container_width=True)
+    
+    # O'sish ko'rsatkichlari
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        cagr_revenue = ((revenue / (prev_revenue * 0.9)) ** (1/2) - 1) * 100 if prev_revenue > 0 else 0
+        st.metric("Tushum CAGR (2 yil)", f"{cagr_revenue:+.1f}%", 
+                 delta="Ijobiy o'sish" if cagr_revenue > 0 else "Kamayish")
+    
+    with col2:
+        cagr_profit = ((net_income / (prev_net_income * 0.85)) ** (1/2) - 1) * 100 if prev_net_income > 0 else 0
+        st.metric("Foyda CAGR (2 yil)", f"{cagr_profit:+.1f}%",
+                 delta="Ijobiy o'sish" if cagr_profit > 0 else "Kamayish")
+    
+    with col3:
+        sustainable_growth = roe * (1 - (dividends_paid / net_income if net_income > 0 else 0)) / 100
+        st.metric("Barqaror O'sish Sur'ati", f"{sustainable_growth:.1f}%",
+                 delta="ROE va qayta investitsiyaga asoslangan")
+    
+    st.divider()
+    
+    # Natijalarni ko'rsatish (eskisi saqlanadi)
     if analysis_type in ["To'liq Tahlil", "Rentabellik"]:
         st.subheader("💹 Rentabellik Ko'rsatkichlari")
         col1, col2, col3, col4 = st.columns(4)
@@ -249,9 +529,216 @@ with tab2:
         col5, col6, col7 = st.columns(3)
         col5.metric("ROA (Aktivlar rentabelligi)", f"{roa:.2f}%")
         col6.metric("ROE (Kapital rentabelligi)", f"{roe:.2f}%")
+        col7.metric("ROIC", f"{roic:.2f}%)igi)", f"{roe:.2f}%")
         col7.metric("ROIC", f"{roic:.2f}%")
     
-    if analysis_type in ["To'liq Tahlil", "Likvidlik"]:
+    # ============= HEATMAP ANALYSIS =============
+    st.subheader("🔥 Ko'rsatkichlar Issiqlik Xaritasi")
+    
+    # Ko'rsatkichlar matritsa
+    metrics_data = {
+        'Rentabellik': {
+            'Yalpi marja': gross_margin,
+            'Operatsion marja': operating_margin,
+            'Sof marja': net_margin,
+            'ROE': roe,
+            'ROA': roa,
+            'ROIC': roic
+        },
+        'Likvidlik': {
+            'Joriy likvidlik': current_ratio * 50,  # Scale to 100
+            'Tez likvidlik': quick_ratio * 60,
+            'Absolut likvidlik': cash_ratio * 100,
+            'Ishchi kapital': min(100, working_capital / revenue * 100) if revenue > 0 else 0,
+            '-': 0,
+            '--': 0
+        },
+        'Qarz': {
+            'Qarz/Kapital': max(0, 100 - debt_to_equity * 50),  # Inverted
+            'Qarz/Aktivlar': max(0, 100 - debt_to_assets * 100),
+            'Foiz qoplash': min(100, interest_coverage * 20),
+            'Kapital nisbati': equity_ratio * 100,
+            '---': 0,
+            '----': 0
+        },
+        'Samaradorlik': {
+            'Aktivlar aylanmasi': min(100, asset_turnover * 50),
+            'Zaxiralar aylanmasi': min(100, inventory_turnover * 10),
+            'DIO': max(0, 100 - dio / 3),  # Lower is better
+            'DSO': max(0, 100 - dso / 3),
+            'DPO': min(100, dpo / 3),  # Higher is better
+            'CCC': max(0, 100 - ccc / 3)
+        },
+        'O\'sish': {
+            'Tushum o\'sishi': min(100, max(0, revenue_growth * 5)),
+            'Foyda o\'sishi': min(100, max(0, net_income_growth * 5)),
+            'CAGR tushum': min(100, max(0, cagr_revenue * 5)),
+            'CAGR foyda': min(100, max(0, cagr_profit * 5)),
+            'Barqaror o\'sish': min(100, max(0, sustainable_growth * 10)),
+            '-----': 0
+        }
+    }
+    
+    # Create heatmap data
+    categories = list(metrics_data.keys())
+    all_metrics = []
+    values_matrix = []
+    
+    max_len = max(len(v) for v in metrics_data.values())
+    for cat in categories:
+        metrics = list(metrics_data[cat].keys())
+        values = list(metrics_data[cat].values())
+        
+        # Pad to same length
+        while len(metrics) < max_len:
+            metrics.append('')
+            values.append(0)
+        
+        if not all_metrics:
+            all_metrics = metrics
+        values_matrix.append(values)
+    
+    fig_heatmap = go.Figure(data=go.Heatmap(
+        z=values_matrix,
+        x=all_metrics,
+        y=categories,
+        colorscale='RdYlGn',
+        text=[[f'{v:.0f}' if v > 0 else '' for v in row] for row in values_matrix],
+        texttemplate='%{text}',
+        textfont={"size": 10},
+        colorbar=dict(title="Ball (0-100)")
+    ))
+    
+    fig_heatmap.update_layout(
+        title='Moliyaviy Ko\'rsatkichlar Issiqlik Xaritasi',
+        height=400,
+        xaxis_title='Ko\'rsatkichlar',
+        yaxis_title='Kategoriya'
+    )
+    
+    st.plotly_chart(fig_heatmap, use_container_width=True)
+    
+    # ============= WATERFALL CHART =============
+    st.subheader("💧 Foyda Formatsiyasi (Waterfall)")
+    
+    waterfall_data = [
+        ('Tushum', revenue, 'relative'),
+        ('Tannarx', -cogs, 'relative'),
+        ('Yalpi foyda', gross_profit, 'total'),
+        ('Operatsion xarajat', -operating_expenses, 'relative'),
+        ('EBIT', operating_income, 'total'),
+        ('Foiz xarajati', -interest_expense, 'relative'),
+        ('Soliq', -tax_expense, 'relative'),
+        ('Sof foyda', net_income, 'total')
+    ]
+    
+    fig_waterfall = go.Figure(go.Waterfall(
+        name="Foyda tahlili",
+        orientation="v",
+        measure=[item[2] for item in waterfall_data],
+        x=[item[0] for item in waterfall_data],
+        y=[item[1] for item in waterfall_data],
+        text=[f"{item[1]:,.0f}" for item in waterfall_data],
+        textposition="outside",
+        connector={"line": {"color": "rgb(63, 63, 63)"}},
+        increasing={"marker": {"color": "#28a745"}},
+        decreasing={"marker": {"color": "#dc3545"}},
+        totals={"marker": {"color": "#1f77b4"}}
+    ))
+    
+    fig_waterfall.update_layout(
+        title="Tushumdan Sof Foydaga - Waterfall Tahlili",
+        showlegend=False,
+        height=500,
+        yaxis_title=f'Qiymat ({currency})'
+    )
+    
+    st.plotly_chart(fig_waterfall, use_container_width=True)
+    
+    # ============= GAUGE CHARTS =============
+    st.subheader("🎯 Asosiy Ko'rsatkichlar Gauge")
+    
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        fig_gauge_roe = go.Figure(go.Indicator(
+            mode="gauge+number+delta",
+            value=roe,
+            domain={'x': [0, 1], 'y': [0, 1]},
+            title={'text': "ROE (%)"},
+            delta={'reference': 15, 'increasing': {'color': "green"}},
+            gauge={
+                'axis': {'range': [None, 30]},
+                'bar': {'color': "darkblue"},
+                'steps': [
+                    {'range': [0, 10], 'color': "#ffcccc"},
+                    {'range': [10, 15], 'color': "#fff4cc"},
+                    {'range': [15, 30], 'color': "#ccffcc"}
+                ],
+                'threshold': {
+                    'line': {'color': "red", 'width': 4},
+                    'thickness': 0.75,
+                    'value': 20
+                }
+            }
+        ))
+        fig_gauge_roe.update_layout(height=250, margin=dict(l=20, r=20, t=40, b=20))
+        st.plotly_chart(fig_gauge_roe, use_container_width=True)
+    
+    with col2:
+        fig_gauge_liquidity = go.Figure(go.Indicator(
+            mode="gauge+number+delta",
+            value=current_ratio,
+            domain={'x': [0, 1], 'y': [0, 1]},
+            title={'text': "Joriy Likvidlik"},
+            delta={'reference': 1.5, 'increasing': {'color': "green"}},
+            gauge={
+                'axis': {'range': [0, 4]},
+                'bar': {'color': "darkgreen"},
+                'steps': [
+                    {'range': [0, 1], 'color': "#ffcccc"},
+                    {'range': [1, 1.5], 'color': "#fff4cc"},
+                    {'range': [1.5, 4], 'color': "#ccffcc"}
+                ],
+                'threshold': {
+                    'line': {'color': "green", 'width': 4},
+                    'thickness': 0.75,
+                    'value': 2
+                }
+            }
+        ))
+        fig_gauge_liquidity.update_layout(height=250, margin=dict(l=20, r=20, t=40, b=20))
+        st.plotly_chart(fig_gauge_liquidity, use_container_width=True)
+    
+    with col3:
+        fig_gauge_margin = go.Figure(go.Indicator(
+            mode="gauge+number+delta",
+            value=net_margin,
+            domain={'x': [0, 1], 'y': [0, 1]},
+            title={'text': "Sof Marja (%)"},
+            delta={'reference': 10, 'increasing': {'color': "green"}},
+            gauge={
+                'axis': {'range': [0, 25]},
+                'bar': {'color': "darkorange"},
+                'steps': [
+                    {'range': [0, 5], 'color': "#ffcccc"},
+                    {'range': [5, 10], 'color': "#fff4cc"},
+                    {'range': [10, 25], 'color': "#ccffcc"}
+                ],
+                'threshold': {
+                    'line': {'color': "red", 'width': 4},
+                    'thickness': 0.75,
+                    'value': 15
+                }
+            }
+        ))
+        fig_gauge_margin.update_layout(height=250, margin=dict(l=20, r=20, t=40, b=20))
+        st.plotly_chart(fig_gauge_margin, use_container_width=True)
+    
+    st.divider()
+    
+    # Eski ko'rsatkichlar saqlanadi
+    if analysis_type in ["To'liq Tahlil", "Rentabellik"]:
         st.subheader("💧 Likvidlik Ko'rsatkichlari")
         col1, col2, col3, col4 = st.columns(4)
         
