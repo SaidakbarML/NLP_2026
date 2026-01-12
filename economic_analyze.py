@@ -17,7 +17,7 @@ import kaleido
 # Sahifa konfiguratsiyasi
 st.set_page_config(
     page_title="Moliyaviy Tahlil Tizimi",
-    page_icon="💼",
+    page_icon="�",
     layout="wide"
 )
 
@@ -78,13 +78,13 @@ def generate_financial_pdf_with_charts(company_name, fiscal_year, currency, metr
         )
         
         # Title Page
-        story.append(Paragraph(f"🏢 {company_name}", title_style))
-        story.append(Paragraph(f"Moliyaviy Tahlil Hisoboti - {fiscal_year}", heading_style))
-        story.append(Paragraph(f"Tayyorlash sanasi: {datetime.now().strftime('%Y-%m-%d %H:%M')}", styles['Normal']))
+        story.append(Paragraph(f"{company_name}", title_style))
+        story.append(Paragraph(f"Financial Analysis Report - {fiscal_year}", heading_style))
+        story.append(Paragraph(f"Date: {datetime.now().strftime('%Y-%m-%d %H:%M')}", styles['Normal']))
         story.append(Spacer(1, 0.2*inch))
         
         # Summary Table
-        story.append(Paragraph("📊 Asosiy Ko'rsatkichlar", heading_style))
+        story.append(Paragraph("Key Metrics", heading_style))
         summary_data = [
             ['Ko\'rsatkich', 'Qiymat'],
             ['Tushum', f"{metrics_dict.get('revenue', 0):,.0f} {currency}"],
@@ -115,17 +115,17 @@ def generate_financial_pdf_with_charts(company_name, fiscal_year, currency, metr
         
         # Add charts
         story.append(PageBreak())
-        story.append(Paragraph("📈 2D Grafik Tahlillari", heading_style))
+        story.append(Paragraph("2D Chart Analysis", heading_style))
         story.append(Spacer(1, 0.1*inch))
         
         # Add 2D charts
         two_d_charts = [
-            ('Rentabellik Ko\'rsatkichlari', figures_dict.get('profitability')),
-            ('Likvidlik Nisbatlari', figures_dict.get('liquidity')),
-            ('Qarz Yuklama Nisbatlari', figures_dict.get('leverage')),
-            ('Pul Konversiya Davri', figures_dict.get('ccc')),
-            ('Tushum va Foyda Trendi', figures_dict.get('trends')),
-            ('Moliyaviy Ko\'rsatkichlar Issiqlik Xaritasi', figures_dict.get('heatmap')),
+            ('Profitability Metrics', figures_dict.get('profitability')),
+            ('Liquidity Ratios', figures_dict.get('liquidity')),
+            ('Leverage Ratios', figures_dict.get('leverage')),
+            ('Cash Conversion Cycle', figures_dict.get('ccc')),
+            ('Revenue and Profit Trend', figures_dict.get('trends')),
+            ('Financial Metrics Heatmap', figures_dict.get('heatmap')),
         ]
         
         chart_count = 0
@@ -135,7 +135,7 @@ def generate_financial_pdf_with_charts(company_name, fiscal_year, currency, metr
                     img_bytes = fig_obj.to_image(format="png", width=900, height=500)
                     img_buffer = io.BytesIO(img_bytes)
                     img = Image(img_buffer, width=6.2*inch, height=3.4*inch)
-                    story.append(Paragraph(f"📊 {chart_name}", styles['Heading3']))
+                    story.append(Paragraph(f"{chart_name}", styles['Heading3']))
                     story.append(img)
                     story.append(Spacer(1, 0.15*inch))
                     chart_count += 1
@@ -143,20 +143,20 @@ def generate_financial_pdf_with_charts(company_name, fiscal_year, currency, metr
                     if chart_count % 2 == 0:
                         story.append(PageBreak())
                 except Exception as e:
-                    story.append(Paragraph(f"⚠️ {chart_name} - Grafik ko'rsatilmadi", styles['Normal']))
+                    story.append(Paragraph(f"{chart_name} - Chart not available", styles['Normal']))
         
         # Add 3D charts
         story.append(PageBreak())
-        story.append(Paragraph("🎯 3D Grafik Tahlillari", heading_style))
+        story.append(Paragraph("3D Chart Analysis", heading_style))
         story.append(Spacer(1, 0.1*inch))
         
         three_d_charts = [
-            ('3D Scatter: ROE vs ROA vs Likvidlik', figures_dict.get('scatter_3d')),
-            ('3D Multi-Bar: Foyda Dinamikasi', figures_dict.get('bar_3d')),
-            ('3D Bubble: Rentabillik vs Qarz Yuklama', figures_dict.get('bubble_3d')),
-            ('3D Surface: Operatsion Marja Sezgirlik', figures_dict.get('surface_3d')),
-            ('3D Line: Ko\'rsatkichlar Trendi', figures_dict.get('line_3d')),
-            ('3D Scatter Matrix: Barcha Ko\'rsatkichlar', figures_dict.get('scatter_matrix_3d')),
+            ('3D Scatter: ROE vs ROA vs Liquidity', figures_dict.get('scatter_3d')),
+            ('3D Multi-Bar: Profit Dynamics', figures_dict.get('bar_3d')),
+            ('3D Bubble: Profitability vs Leverage', figures_dict.get('bubble_3d')),
+            ('3D Surface: Operating Margin Sensitivity', figures_dict.get('surface_3d')),
+            ('3D Line: Metrics Trend', figures_dict.get('line_3d')),
+            ('3D Scatter Matrix: All Metrics', figures_dict.get('scatter_matrix_3d')),
         ]
         
         chart_count = 0
@@ -166,7 +166,7 @@ def generate_financial_pdf_with_charts(company_name, fiscal_year, currency, metr
                     img_bytes = fig_obj.to_image(format="png", width=900, height=500)
                     img_buffer = io.BytesIO(img_bytes)
                     img = Image(img_buffer, width=6.2*inch, height=3.4*inch)
-                    story.append(Paragraph(f"🎨 {chart_name}", styles['Heading3']))
+                    story.append(Paragraph(f"{chart_name}", styles['Heading3']))
                     story.append(img)
                     story.append(Spacer(1, 0.15*inch))
                     chart_count += 1
@@ -174,7 +174,7 @@ def generate_financial_pdf_with_charts(company_name, fiscal_year, currency, metr
                     if chart_count % 2 == 0:
                         story.append(PageBreak())
                 except Exception as e:
-                    story.append(Paragraph(f"⚠️ {chart_name} - Grafik ko'rsatilmadi", styles['Normal']))
+                    story.append(Paragraph(f"{chart_name} - Chart not available", styles['Normal']))
         
         # Advanced visualizations
         story.append(PageBreak())
@@ -197,7 +197,7 @@ def generate_financial_pdf_with_charts(company_name, fiscal_year, currency, metr
                     img_bytes = fig_obj.to_image(format="png", width=900, height=500)
                     img_buffer = io.BytesIO(img_bytes)
                     img = Image(img_buffer, width=6.2*inch, height=3.4*inch)
-                    story.append(Paragraph(f"🔍 {chart_name}", styles['Heading3']))
+                    story.append(Paragraph(f"{chart_name}", styles['Heading3']))
                     story.append(img)
                     story.append(Spacer(1, 0.15*inch))
                     chart_count += 1
@@ -205,24 +205,24 @@ def generate_financial_pdf_with_charts(company_name, fiscal_year, currency, metr
                     if chart_count % 2 == 0:
                         story.append(PageBreak())
                 except Exception as e:
-                    story.append(Paragraph(f"⚠️ {chart_name} - Grafik ko'rsatilmadi", styles['Normal']))
+                    story.append(Paragraph(f"{chart_name} - Chart not available", styles['Normal']))
         
         # Conclusion
         story.append(PageBreak())
-        story.append(Paragraph("📌 Xulosa va Tavsiyalar", heading_style))
+        story.append(Paragraph("Conclusions and Recommendations", heading_style))
         story.append(Paragraph(
-            "✅ Bu hisobot kompaniyaning moliyaviy holati va samaradorligini chuqur tahlil qiladi.<br/>"
-            "✅ Hammasida 2D va 3D grafikalar, jadvallar va metrikalari ko'rsatilgan.<br/>"
-            "✅ O'tgan yillar ma'lumotlari o'sish va trend tahlili uchun ishlatilgan.<br/>"
-            "✅ EVA, FCFE, Operating Leverage kabi ilg'or metrikalari kiritilgan.<br/>"
-            "✅ Sankey, Sunburst va 3D Surface tahlillari qo'shilgan.<br/>"
-            "✅ PDF faylda jami 15+ turli grafik tahlili mavjud.",
+            "This report provides a comprehensive analysis of the company's financial status and performance.<br/>"
+            "It includes 2D and 3D charts, tables, and detailed metrics.<br/>"
+            "Historical data has been used for growth and trend analysis.<br/>"
+            "Advanced metrics such as EVA, FCFE, and Operating Leverage are included.<br/>"
+            "Sankey, Sunburst, and 3D Surface analysis are incorporated.<br/>"
+            "The PDF includes over 15 different chart analyses.",
             styles['Normal']
         ))
         story.append(Spacer(1, 0.2*inch))
         story.append(Paragraph(
-            f"<b>Kompaniya:</b> {company_name}<br/>"
-            f"<b>Yil:</b> {fiscal_year}<br/>"
+            f"<b>Company:</b> {company_name}<br/>"
+            f"<b>Year:</b> {fiscal_year}<br/>"
             f"<b>Valyuta:</b> {currency}<br/>"
             f"<b>Tayyorlash vaqti:</b> {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
             styles['Normal']
@@ -236,18 +236,18 @@ def generate_financial_pdf_with_charts(company_name, fiscal_year, currency, metr
         return None
 
 # Asosiy sarlavha
-st.markdown('<h1 class="main-header">💼 Moliyaviy Tahlil va Hisobot Tizimi</h1>', unsafe_allow_html=True)
+st.markdown('<h1 class="main-header">Financial Analysis and Reporting System</h1>', unsafe_allow_html=True)
 
 # Yon panel - Kompaniya ma'lumotlari
 with st.sidebar:
-    st.header("🏢 Kompaniya Ma'lumotlari")
+    st.header("Company Information")
     company_name = st.text_input("Kompaniya nomi", "Mening Kompaniyam")
     fiscal_year = st.number_input("Moliyaviy yil", min_value=2000, max_value=2030, value=2024)
     fiscal_quarter = st.selectbox("Chorak", ["Yillik", "Q1", "Q2", "Q3", "Q4"])
     currency = st.selectbox("Valyuta", ["UZS", "USD", "EUR"])
     
     st.divider()
-    st.subheader("📊 Tahlil turini tanlang")
+    st.subheader("Analysis Type Selection")
     analysis_type = st.radio(
         "Tahlil turi:",
         ["To'liq Tahlil", "Rentabellik", "Likvidlik", "Qarz Yuklama", "Samaradorlik", "Bozor Ko'rsatkichlari", "Pul Oqimi"]
@@ -262,7 +262,7 @@ if 'analysis_started' not in st.session_state:
     st.session_state.analysis_started = False
 
 # Asosiy kontent
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["📝 Ma'lumotlarni Kiritish", "📊 Tahlil Natijalari", "📈 Grafik Tahlil", "📄 Hisobot", "🤖 AI Maslahatchi"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["Data Input", "Analysis Results", "Chart Analysis", "Report", "AI Advisor"])
 
 with tab1:
     st.header("Moliyaviy Ma'lumotlarni Kiriting")
@@ -270,7 +270,7 @@ with tab1:
     col1, col2 = st.columns(2)
     
     with col1:
-        st.subheader("💰 Daromad Hisoboti")
+        st.subheader("Income Statement")
         revenue = st.number_input("Tushum (Savdo hajmi)", value=1000000.0, format="%.2f")
         cogs = st.number_input("Sotilgan mahsulot tannarxi", value=600000.0, format="%.2f")
         operating_expenses = st.number_input("Operatsion xarajatlar", value=200000.0, format="%.2f")
@@ -361,22 +361,22 @@ with tab1:
     col_start1, col_start2, col_start3 = st.columns([1, 2, 1])
     with col_start2:
         if st.button(
-            "🚀 TAHLILNI BOSHLASH",
+            "START ANALYSIS",
             key="start_analysis_btn",
             use_container_width=True,
             help="Barcha ma'lumotlarni tahlil qilish uchun bosing"
         ):
             st.session_state.analysis_started = True
-            st.success("✅ Tahlil boshlandi! Boshqa varaqalarga o'ting.")
+            st.success("Analysis started! Go to other tabs.")
     
     if st.session_state.analysis_started:
-        st.info("✔️ Analiz tayyor. 📊 Tahlil Natijalari, 📈 Grafik Tahlil va 📄 Hisobot varaqalarini ko'ring.")
+        st.info("Analysis complete. Check the Analysis Results, Chart Analysis, and Report tabs.")
 
 with tab2:
-    st.header("📊 Moliyaviy Tahlil Natijalari")
+    st.header("Financial Analysis Results")
     
     if not st.session_state.analysis_started:
-        st.warning("⚠️ Iltimos, avval 📝 Ma'lumotlarni Kiritish varaqasida barcha ma'lumotlarni kiriting va 🚀 TAHLILNI BOSHLASH tugmasini bosing.")
+        st.warning("Please enter all data in the Data Input tab and click the START ANALYSIS button.")
         st.stop()
     
     # Hisoblar
@@ -455,7 +455,7 @@ with tab2:
     net_income_growth = ((net_income - prev_net_income) / prev_net_income * 100) if prev_net_income > 0 else 0
     
     # ============= UMUMIY SIFAT BALLARI =============
-    st.subheader("🎯 Umumiy Moliyaviy Sifat Ballari")
+    st.subheader("Overall Financial Quality Score")
     
     def calculate_score(value, thresholds, reverse=False):
         """Ko'rsatkichga bal berish (0-100)"""
@@ -523,7 +523,7 @@ with tab2:
     def get_score_emoji(score):
         if score >= 80: return "🌟"
         elif score >= 60: return "👍"
-        else: return "⚠️"
+        else: return "Medium"
     
     with col1:
         st.markdown(f"""
@@ -536,25 +536,25 @@ with tab2:
         """, unsafe_allow_html=True)
     
     with col2:
-        st.metric("💹 Rentabellik", f"{profitability_score:.0f}/100", 
-                 delta="A'lo" if profitability_score >= 80 else "Yaxshi" if profitability_score >= 60 else "O'rtacha")
-        st.metric("💧 Likvidlik", f"{liquidity_score:.0f}/100",
-                 delta="A'lo" if liquidity_score >= 80 else "Yaxshi" if liquidity_score >= 60 else "O'rtacha")
+        st.metric("Profitability", f"{profitability_score:.0f}/100", 
+                 delta="Excellent" if profitability_score >= 80 else "Good" if profitability_score >= 60 else "Average")
+        st.metric("Liquidity", f"{liquidity_score:.0f}/100",
+                 delta="Excellent" if liquidity_score >= 80 else "Good" if liquidity_score >= 60 else "Average")
     
     with col3:
-        st.metric("⚖️ Moliyaviy Barqarorlik", f"{leverage_score:.0f}/100",
-                 delta="A'lo" if leverage_score >= 80 else "Yaxshi" if leverage_score >= 60 else "O'rtacha")
-        st.metric("⚡ Samaradorlik", f"{efficiency_score:.0f}/100",
-                 delta="A'lo" if efficiency_score >= 80 else "Yaxshi" if efficiency_score >= 60 else "O'rtacha")
+        st.metric("Financial Stability", f"{leverage_score:.0f}/100",
+                 delta="Excellent" if leverage_score >= 80 else "Good" if leverage_score >= 60 else "Average")
+        st.metric("Efficiency", f"{efficiency_score:.0f}/100",
+                 delta="Excellent" if efficiency_score >= 80 else "Good" if efficiency_score >= 60 else "Average")
     
     with col4:
-        st.metric("📈 O'sish", f"{growth_score:.0f}/100",
-                 delta="A'lo" if growth_score >= 80 else "Yaxshi" if growth_score >= 60 else "O'rtacha")
-        st.metric("💵 Pul Oqimi", f"{cashflow_score:.0f}/100",
-                 delta="A'lo" if cashflow_score >= 80 else "Yaxshi" if cashflow_score >= 60 else "O'rtacha")
+        st.metric("Growth", f"{growth_score:.0f}/100",
+                 delta="Excellent" if growth_score >= 80 else "Good" if growth_score >= 60 else "Average")
+        st.metric("Cash Flow", f"{cashflow_score:.0f}/100",
+                 delta="Excellent" if cashflow_score >= 80 else "Good" if cashflow_score >= 60 else "Average")
     
     # Radar chart
-    st.subheader("📡 Ko'p O'lchovli Tahlil")
+    st.subheader("Multi-Dimensional Analysis")
     
     fig_radar = go.Figure()
     
@@ -592,7 +592,7 @@ with tab2:
     st.plotly_chart(fig_radar, use_container_width=True)
     
     # ============= ADVANCED SCORECARD =============
-    st.subheader("📊 Kengaytirilgan Ko'rsatkichlar Kartasi")
+    st.subheader("Advanced Metrics Dashboard")
     
     col1, col2 = st.columns(2)
     
@@ -611,7 +611,7 @@ with tab2:
         
         st.markdown(f"""
         <div style='padding: 20px; background-color: {z_color}20; border-left: 5px solid {z_color}; border-radius: 10px;'>
-            <h3>🎯 Altman Z-Score</h3>
+            <h3>Altman Z-Score</h3>
             <h1 style='color: {z_color}; margin: 10px 0;'>{altman_z:.2f}</h1>
             <p style='font-size: 1.2rem; margin: 0;'>{z_status}</p>
             <small>Z > 2.99: Xavfsiz | 1.81-2.99: Kulrang | < 1.81: Xavf</small>
@@ -654,7 +654,7 @@ with tab2:
         
         st.markdown(f"""
         <div style='padding: 20px; background-color: {m_color}20; border-left: 5px solid {m_color}; border-radius: 10px;'>
-            <h3>🔍 Beneish M-Score</h3>
+            <h3>Beneish M-Score</h3>
             <h1 style='color: {m_color}; margin: 10px 0;'>{m_score:.2f}</h1>
             <p style='font-size: 1.2rem; margin: 0;'>{m_status}</p>
             <small>M > -1.78: Manipulyatsiya xavfi | M < -1.78: Normal</small>
@@ -679,7 +679,7 @@ with tab2:
     st.divider()
     
     # ============= TREND ANALYSIS =============
-    st.subheader("📈 Trend va O'sish Tahlili")
+    st.subheader("Trend and Growth Analysis")
     
     # Simulated historical data for visualization
     years = [fiscal_year-2, fiscal_year-1, fiscal_year]
@@ -736,7 +736,7 @@ with tab2:
     
     # Natijalarni ko'rsatish (eskisi saqlanadi)
     if analysis_type in ["To'liq Tahlil", "Rentabellik"]:
-        st.subheader("💹 Rentabellik Ko'rsatkichlari")
+        st.subheader("Profitability Metrics")
         col1, col2, col3, col4 = st.columns(4)
         
         col1.metric("Yalpi foyda", f"{gross_profit:,.0f} {currency}", f"{gross_margin:.1f}%")
@@ -837,7 +837,7 @@ with tab2:
     st.plotly_chart(fig_heatmap, use_container_width=True)
     
     # ============= WATERFALL CHART =============
-    st.subheader("💧 Foyda Formatsiyasi (Waterfall)")
+    st.subheader("Income Analysis (Waterfall)")
     
     waterfall_data = [
         ('Tushum', revenue, 'relative'),
@@ -874,7 +874,7 @@ with tab2:
     st.plotly_chart(fig_waterfall, use_container_width=True)
     
     # ============= GAUGE CHARTS =============
-    st.subheader("🎯 Asosiy Ko'rsatkichlar Gauge")
+    st.subheader("Key Metrics Gauge")
     
     col1, col2, col3 = st.columns(3)
     
@@ -957,7 +957,7 @@ with tab2:
     
     # Eski ko'rsatkichlar saqlanadi
     if analysis_type in ["To'liq Tahlil", "Rentabellik"]:
-        st.subheader("💧 Likvidlik Ko'rsatkichlari")
+        st.subheader("Liquidity Metrics")
         col1, col2, col3, col4 = st.columns(4)
         
         col1.metric("Joriy likvidlik", f"{current_ratio:.2f}")
@@ -965,10 +965,10 @@ with tab2:
         col3.metric("Absolut likvidlik", f"{cash_ratio:.2f}")
         col4.metric("Ishchi kapital", f"{working_capital:,.0f} {currency}")
         
-        st.info("✅ Yaxshi: Joriy likvidlik > 1.5, Tez likvidlik > 1.0")
+        st.info("Good: Current Liquidity > 1.5, Quick Ratio > 1.0")
     
     if analysis_type in ["To'liq Tahlil", "Qarz Yuklama"]:
-        st.subheader("⚖️ Qarz Yuklama Ko'rsatkichlari")
+        st.subheader("Leverage Metrics")
         col1, col2, col3, col4 = st.columns(4)
         
         col1.metric("Qarz/Kapital", f"{debt_to_equity:.2f}")
@@ -977,12 +977,12 @@ with tab2:
         col4.metric("Foiz qoplash", f"{interest_coverage:.2f}x")
         
         if debt_to_equity > 2:
-            st.warning("⚠️ Yuqori qarz yuklama - Qarz/Kapital > 2")
+            st.warning("High Leverage - Debt/Equity > 2")
         elif debt_to_equity < 0.5:
-            st.success("✅ Past qarz yuklama - Qarz/Kapital < 0.5")
+            st.success("Low Leverage - Debt/Equity < 0.5")
     
     if analysis_type in ["To'liq Tahlil", "Samaradorlik"]:
-        st.subheader("⚡ Samaradorlik Ko'rsatkichlari")
+        st.subheader("Efficiency Metrics")
         col1, col2, col3, col4 = st.columns(4)
         
         col1.metric("Aktivlar aylanmasi", f"{asset_turnover:.2f}")
@@ -996,7 +996,7 @@ with tab2:
         col7.metric("To'lov qilish (DPO)", f"{dpo:.0f} kun")
     
     if analysis_type in ["To'liq Tahlil", "Bozor Ko'rsatkichlari"]:
-        st.subheader("📈 Bozor Ko'rsatkichlari")
+        st.subheader("Market Metrics")
         col1, col2, col3, col4 = st.columns(4)
         
         col1.metric("EPS (Aktsiyaga foyda)", f"{eps:.2f} {currency}")
@@ -1017,13 +1017,13 @@ with tab2:
         col3.metric("CapEx/Savdo", f"{capex_to_sales:.1f}%")
     
     if analysis_type == "To'liq Tahlil":
-        st.subheader("📊 O'sish Ko'rsatkichlari")
+        st.subheader("Growth Metrics")
         col1, col2 = st.columns(2)
         
         col1.metric("Tushum o'sishi", f"{revenue_growth:+.1f}%")
         col2.metric("Foyda o'sishi", f"{net_income_growth:+.1f}%")
         
-        st.subheader("🔍 DuPont Tahlili (ROE)")
+        st.subheader("DuPont Analysis (ROE)")
         dupont_margin = net_margin / 100
         dupont_turnover = asset_turnover
         dupont_leverage = total_assets / shareholders_equity if shareholders_equity > 0 else 0
@@ -1037,7 +1037,7 @@ with tab2:
     
     # ============= ADVANCED METRICS =============
     st.divider()
-    st.subheader("🚀 Kengaytirilgan Moliyaviy Metrikalari")
+    st.subheader("Advanced Financial Metrics")
     
     # Economic Value Added (EVA)
     wacc = 0.08  # Weighted Average Cost of Capital (8%)
@@ -1067,49 +1067,49 @@ with tab2:
     col1, col2, col3, col4 = st.columns(4)
     
     with col1:
-        st.metric("📈 EVA (Iqtisodiy Qiymat Qo'shilgan)", 
+        st.metric("EVA (Economic Value Added)", 
                  f"{eva:,.0f} {currency}",
-                 delta="Ijobiy" if eva > 0 else "Salbiy",
+                 delta="Positive" if eva > 0 else "Negative",
                  delta_color="inverse")
     
     with col2:
-        st.metric("💰 FCFE (Kapitalga Erkin PO)", 
+        st.metric("FCFE (Free Cash Flow to Equity)", 
                  f"{fcfe:,.0f} {currency}",
-                 delta="Ijobiy" if fcfe > 0 else "Salbiy",
+                 delta="Positive" if fcfe > 0 else "Negative",
                  delta_color="inverse")
     
     with col3:
-        st.metric("⚡ Taraqqiyot Darajasi (DOL)", 
+        st.metric("Operating Leverage (DOL)", 
                  f"{degree_of_operating_leverage:.2f}",
-                 delta="Yuqori = Riskli")
+                 delta="High = Risky")
     
     with col4:
-        st.metric("📊 Pul Konversiya Samaradorligi", 
+        st.metric("Cash Conversion Efficiency", 
                  f"{cash_conversion_efficiency:.1f}%",
-                 delta="Yuqori = Yaxshi")
+                 delta="Higher = Better")
     
     col5, col6, col7 = st.columns(3)
     
     with col5:
-        st.metric("🎯 Moliyaviy Leverage Darajasi (DFL)", 
+        st.metric("Financial Leverage (DFL)", 
                  f"{degree_of_financial_leverage:.2f}",
-                 delta="Yuqori = Riskli")
+                 delta="High = Risky")
     
     with col6:
-        st.metric("🔗 Birlashtirilgan Leverage (DCL)", 
+        st.metric("Combined Leverage (DCL)", 
                  f"{dfl:.2f}",
-                 delta="Salpiyat ta'siri")
+                 delta="Leverage effect")
     
     with col7:
-        st.metric("✅ Pul Oqimining Sifati", 
+        st.metric("Quality of Earnings", 
                  f"{quality_of_earnings:.2f}",
-                 delta="Yaxshi: > 1.0",
+                 delta="Good: > 1.0",
                  delta_color="inverse")
     
     st.divider()
     
     # ============= ADVANCED METRICS TABLE =============
-    st.subheader("📋 Chuqur Tahlil Jadvali")
+    st.subheader("Detailed Analysis Table")
     
     advanced_metrics_data = {
         'Metrika': [
@@ -1182,10 +1182,10 @@ with tab2:
         st.metric("Taxminiy Sof Foyda", f"{pessimistic_net_income:,.0f}")
 
 with tab3:
-    st.header("📈 Grafik Tahlil")
+    st.header("Chart Analysis")
     
     if not st.session_state.analysis_started:
-        st.warning("⚠️ Iltimos, avval 📝 Ma'lumotlarni Kiritish varaqasida barcha ma'lumotlarni kiriting va 🚀 TAHLILNI BOSHLASH tugmasini bosing.")
+        st.warning("Please enter all data in the Data Input tab and click the START ANALYSIS button.")
         st.stop()
     
     st.markdown("""
@@ -1287,7 +1287,7 @@ with tab3:
         st.plotly_chart(fig_liabilities, use_container_width=True)
 
     # Advanced: Correlation Heatmap
-    st.subheader("📊 Korrelatsiya Issiqlik Xaritasi")
+    st.subheader("Correlation Heatmap")
     df_corr = pd.DataFrame({
         'Gross Margin': [gross_margin],
         'Operating Margin': [operating_margin],
@@ -1311,7 +1311,7 @@ with tab3:
     st.plotly_chart(fig_box, use_container_width=True)
 
     # Advanced: Pairplot (Scatter Matrix)
-    st.subheader("🔗 Ko'rsatkichlar O'zaro Aloqasi (Pairplot)")
+    st.subheader("Metrics Relationship (Pairplot)")
     fig_pair = px.scatter_matrix(df_corr, title="Scatter Matrix (Pairplot)", dimensions=df_corr.columns)
     st.plotly_chart(fig_pair, use_container_width=True)
     
@@ -1345,7 +1345,7 @@ with tab3:
     st.session_state.fig_sankey = fig_sankey
     
     # Advanced: Sunburst Chart (Balance Sheet)
-    st.subheader("☀️ Balans Sunburst Diagrammasi")
+    st.subheader("Balance Sheet Sunburst")
     
     # Ensure all values are positive
     balans_total = abs(total_assets) + abs(current_liabilities) + abs(shareholders_equity)
@@ -1379,7 +1379,7 @@ with tab3:
     
     # Advanced: Histogram Distributions
     st.divider()
-    st.subheader("📊 Metrika Taqsimoti (Histogramma)")
+    st.subheader("Metrics Distribution (Histogram)")
     
     # Generate distribution data
     margin_dist = np.random.normal(net_margin, net_margin*0.3, 100)
@@ -1408,7 +1408,7 @@ with tab3:
     
     # Advanced: Waterfall for Ratios
     st.divider()
-    st.subheader("💧 Ko'rsatkichlar Vozvrata (Waterfall)")
+    st.subheader("Metrics Breakdown (Waterfall)")
     
     fig_waterfall_ratios = go.Figure(go.Waterfall(
         name="Koeffitsiyent Tahlili",
@@ -1431,10 +1431,11 @@ with tab3:
         height=500
     )
     st.plotly_chart(fig_waterfall_ratios, use_container_width=True)
+    st.session_state.fig_waterfall = fig_waterfall_ratios
     
     # Advanced: Multi-metric Time Series (Simulated)
     st.divider()
-    st.subheader("📈 Ko'rsatkichlar Dinamikasi (3 Yillik Trend)")
+    st.subheader("Metrics Trends (3-Year)")
     
     years_range = [fiscal_year-2, fiscal_year-1, fiscal_year]
     margin_trend = [gross_margin*0.85, gross_margin*0.92, gross_margin]
@@ -1479,7 +1480,7 @@ with tab3:
     
     # Advanced: Risk Profile Bubble Chart
     st.divider()
-    st.subheader("🔴 Risk Profili Tahlili (Bubble Chart)")
+    st.subheader("Risk Profile Analysis (Bubble Chart)")
     
     fig_bubble = go.Figure(data=[go.Scatter(
         x=[debt_to_equity, 0.5, 1.5, 0.3, 1.8],
@@ -1507,7 +1508,7 @@ with tab3:
     
     # Advanced: 3D Surface Plot (Sensitivity Analysis)
     st.divider()
-    st.subheader("📊 Sezgirlik Tahlili (3D Grafik)")
+    st.subheader("Sensitivity Analysis (3D Chart)")
     
     revenue_range = np.linspace(revenue*0.8, revenue*1.2, 10)
     expense_ratio_range = np.linspace(0.5, 0.75, 10)
@@ -1529,10 +1530,10 @@ with tab3:
     
     # ============= ADDITIONAL 3D VISUALIZATIONS =============
     st.divider()
-    st.subheader("🎯 Qo'shimcha 3D Tahlil Grafiklari")
+    st.subheader("Advanced 3D Analysis Charts")
     
     # 3D Scatter Plot: ROE, ROA, Current Ratio
-    st.subheader("📊 3D Scatter: Rentabellik vs Likvidlik Tahlili")
+    st.subheader("3D Scatter: Profitability vs Liquidity")
     
     # Generate multiple data points for 3D scatter
     years_points = [fiscal_year-2, fiscal_year-1, fiscal_year]
@@ -1571,7 +1572,7 @@ with tab3:
     st.plotly_chart(fig_3d_scatter, use_container_width=True)
     
     # 3D Bar Chart: Multi-year financial metrics (using Scatter3d)
-    st.subheader("📈 3D Bar: Ko'p yillik taqlid")
+    st.subheader("3D Multi-Year Comparison")
     
     years_bar = [fiscal_year-2, fiscal_year-1, fiscal_year]
     gross_profit_bar = [gross_profit*0.85, gross_profit*0.92, gross_profit]
@@ -1749,7 +1750,7 @@ with tab3:
     st.plotly_chart(fig_3d_line, use_container_width=True)
     
     # 3D Scatter with multiple dimensions
-    st.subheader("🎨 3D Scatter Matrix: Barcha Ko'rsatkichlar")
+    st.subheader("3D Scatter Matrix: All Metrics")
     
     scatter_x = [roe, roe*0.85, roe*1.1, 14, 9, 16]
     scatter_y = [roa, roa*0.90, roa*1.05, 7, 5, 10]
@@ -1789,20 +1790,20 @@ with tab3:
     st.plotly_chart(fig_3d_scatter_multi, use_container_width=True)
 
 with tab4:
-    st.header("📄 Moliyaviy Hisobot")
+    st.header("Financial Report")
     
     if not st.session_state.analysis_started:
-        st.warning("⚠️ Iltimos, avval 📝 Ma'lumotlarni Kiritish varaqasida barcha ma'lumotlarni kiriting va 🚀 TAHLILNI BOSHLASH tugmasini bosing.")
+        st.warning("Please enter all data in the Data Input tab and click the START ANALYSIS button.")
         st.stop()
     
-    st.subheader(f"🏢 {company_name}")
-    st.write(f"**Moliyaviy yil:** {fiscal_year} | **Davr:** {fiscal_quarter} | **Valyuta:** {currency}")
-    st.write(f"**Hisobot sanasi:** {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    st.subheader(f"{company_name}")
+    st.write(f"**Fiscal Year:** {fiscal_year} | **Period:** {fiscal_quarter} | **Currency:** {currency}")
+    st.write(f"**Report Date:** {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     
     st.divider()
     
     # Umumiy xulosa
-    st.subheader("📋 Umumiy Xulosa")
+    st.subheader("Summary Overview")
     
     summary_data = {
         'Ko\'rsatkich': [
@@ -1819,22 +1820,22 @@ with tab4:
             f"{debt_to_equity:.2f}",
             f"{fcff:,.0f} {currency}"
         ],
-        'Baholash': [
-            '✅' if revenue > prev_revenue else '⚠️',
-            '✅' if net_income > 0 else '❌',
-            '✅' if ebitda > 0 else '❌',
-            '✅' if roe > 15 else '⚠️' if roe > 10 else '❌',
-            '✅' if roa > 5 else '⚠️' if roa > 3 else '❌',
-            '✅' if current_ratio > 1.5 else '⚠️' if current_ratio > 1 else '❌',
-            '✅' if debt_to_equity < 1 else '⚠️' if debt_to_equity < 2 else '❌',
-            '✅' if fcff > 0 else '❌'
+        'Status': [
+            'Good' if revenue > prev_revenue else 'Warning',
+            'Good' if net_income > 0 else 'Poor',
+            'Good' if ebitda > 0 else 'Poor',
+            'Good' if roe > 15 else 'Warning' if roe > 10 else 'Poor',
+            'Good' if roa > 5 else 'Warning' if roa > 3 else 'Poor',
+            'Good' if current_ratio > 1.5 else 'Warning' if current_ratio > 1 else 'Poor',
+            'Good' if debt_to_equity < 1 else 'Warning' if debt_to_equity < 2 else 'Poor',
+            'Good' if fcff > 0 else 'Poor'
         ]
     }
     
     st.dataframe(pd.DataFrame(summary_data), hide_index=True, use_container_width=True)
     
-    # To'liq hisobot
-    st.subheader("📊 Batafsil Moliyaviy Ko'rsatkichlar")
+    # Detailed report
+    st.subheader("Detailed Financial Metrics")
     
     full_report = {
         'Kategoriya': [],
@@ -1911,72 +1912,72 @@ with tab4:
     
     st.dataframe(pd.DataFrame(full_report), hide_index=True, use_container_width=True)
     
-    # Tavsiyalar
-    st.subheader("💡 Tavsiyalar va Xulosalar")
+    # Recommendations
+    st.subheader("Recommendations and Conclusions")
     
     recommendations = []
     
     if net_margin < 5:
-        recommendations.append("⚠️ **Sof marja past** - Xarajatlarni kamaytirish va samaradorlikni oshirish kerak")
+        recommendations.append("**Low Net Margin** - Consider reducing expenses and improving efficiency")
     elif net_margin > 15:
-        recommendations.append("✅ **A'lo sof marja** - Kompaniya yuqori rentabellikka ega")
+        recommendations.append("**Excellent Net Margin** - Company has high profitability")
     
     if current_ratio < 1:
-        recommendations.append("❌ **Likvidlik xavfi** - Joriy majburiyatlarni qoplash uchun resurslar yetarli emas")
+        recommendations.append("**Liquidity Risk** - Insufficient resources to cover current liabilities")
     elif current_ratio > 3:
-        recommendations.append("⚠️ **Ortiqcha likvidlik** - Resurslar samarasiz ishlatilmoqda")
+        recommendations.append("**Excess Liquidity** - Resources are underutilized")
     else:
-        recommendations.append("✅ **Maqbul likvidlik** - Likvidlik holati yaxshi")
+        recommendations.append("**Good Liquidity** - Liquidity position is healthy")
     
     if debt_to_equity > 2:
-        recommendations.append("❌ **Yuqori qarz yuklama** - Moliyaviy xavf yuqori, qarzni kamaytirish kerak")
+        recommendations.append("**High Leverage** - Financial risk is elevated, reduce debt")
     elif debt_to_equity < 0.5:
-        recommendations.append("✅ **Past qarz yuklama** - Moliyaviy barqarorlik yuqori")
+        recommendations.append("**Low Leverage** - Financial stability is high")
     
     if roe > 15:
-        recommendations.append("✅ **Yuqori ROE** - Kompaniya kapitalni samarali ishlatmoqda")
+        recommendations.append("**High ROE** - Company is using capital effectively")
     elif roe < 8:
-        recommendations.append("⚠️ **Past ROE** - Kapital samaradorligini oshirish kerak")
+        recommendations.append("**Low ROE** - Improve capital efficiency")
     
     if fcff < 0:
-        recommendations.append("❌ **Salbiy erkin pul oqimi** - Pul oqimini yaxshilash zarur")
+        recommendations.append("**Negative Free Cash Flow** - Improve cash generation")
     else:
-        recommendations.append("✅ **Musbat erkin pul oqimi** - Kompaniya pul ishlab chiqarmoqda")
+        recommendations.append("**Positive Free Cash Flow** - Company is generating cash")
     
     if ccc > 90:
-        recommendations.append("⚠️ **Uzoq pul konversiya davri** - Ishchi kapitalni boshqarishni yaxshilash kerak")
+        recommendations.append("**Long Cash Conversion Cycle** - Improve working capital management")
     elif ccc < 30:
-        recommendations.append("✅ **Qisqa pul konversiya davri** - Samarali ishchi kapital boshqaruvi")
+        recommendations.append("**Short Cash Conversion Cycle** - Efficient working capital management")
     
     if interest_coverage < 2:
-        recommendations.append("❌ **Past foiz qoplash** - Foiz to'lashda qiyinchiliklar bo'lishi mumkin")
+        recommendations.append("**Low Interest Coverage** - May have difficulty paying interest")
     elif interest_coverage > 5:
-        recommendations.append("✅ **Yuqori foiz qoplash** - Qarz xizmatida muammo yo'q")
+        recommendations.append("**High Interest Coverage** - No issues with debt service")
     
     for rec in recommendations:
-        st.write(rec)
+        st.write("• " + rec)
     
-    # Hisobotni yuklab olish
+    # Download report
     st.divider()
-    st.subheader("📥 Hisobotni Yuklab Olish")
+    st.subheader("Download Report")
     
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        if st.button("📋 CSV formatda", use_container_width=True):
+        if st.button("CSV Format", use_container_width=True):
             df_report = pd.DataFrame(full_report)
             csv = df_report.to_csv(index=False).encode('utf-8')
             st.download_button(
-                label="CSV yuklash",
+                label="Download CSV",
                 data=csv,
-                file_name=f"{company_name}_moliyaviy_hisobot_{fiscal_year}.csv",
+                file_name=f"{company_name}_financial_report_{fiscal_year}.csv",
                 mime="text/csv",
                 use_container_width=True
             )
     
     with col2:
-        if st.button("🖨️ PDF formatda (Hammasini)", use_container_width=True):
-            with st.spinner("PDF tayyorlanmoqda... Grafikalar saqlanmoqda..."):
+        if st.button("PDF Format (Complete)", use_container_width=True):
+            with st.spinner("Preparing PDF... Saving charts..."):
                 # Prepare metrics dictionary
                 metrics_dict = {
                     'revenue': revenue,
@@ -2025,551 +2026,565 @@ with tab4:
                 
                 if pdf_bytes:
                     st.download_button(
-                        label="📄 PDF yuklash",
+                        label="Download PDF",
                         data=pdf_bytes,
-                        file_name=f"{company_name}_moliyaviy_hisobot_{fiscal_year}.pdf",
+                        file_name=f"{company_name}_financial_report_{fiscal_year}.pdf",
                         mime="application/pdf",
                         use_container_width=True
                     )
-                    st.success("✅ PDF tayyor!")
+                    st.success("PDF ready!")
                 else:
-                    st.error("❌ PDF yaratishda muammo")
+                    st.error("Error creating PDF")
     
     with col3:
-        if st.button("📊 Excel formatda", use_container_width=True):
-            st.info("Excel yuklab olish tez orada qo'shiladi")
+        if st.button("Excel Format", use_container_width=True):
+            st.info("Excel download will be available soon")
+
+# Define AI Advisor Functions
+def get_strategic_recommendations():
+    """Generate comprehensive strategic recommendations based on financial metrics"""
+    if not st.session_state.financial_data:
+        return []
+    
+    data = st.session_state.financial_data
+    recommendations = []
+    
+    # Calculate metrics
+    revenue = data.get('revenue', 0)
+    cogs = data.get('cogs', 0)
+    operating_expenses = data.get('operating_expenses', 0)
+    interest_expense = data.get('interest_expense', 0)
+    tax_expense = data.get('tax_expense', 0)
+    
+    gross_profit = revenue - cogs
+    operating_income = revenue - cogs - operating_expenses
+    net_income = operating_income - interest_expense - tax_expense
+    net_margin = (net_income / revenue * 100) if revenue > 0 else 0
+    
+    current_assets = (data.get('cash', 0) + data.get('marketable_securities', 0) + 
+                     data.get('accounts_receivable', 0) + data.get('inventory', 0) + 
+                     data.get('other_current_assets', 0))
+    current_ratio = current_assets / data.get('current_liabilities', 1) if data.get('current_liabilities', 0) > 0 else 0
+    
+    total_debt = data.get('short_term_debt', 0) + data.get('long_term_debt', 0)
+    shareholders_equity = data.get('shareholders_equity', 0)
+    debt_to_equity = total_debt / shareholders_equity if shareholders_equity > 0 else 0
+    
+    ocf = data.get('operating_cash_flow', 0)
+    capex = data.get('capex', 0)
+    fcff = ocf - capex
+    
+    prev_revenue = data.get('prev_revenue', revenue * 0.9)
+    revenue_growth = ((revenue - prev_revenue) / prev_revenue * 100) if prev_revenue > 0 else 0
+    
+    # Profitability recommendations
+    if net_margin < 5:
+        recommendations.append({
+            'category': 'Xarajatlarni Kamaytirish',
+            'priority': 'HIGH',
+            'strategy': 'Xarajatlarni kuchaytirish yordamida rentabellikni oshirish',
+            'actions': [
+                'Barcha bo\'linmalarda xarajatlarning batafsil tahlilini o\'tkazing',
+                'Operatsionlashtirishdagi samarasizliklarni aniqlab bartaraf eting',
+                'Ta\'minotchilar bilan shartlarni yaxshilang',
+                'Takrorlanayotgan jarayonlarni avtomatlashtiring',
+                'Maqsad: 12 oyda sof marjani 8-12% ga oshiring'
+            ]
+        })
+    elif net_margin > 15:
+        recommendations.append({
+            'category': 'O\'sish Strategiyasi',
+            'priority': 'HIGH',
+            'strategy': 'Yuqori rentabellikdan foydalanib ekspansiyani ta\'minlash',
+            'actions': [
+                'R&D da investitsiya qiling - yangi mahsulotlar ishlab chiqish',
+                'Yangi bozor imkoniyatlarini o\'zlashtiring',
+                'Marketing va sotishni kuchaytiring',
+                'Strategik hamkorlik yoki akquisitsiyalarni o\'ylang',
+                'Foydalarni biznesga qayta investitsiya qiling'
+            ]
+        })
+    
+    # Liquidity recommendations
+    if current_ratio < 1.5:
+        recommendations.append({
+            'category': 'Likvidlik Strategiyasi',
+            'priority': 'CRITICAL',
+            'strategy': 'Likvidlikni tezda yaxshilash va shunga oid xavfni yo\'qotish',
+            'actions': [
+                'Debitorlardan pul oqimini tezlashtiring',
+                'Inventory darajalarini 10-15% ga kamaytiring',
+                'Ta\'minotchilar bilan tushum muddatlarini uzaytiring',
+                'Qisqa muddatli moliyalashturish variantlarini o\'ylang',
+                'Keraksiz xarajatlarni ushlab turing',
+                'Maqsad: 6 oyda joriy likvidlikni 1.8+ ga ko\'taring'
+            ]
+        })
+    elif current_ratio > 3:
+        recommendations.append({
+            'category': 'Ishchi Kapitalni Optimallashturish',
+            'priority': 'MEDIUM',
+            'strategy': 'Ortiqcha likvidlikni samarali joylashturish',
+            'actions': [
+                'Excess naqd pulni qisqa muddatli qimmatli qog\'ozlarga investitsiya qiling',
+                'Shartnomalarni shartnomalariga dividend to\'lang',
+                'Strategik investitsiya yoki R&D ga pul ajrating',
+                'Qisqa muddatli qarzlarni kamaytiring',
+                'O\'sishni yo\'l qo\'yish uchun akquisitsiyalarni o\'ylang'
+            ]
+        })
+    
+    # Leverage recommendations
+    if debt_to_equity > 1.5:
+        recommendations.append({
+            'category': 'Qarz Yuklama Strategiyasi',
+            'priority': 'HIGH',
+            'strategy': 'Moliyaviy xavfni kamaytirish orqali qarzni qaytarish',
+            'actions': [
+                f'Qarz qaytarish rejasi: {debt_to_equity:.2f} dan 1.0 ga kamaytiring (24 oyda)',
+                'Yuqori foizli qarzlarni birinchi qaytaring',
+                'Qarzlarni qulay foiz stavkasida qayta moliyalantirishni o\'ylang',
+                'Operating cash flow dan qarz qaytarishga yo\'naltiring',
+                'Agar zarur bo\'lsa, ortiqcha aktivlarni sotishni o\'ylang'
+            ]
+        })
+    elif debt_to_equity < 0.5:
+        recommendations.append({
+            'category': 'Kapital Tuzilmasi Optimallashtiruvi',
+            'priority': 'MEDIUM',
+            'strategy': 'O\'sish uchun leverage imkoniyatlarini optimize qilish',
+            'actions': [
+                'Strategik investitsiyalar uchun qarzdan foydalanishni o\'ylang',
+                'Sanoatning optimal qarz/kapital nisbatini aniqlang',
+                'Yaxshi kredit reyting saqlab turing',
+                'Moliyaviy barqarorlikni saqlang',
+                'Kreditlash imkoniyatlarini talab shunchalik qo\'shing'
+            ]
+        })
+    
+    # Cash flow recommendations
+    if fcff < 0:
+        recommendations.append({
+            'category': 'Pul Oqimi Yasashda Kuzalish',
+            'priority': 'HIGH',
+            'strategy': 'Pul oqimi generatsiya qobiliyatini yaxshilash',
+            'actions': [
+                'Kapital xarajatlar rejasini ko\'rib chiqing - zerorat bo\'lmagan capex ni kechiktiring',
+                'Operatsion samaradorlikni oshiring OCF ni oshirish uchun',
+                'Ishchi kapitalini optimize qiling',
+                'Pul yaratadigan loyihalariga e\'tibor qiling',
+                'Maqsad: 12 oyda musbat FCF ga erishish'
+            ]
+        })
+    elif fcff > ocf * 0.2:
+        recommendations.append({
+            'category': 'Pul Oqimini Joylashturish',
+            'priority': 'MEDIUM',
+            'strategy': 'Erkin pul oqimini strategik joylashturish',
+            'actions': [
+                'Shartnomalarni dividend taqsimlash yoki share buyback',
+                'O\'sish initsiativalarina investitsiya qiling',
+                'Balans varaqasini kuchaytirish orqali qarzni kamaytiring',
+                'Naqd zaxiralarni strategik imkoniyatlar uchun to\'plab turing',
+                'M&A imkoniyatlarini baholang'
+            ]
+        })
+    
+    # Revenue growth recommendations
+    if revenue_growth < 0:
+        recommendations.append({
+            'category': 'Tushum Qayta Tiklanishi',
+            'priority': 'HIGH',
+            'strategy': 'Kamayayotgan tushum trendlarini bartaraf etish',
+            'actions': [
+                'Bozor trendlarini va raqibiy holatni tahlil qiling',
+                'Mijozlarni saqlash dasturini ishlab chiqing',
+                'Tushumni kengaytirish uchun yangi mahsulot/xizmatlar bilan chiqing',
+                'Maqsadli marketing orqali bozor ulushini oshiring',
+                'Yangi customer segmentlar yoki geografiyalarni o\'zlang'
+            ]
+        })
+    elif revenue_growth > 15:
+        recommendations.append({
+            'category': 'O\'sishni Masshtablab Chiqarish',
+            'priority': 'HIGH',
+            'strategy': 'Tez o\'sishni qo\'llab-quvvatlab chiqish uchun operatsiyalarni masshtablab chiqarish',
+            'actions': [
+                'Sig\'im va infratuzilmaga investitsiya qiling',
+                'O\'sishni qo\'llab-quvvatlash uchun ishchini hire va train qiling',
+                'Doimiy talab qo\'yilganini qondirish uchun supply chain ni tayyorlang',
+                'O\'sish davrida operatsion samaradorlikni yaxshilang',
+                'O\'sish moliyalashtiruvi rejasini tayyorlang (qarz/kapital)'
+            ]
+        })
+    
+    # Strategic vision (always included)
+    recommendations.append({
+        'category': 'Strategik Ko\'rinish (3-Yillik Rejа)',
+        'priority': 'CRITICAL',
+        'strategy': 'Ishonchli o\'sish reja va strategik xaritalashi',
+        'actions': [
+            f'1-yil: Asosiy biznesni stabilashtirish va rentabellikni yaxshilash (Maqsad: {min(net_margin + 2, 20):.0f}% sof marjanа)',
+            f'2-yil: O\'sish initsiativalarina investitsiya (Maqsad: {revenue * 1.25:,.0f} tushum)',
+            f'3-yil: Operatsiyalarni masshtablab chiqarish va bozor taraqqiyoti (Maqsad: {revenue * 1.60:,.0f} tushum)',
+            'Jad va KPI lar o\'rnatib turing',
+            'Bozor noaniqligiga qarshi ehtiyot reja tayyorlang'
+        ]
+    })
+    
+    return recommendations
 
 with tab5:
-    st.header("🤖 AI Moliyaviy Maslahatchi")
+    st.header("AI Moliyaviy Maslahatchi")
     
     if not st.session_state.analysis_started:
-        st.warning("⚠️ Iltimos, avval 📝 Ma'lumotlarni Kiritish varaqasida barcha ma'lumotlarni kiriting va 🚀 TAHLILNI BOSHLASH tugmasini bosing.")
+        st.warning("Iltimos, avval Ma'lumotlarni Kiritish varaqasida barcha ma'lumotlarni kiriting va START ANALYSIS tugmasini bosing.")
         st.stop()
     
-    st.write("Men sizning moliyaviy ko'rsatkichlaringiz haqida savollaringizga javob bera olaman!")
+    st.markdown("### Strategik Tavsiyal va Xulosalar")
     
-    # AI Maslahatchi funksiyasi
-    def get_financial_context():
-        """Joriy moliyaviy ma'lumotlarni kontekst sifatida tayyorlash"""
-        if not st.session_state.financial_data:
-            return "Ma'lumot kiritilmagan"
-        
-        data = st.session_state.financial_data
-        
-        # Hisoblar
-        gross_profit = data.get('revenue', 0) - data.get('cogs', 0)
-        gross_margin = (gross_profit / data.get('revenue', 1) * 100) if data.get('revenue', 0) > 0 else 0
-        
-        operating_income = data.get('revenue', 0) - data.get('cogs', 0) - data.get('operating_expenses', 0)
-        operating_margin = (operating_income / data.get('revenue', 1) * 100) if data.get('revenue', 0) > 0 else 0
-        
-        ebitda = operating_income + data.get('depreciation', 0)
-        ebitda_margin = (ebitda / data.get('revenue', 1) * 100) if data.get('revenue', 0) > 0 else 0
-        
-        net_income = operating_income - data.get('interest_expense', 0) - data.get('tax_expense', 0)
-        net_margin = (net_income / data.get('revenue', 1) * 100) if data.get('revenue', 0) > 0 else 0
-        
-        avg_assets = (data.get('total_assets', 0) + data.get('prev_total_assets', 0)) / 2
-        avg_equity = (data.get('shareholders_equity', 0) + data.get('prev_equity', 0)) / 2
-        
-        roa = (net_income / avg_assets * 100) if avg_assets > 0 else 0
-        roe = (net_income / avg_equity * 100) if avg_equity > 0 else 0
-        
-        current_assets = (data.get('cash', 0) + data.get('marketable_securities', 0) + 
-                         data.get('accounts_receivable', 0) + data.get('inventory', 0) + 
-                         data.get('other_current_assets', 0))
-        current_ratio = current_assets / data.get('current_liabilities', 1) if data.get('current_liabilities', 0) > 0 else 0
-        
-        total_debt = data.get('short_term_debt', 0) + data.get('long_term_debt', 0)
-        debt_to_equity = total_debt / data.get('shareholders_equity', 1) if data.get('shareholders_equity', 0) > 0 else 0
-        
-        fcff = data.get('operating_cash_flow', 0) - data.get('capex', 0)
-        
-        context = f"""
-Kompaniya: {data.get('company_name', 'N/A')}
-Yil: {data.get('fiscal_year', 'N/A')}
-Davr: {data.get('fiscal_quarter', 'N/A')}
-Valyuta: {data.get('currency', 'N/A')}
-
-ASOSIY MOLIYAVIY KO'RSATKICHLAR:
-- Tushum: {data.get('revenue', 0):,.0f} {data.get('currency', '')}
-- Sof foyda: {net_income:,.0f} {data.get('currency', '')}
-- EBITDA: {ebitda:,.0f} {data.get('currency', '')}
-
-RENTABELLIK:
-- Yalpi marja: {gross_margin:.2f}%
-- Operatsion marja: {operating_margin:.2f}%
-- EBITDA marja: {ebitda_margin:.2f}%
-- Sof marja: {net_margin:.2f}%
-- ROE: {roe:.2f}%
-- ROA: {roa:.2f}%
-
-LIKVIDLIK VA QARZ:
-- Joriy likvidlik: {current_ratio:.2f}
-- Qarz/Kapital: {debt_to_equity:.2f}
-- Jami qarz: {total_debt:,.0f} {data.get('currency', '')}
-
-PUL OQIMI:
-- Operatsion pul oqimi: {data.get('operating_cash_flow', 0):,.0f} {data.get('currency', '')}
-- Erkin pul oqimi: {fcff:,.0f} {data.get('currency', '')}
-- Kapital xarajatlar: {data.get('capex', 0):,.0f} {data.get('currency', '')}
-
-BALANS:
-- Jami aktivlar: {data.get('total_assets', 0):,.0f} {data.get('currency', '')}
-- Xususiy kapital: {data.get('shareholders_equity', 0):,.0f} {data.get('currency', '')}
-- Naqd pul: {data.get('cash', 0):,.0f} {data.get('currency', '')}
-"""
-        return context
+    # Get strategic recommendations
+    recommendations = get_strategic_recommendations()
     
-    def get_ai_response(user_question, context):
-        """AI javobini generatsiya qilish - oddiy qoidalar asosida"""
-        question_lower = user_question.lower()
-        
-        # Umumiy savollar
-        if any(word in question_lower for word in ['salom', 'assalom', 'hello', 'hi']):
-            return "Assalom alaykum! Men sizning moliyaviy maslahatchi botingizman. Kompaniyangizning moliyaviy ko'rsatkichlari haqida savollar berishingiz mumkin. Masalan: 'Kompaniyamning rentabelligi qanday?', 'Likvidlik holatim yaxshimi?', 'Qanday tavsiyalar bera olasiz?'"
-        
-        # Rentabellik haqida
-        if any(word in question_lower for word in ['rentabellik', 'foyda', 'marja', 'roe', 'roa', 'daromad']):
-            data = st.session_state.financial_data
-            if not data:
-                return "Iltimos, avval moliyaviy ma'lumotlarni kiriting."
+    # Display recommendations
+    for rec in recommendations:
+        with st.container():
+            col1, col2 = st.columns([3, 1])
+            with col1:
+                st.subheader(rec['category'])
+            with col2:
+                priority_color = {'CRITICAL': '🔴', 'HIGH': '🟠', 'MEDIUM': '🟡'}.get(rec['priority'], '⚪')
+                st.markdown(f"**Muhimlik: {priority_color} {rec['priority']}**")
             
-            revenue = data.get('revenue', 0)
-            cogs = data.get('cogs', 0)
-            operating_expenses = data.get('operating_expenses', 0)
-            interest_expense = data.get('interest_expense', 0)
-            tax_expense = data.get('tax_expense', 0)
-            
-            gross_profit = revenue - cogs
-            gross_margin = (gross_profit / revenue * 100) if revenue > 0 else 0
-            operating_income = revenue - cogs - operating_expenses
-            net_income = operating_income - interest_expense - tax_expense
-            net_margin = (net_income / revenue * 100) if revenue > 0 else 0
-            
-            avg_assets = (data.get('total_assets', 0) + data.get('prev_total_assets', 0)) / 2
-            avg_equity = (data.get('shareholders_equity', 0) + data.get('prev_equity', 0)) / 2
-            roa = (net_income / avg_assets * 100) if avg_assets > 0 else 0
-            roe = (net_income / avg_equity * 100) if avg_equity > 0 else 0
-            
-            response = f"""📊 **RENTABELLIK TAHLILI:**
-
-Kompaniyangizning rentabellik ko'rsatkichlari:
-
-💰 **Marja ko'rsatkichlari:**
-- Yalpi marja: {gross_margin:.2f}% {"✅ Yaxshi" if gross_margin > 40 else "⚠️ O'rtacha" if gross_margin > 25 else "❌ Past"}
-- Sof marja: {net_margin:.2f}% {"✅ Yaxshi" if net_margin > 10 else "⚠️ O'rtacha" if net_margin > 5 else "❌ Past"}
-
-📈 **Rentabellik nisbatlari:**
-- ROE (Kapital rentabelligi): {roe:.2f}% {"✅ A'lo" if roe > 15 else "⚠️ O'rtacha" if roe > 10 else "❌ Past"}
-- ROA (Aktivlar rentabelligi): {roa:.2f}% {"✅ Yaxshi" if roa > 5 else "⚠️ O'rtacha" if roa > 3 else "❌ Past"}
-
-💡 **Tavsiyalar:**
-"""
-            if net_margin < 5:
-                response += "\n- ⚠️ Sof marja juda past. Xarajatlarni kamaytirish va narxlash strategiyasini ko'rib chiqing."
-            if roe < 10:
-                response += "\n- ⚠️ ROE past. Kapitalni samarali ishlatish yo'llarini qidiring."
-            if gross_margin < 25:
-                response += "\n- ⚠️ Yalpi marja past. Ta'minot zanjiri xarajatlarini optimallashtiring."
-            if net_margin > 10 and roe > 15:
-                response += "\n- ✅ Rentabellik ko'rsatkichlaringiz a'lo darajada!"
-            
-            return response
-        
-        # Likvidlik haqida
-        if any(word in question_lower for word in ['likvidlik', 'naqd', 'to\'lov', 'qarz', 'majburiyat']):
-            data = st.session_state.financial_data
-            if not data:
-                return "Iltimos, avval moliyaviy ma'lumotlarni kiriting."
-            
-            current_assets = (data.get('cash', 0) + data.get('marketable_securities', 0) + 
-                            data.get('accounts_receivable', 0) + data.get('inventory', 0) + 
-                            data.get('other_current_assets', 0))
-            current_liabilities = data.get('current_liabilities', 1)
-            current_ratio = current_assets / current_liabilities if current_liabilities > 0 else 0
-            quick_ratio = (current_assets - data.get('inventory', 0)) / current_liabilities if current_liabilities > 0 else 0
-            
-            total_debt = data.get('short_term_debt', 0) + data.get('long_term_debt', 0)
-            debt_to_equity = total_debt / data.get('shareholders_equity', 1) if data.get('shareholders_equity', 0) > 0 else 0
-            
-            response = f"""💧 **LIKVIDLIK VA QARZ TAHLILI:**
-
-**Likvidlik nisbatlari:**
-- Joriy likvidlik: {current_ratio:.2f} {"✅ Yaxshi" if current_ratio > 1.5 else "⚠️ O'rtacha" if current_ratio > 1 else "❌ Xavfli"}
-- Tez likvidlik: {quick_ratio:.2f} {"✅ Yaxshi" if quick_ratio > 1 else "⚠️ Past"}
-
-**Qarz yuklama:**
-- Qarz/Kapital: {debt_to_equity:.2f} {"✅ Maqbul" if debt_to_equity < 1 else "⚠️ O'rtacha" if debt_to_equity < 2 else "❌ Yuqori"}
-- Jami qarz: {total_debt:,.0f} {data.get('currency', '')}
-
-💡 **Tavsiyalar:**
-"""
-            if current_ratio < 1:
-                response += "\n- ❌ Likvidlik xavfi! Qisqa muddatli majburiyatlarni qoplash uchun resurslar yetarli emas."
-            elif current_ratio > 3:
-                response += "\n- ⚠️ Ortiqcha likvidlik. Resurslarni samarali investitsiya qiling."
-            else:
-                response += "\n- ✅ Likvidlik holati yaxshi."
-            
-            if debt_to_equity > 2:
-                response += "\n- ❌ Qarz yuklama juda yuqori! Qarzni kamaytirish rejasini tuzing."
-            elif debt_to_equity < 0.5:
-                response += "\n- ✅ Moliyaviy barqarorlik yuqori."
-            
-            return response
-        
-        # Pul oqimi haqida
-        if any(word in question_lower for word in ['pul oqimi', 'cash flow', 'naqd pul', 'fcf']):
-            data = st.session_state.financial_data
-            if not data:
-                return "Iltimos, avval moliyaviy ma'lumotlarni kiriting."
-            
-            ocf = data.get('operating_cash_flow', 0)
-            capex = data.get('capex', 0)
-            fcff = ocf - capex
-            revenue = data.get('revenue', 1)
-            ocf_margin = (ocf / revenue * 100) if revenue > 0 else 0
-            
-            response = f"""💵 **PUL OQIMI TAHLILI:**
-
-**Pul oqimi ko'rsatkichlari:**
-- Operatsion pul oqimi: {ocf:,.0f} {data.get('currency', '')} {"✅" if ocf > 0 else "❌"}
-- Kapital xarajatlar: {capex:,.0f} {data.get('currency', '')}
-- Erkin pul oqimi (FCF): {fcff:,.0f} {data.get('currency', '')} {"✅" if fcff > 0 else "❌"}
-- OCF marja: {ocf_margin:.2f}% {"✅ Yaxshi" if ocf_margin > 15 else "⚠️ O'rtacha" if ocf_margin > 10 else "❌ Past"}
-
-💡 **Tavsiyalar:**
-"""
-            if fcff < 0:
-                response += "\n- ❌ Salbiy erkin pul oqimi! Kompaniya pul sarflayapti, daromad keltirayotgan emas."
-                response += "\n- Xarajatlarni kamaytiring yoki tushumni oshiring."
-            else:
-                response += "\n- ✅ Musbat erkin pul oqimi - bu yaxshi belgi!"
-            
-            if ocf_margin < 10:
-                response += "\n- ⚠️ OCF marja past. Operatsion samaradorlikni oshiring."
-            
-            return response
-        
-        # Tavsiyalar
-        if any(word in question_lower for word in ['tavsiya', 'maslahat', 'nima qilish', 'yaxshilash']):
-            data = st.session_state.financial_data
-            if not data:
-                return "Iltimos, avval moliyaviy ma'lumotlarni kiriting."
-            
-            # Barcha asosiy ko'rsatkichlarni hisoblash
-            revenue = data.get('revenue', 0)
-            cogs = data.get('cogs', 0)
-            operating_expenses = data.get('operating_expenses', 0)
-            operating_income = revenue - cogs - operating_expenses
-            net_income = operating_income - data.get('interest_expense', 0) - data.get('tax_expense', 0)
-            net_margin = (net_income / revenue * 100) if revenue > 0 else 0
-            
-            avg_equity = (data.get('shareholders_equity', 0) + data.get('prev_equity', 0)) / 2
-            roe = (net_income / avg_equity * 100) if avg_equity > 0 else 0
-            
-            current_assets = (data.get('cash', 0) + data.get('marketable_securities', 0) + 
-                            data.get('accounts_receivable', 0) + data.get('inventory', 0) + 
-                            data.get('other_current_assets', 0))
-            current_ratio = current_assets / data.get('current_liabilities', 1) if data.get('current_liabilities', 0) > 0 else 0
-            
-            total_debt = data.get('short_term_debt', 0) + data.get('long_term_debt', 0)
-            debt_to_equity = total_debt / data.get('shareholders_equity', 1) if data.get('shareholders_equity', 0) > 0 else 0
-            
-            fcff = data.get('operating_cash_flow', 0) - data.get('capex', 0)
-            
-            response = f"""💡 **KOMPANIYA UCHUN SHAXSIY TAVSIYALAR:**
-
-📊 **Umumiy holat:**
-"""
-            
-            # Asosiy muammolar va tavsiyalar
-            issues = []
-            suggestions = []
-            strengths = []
-            
-            if net_margin < 5:
-                issues.append("Sof marja juda past")
-                suggestions.append("Xarajatlarni qisqartiring, operatsion samaradorlikni oshiring")
-            elif net_margin > 15:
-                strengths.append("A'lo rentabellik ko'rsatkichlari")
-            
-            if roe < 10:
-                issues.append("ROE past - kapital samarasiz ishlatilmoqda")
-                suggestions.append("Rentabellikni oshiring yoki ortiqcha kapitalni qaytaring")
-            elif roe > 15:
-                strengths.append("Yuqori kapital rentabelligi")
-            
-            if current_ratio < 1:
-                issues.append("Likvidlik xavfi mavjud")
-                suggestions.append("Qisqa muddatli qarzni kamaytiring yoki joriy aktivlarni oshiring")
-            elif current_ratio > 3:
-                issues.append("Ortiqcha likvidlik")
-                suggestions.append("Naqd pulni samarali investitsiya qiling")
-            else:
-                strengths.append("Maqbul likvidlik darajasi")
-            
-            if debt_to_equity > 2:
-                issues.append("Yuqori qarz yuklama - moliyaviy xavf")
-                suggestions.append("Qarzni qaytarish rejasini tuzing, yangi qarz olishdan saqlaning")
-            elif debt_to_equity < 0.5:
-                strengths.append("Barqaror moliyaviy holat")
-            
-            if fcff < 0:
-                issues.append("Salbiy erkin pul oqimi")
-                suggestions.append("Pul oqimini yaxshilash uchun operatsion xarajatlarni optimallashtiring")
-            else:
-                strengths.append("Musbat pul oqimi")
-            
-            # Kuchli tomonlar
-            if strengths:
-                response += "\n\n✅ **Kuchli tomonlaringiz:**\n"
-                for strength in strengths:
-                    response += f"- {strength}\n"
-            
-            # Muammolar
-            if issues:
-                response += "\n\n⚠️ **E'tibor talab etadigan sohalar:**\n"
-                for issue in issues:
-                    response += f"- {issue}\n"
-            
-            # Tavsiyalar
-            if suggestions:
-                response += "\n\n💡 **Tavsiyalar:**\n"
-                for i, suggestion in enumerate(suggestions, 1):
-                    response += f"{i}. {suggestion}\n"
-            
-            # Umumiy xulosa
-            if len(issues) == 0:
-                response += "\n\n🎉 **Umumiy xulosa:** Kompaniyangiz yaxshi holatda! Hozirgi strategiyangizni davom ettiring."
-            elif len(issues) <= 2:
-                response += "\n\n📌 **Umumiy xulosa:** Ba'zi sohalarni yaxshilash kerak, lekin umumiy holat qoniqarli."
-            else:
-                response += "\n\n⚠️ **Umumiy xulosa:** Jiddiy e'tibor talab qiladigan bir nechta muammolar mavjud. Tezkor choralar ko'ring."
-            
-            return response
-        
-        # Solishtirish
-        if any(word in question_lower for word in ['solishtir', 'benchmark', 'o\'rtacha', 'standart']):
-            return """📊 **SANOAT O'RTACHA KO'RSATKICHLARI:**
-
-**Rentabellik (o'rtacha):**
-- Sof marja: 8-12%
-- ROE: 12-18%
-- ROA: 5-8%
-
-**Likvidlik (maqbul):**
-- Joriy likvidlik: 1.5-2.5
-- Tez likvidlik: 1.0-1.5
-
-**Qarz yuklama (maqbul):**
-- Qarz/Kapital: 0.5-1.5
-- Foiz qoplash: > 3.0
-
-💡 Sizning ko'rsatkichlaringizni bu qiymatlar bilan solishtiring. Har bir sanoatning o'z xususiyatlari bor, shuning uchun aniq solishtirish uchun o'z sanoatingizning benchmark ko'rsatkichlarini toping."""
-        
-        # Yo'riqnoma
-        if any(word in question_lower for word in ['yordam', 'qanday', 'nima', 'help', 'qo\'llanma']):
-            return """🤖 **AI MASLAHATCHI YO'RIQNOMASI:**
-
-Men sizga quyidagi mavzularda yordam bera olaman:
-
-1️⃣ **Rentabellik tahlili:**
-   - "Rentabelligim qanday?"
-   - "Foydam yaxshimi?"
-   - "ROE haqida tushuntir"
-
-2️⃣ **Likvidlik va qarz:**
-   - "Likvidlik holatim qanday?"
-   - "Qarzlarim ko'pmi?"
-   - "To'lov qobiliyatim yaxshimi?"
-
-3️⃣ **Pul oqimi:**
-   - "Pul oqimim qanday?"
-   - "Erkin pul oqimi nima?"
-
-4️⃣ **Umumiy tavsiyalar:**
-   - "Qanday tavsiyalar bera olasiz?"
-   - "Kompaniyamni yaxshilash uchun nima qilishim kerak?"
-
-5️⃣ **Solishtirish:**
-   - "Mening ko'rsatkichlarimni solishtir"
-   - "Sanoat o'rtacha ko'rsatkichlari qanday?"
-
-📌 Shunchaki savolingizni yozing va men sizga batafsil javob beraman!"""
-        
-        # Default javob
-        return """Men sizning savolingizni to'liq tushunmadim. Quyidagi mavzularda yordam bera olaman:
-
-- Rentabellik tahlili
-- Likvidlik va qarz holati
-- Pul oqimi
-- Umumiy tavsiyalar
-- Sanoat bilan solishtirish
-
-"Yordam" deb yozing, to'liq yo'riqnomani ko'rish uchun."""
+            st.markdown(f"**Strategiya:** {rec['strategy']}")
+            st.markdown("**Amaliy Jadval:**")
+            for action in rec['actions']:
+                st.markdown(f"• {action}")
+            st.divider()
     
-    # Chat UI
-    st.markdown("### 💬 Suhbat")
+    # Display strategic summary
+    st.markdown("### Moliyaviy Holat Xulosasi")
     
-    # Chat history
-    chat_container = st.container()
-    with chat_container:
-        for i, chat in enumerate(st.session_state.chat_history):
-            if chat['role'] == 'user':
-                st.markdown(f"""
-                <div style='background-color: #e3f2fd; padding: 10px; border-radius: 10px; margin: 5px 0;'>
-                    <strong>Siz:</strong> {chat['content']}
-                </div>
-                """, unsafe_allow_html=True)
-            else:
-                st.markdown(f"""
-                <div style='background-color: #f5f5f5; padding: 10px; border-radius: 10px; margin: 5px 0;'>
-                    <strong>🤖 AI Maslahatchi:</strong><br>{chat['content']}
-                </div>
-                """, unsafe_allow_html=True)
+    data = st.session_state.financial_data
     
-    # User input
-    col1, col2 = st.columns([5, 1])
-    with col1:
-        user_input = st.text_input("Savolingizni yozing...", key="user_input", label_visibility="collapsed", 
-                                    placeholder="Masalan: Kompaniyamning rentabelligi qanday?")
-    with col2:
-        send_button = st.button("📤 Yuborish", use_container_width=True)
+    # Calculate key metrics
+    revenue = data.get('revenue', 0)
+    cogs = data.get('cogs', 0)
+    operating_expenses = data.get('operating_expenses', 0)
+    interest_expense = data.get('interest_expense', 0)
+    tax_expense = data.get('tax_expense', 0)
     
-    # Quick questions
-    st.markdown("**💡 Tez savollar:**")
+    gross_profit = revenue - cogs
+    gross_margin = (gross_profit / revenue * 100) if revenue > 0 else 0
+    operating_income = revenue - cogs - operating_expenses
+    net_income = operating_income - interest_expense - tax_expense
+    net_margin = (net_income / revenue * 100) if revenue > 0 else 0
+    
+    avg_assets = (data.get('total_assets', 0) + data.get('prev_total_assets', 0)) / 2
+    avg_equity = (data.get('shareholders_equity', 0) + data.get('prev_equity', 0)) / 2
+    roa = (net_income / avg_assets * 100) if avg_assets > 0 else 0
+    roe = (net_income / avg_equity * 100) if avg_equity > 0 else 0
+    
+    current_assets = (data.get('cash', 0) + data.get('marketable_securities', 0) + 
+                     data.get('accounts_receivable', 0) + data.get('inventory', 0) + 
+                     data.get('other_current_assets', 0))
+    current_ratio = current_assets / data.get('current_liabilities', 1) if data.get('current_liabilities', 0) > 0 else 0
+    
+    total_debt = data.get('short_term_debt', 0) + data.get('long_term_debt', 0)
+    debt_to_equity = total_debt / data.get('shareholders_equity', 1) if data.get('shareholders_equity', 0) > 0 else 0
+    
+    ocf = data.get('operating_cash_flow', 0)
+    capex = data.get('capex', 0)
+    fcff = ocf - capex
+    prev_revenue = data.get('prev_revenue', revenue * 0.9)
+    revenue_growth = ((revenue - prev_revenue) / prev_revenue * 100) if prev_revenue > 0 else 0
+    
+    # Create summary metrics
     col1, col2, col3, col4 = st.columns(4)
     
     with col1:
-        if st.button("📊 Rentabellik", use_container_width=True):
-            user_input = "Kompaniyamning rentabelligi qanday?"
-            send_button = True
+        st.metric("Sof Marja", f"{net_margin:.1f}%", 
+                 delta="Yaxshi" if net_margin > 10 else "O'rtacha" if net_margin > 5 else "Past")
     
     with col2:
-        if st.button("💧 Likvidlik", use_container_width=True):
-            user_input = "Likvidlik holatim qanday?"
-            send_button = True
+        st.metric("ROE", f"{roe:.1f}%",
+                 delta="A'lo" if roe > 15 else "Yaxshi" if roe > 10 else "Past")
     
     with col3:
-        if st.button("💵 Pul oqimi", use_container_width=True):
-            user_input = "Pul oqimim haqida ma'lumot ber"
-            send_button = True
+        st.metric("Likvidlik", f"{current_ratio:.2f}",
+                 delta="Yaxshi" if 1.5 < current_ratio < 3 else "Osongancha")
     
     with col4:
-        if st.button("💡 Tavsiyalar", use_container_width=True):
-            user_input = "Qanday tavsiyalar bera olasiz?"
-            send_button = True
+        st.metric("Qarz/Kapital", f"{debt_to_equity:.2f}",
+                 delta="Maqbul" if debt_to_equity < 1 else "Yuqori")
     
-    # Process message
-    if send_button and user_input:
-        # Add user message
-        st.session_state.chat_history.append({
-            'role': 'user',
-            'content': user_input
-        })
-        
-        # Get AI response
-        context = get_financial_context()
-        ai_response = get_ai_response(user_input, context)
-        
-        # Add AI response
-        st.session_state.chat_history.append({
-            'role': 'assistant',
-            'content': ai_response
-        })
-        
-        # Rerun to update chat
-        st.rerun()
+    st.divider()
     
-    # Clear chat button
-    if st.button("🗑️ Suhbatni tozalash"):
-        st.session_state.chat_history = []
-        st.rerun()
+    # Strengths and weaknesses
+    strengths = []
+    weaknesses = []
     
-    # Info box
-    with st.expander("ℹ️ AI Maslahatchi haqida"):
-        st.markdown("""
-        **AI Moliyaviy Maslahatchi** sizning moliyaviy ma'lumotlaringizni tahlil qilib, 
-        to'g'ridan-to'g'ri savollaringizga javob beradi.
-        
-        **Qanday ishlaydi:**
-        1. Siz "Ma'lumotlarni Kiritish" tabida kompaniya ma'lumotlarini kiritasiz
-        2. AI Maslahatchi bu ma'lumotlarni tahlil qiladi
-        3. Siz savol berasiz (masalan: "Rentabelligim yaxshimi?")
-        4. AI sizga batafsil javob va tavsiyalar beradi
-        
-        **Xususiyatlar:**
-        - ✅ Uzbek tilida to'liq qo'llab-quvvatlash
-        - ✅ Shaxsiylashtirilgan tavsiyalar
-        - ✅ Oddiy va tushunarli tushuntirishlar
-        - ✅ Sanoat standartlari bilan solishtirish
-        - ✅ Amaliy maslahatlar
-        """)
+    if net_margin > 15:
+        strengths.append("A'lo rentabellik ko'rsatkichlari")
+    elif net_margin < 5:
+        weaknesses.append("Past sof marja - xarajatlarni kamaytirish kerak")
+    
+    if roe > 15:
+        strengths.append("Yuqori kapital rentabelligi")
+    elif roe < 10:
+        weaknesses.append("Past ROE - kapital samaradorligini oshirish kerak")
+    
+    if 1.5 <= current_ratio <= 3:
+        strengths.append("Maqbul likvidlik holati")
+    elif current_ratio < 1:
+        weaknesses.append("Likvidlik xavfi - qisqa muddatli qarzni kamaytirish kerak")
+    
+    if debt_to_equity < 1:
+        strengths.append("Past qarz yuklama - moliyaviy barqarorlik yuqori")
+    elif debt_to_equity > 2:
+        weaknesses.append("Yuqori qarz yuklama - qarzni qaytarish rejasi zarur")
+    
+    if fcff > 0:
+        strengths.append("Musbat erkin pul oqimi")
+    else:
+        weaknesses.append("Salbiy pul oqimi - operatsion samaradorlikni oshirish kerak")
+    
+    if revenue_growth > 10:
+        strengths.append("Kuchli tushum o'sishi")
+    elif revenue_growth < 0:
+        weaknesses.append("Tushum kamayishi - bozor strategiyasini qayta ko'rib chiqish kerak")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("### Kuchli Tomonlar")
+        if strengths:
+            for strength in strengths:
+                st.markdown(f"✓ {strength}")
+        else:
+            st.markdown("Kuchli tomonlar aniqlanmadi")
+    
+    with col2:
+        st.markdown("### Salbiy Tomonlar")
+        if weaknesses:
+            for weakness in weaknesses:
+                st.markdown(f"✗ {weakness}")
+        else:
+            st.markdown("Salbiy tomonlar aniqlanmadi")
+    
+    st.divider()
+    
+    # Overall assessment
+    st.markdown("### Umumiy Baholash")
+    
+    total_issues = len(weaknesses)
+    
+    if total_issues == 0:
+        assessment = "🎉 **A'lo Holat:** Kompaniyangiz moliyaviy jihatdan juda yaxshi holatda. Hozirgi strategiyangizni davom ettiring va o'sishga e'tibor qiling."
+        color = "green"
+    elif total_issues == 1:
+        assessment = "👍 **Yaxshi Holat:** Moliyaviy ko'rsatkichlar qoniqarli. Bir nechta sohalarni yaxshilash uchun yuqorida ko'rsatilgan tavsiyalarni amalga oshiring."
+        color = "blue"
+    elif total_issues <= 3:
+        assessment = "⚠️ **O'rtacha Holat:** Ba'zi e'tibor talab etadigan sohalar mavjud. Yuqorida ko'rsatilgan strategiyalarni amalga oshirish orqali holatingizni yaxshilaydi."
+        color = "orange"
+    else:
+        assessment = "🔴 **Muhim Muammo:** Bir nechta jiddiy muammolar mavjud. Tezkor choralar ko'rish va yuqorida ko'rsatilgan CRITICAL va HIGH priority strategiyalarni birinchi navbatda amalga oshiring."
+        color = "red"
+    
+    st.markdown(assessment)
+    
+    st.divider()
+    
+    # Recommendations by area
+    st.markdown("### Sohalar Bo'yicha Tafsil Tavsiyal")
+    
+    tab_prof, tab_liq, tab_debt, tab_cash, tab_growth = st.tabs(["Rentabellik", "Likvidlik", "Qarz", "Pul Oqimi", "O'sish"])
+    
+    with tab_prof:
+        st.markdown("#### Rentabellik Strategiyasi")
+        st.markdown(f"""
+**Joriy Holat:**
+- Sof Marja: {net_margin:.2f}%
+- ROE: {roe:.2f}%
+- ROA: {roa:.2f}%
+
+**Tavsiyalar:**
+""")
+        if net_margin < 5:
+            st.markdown("""
+1. **Xarajatlarni Kamaytiring** - Operatsion xarajatlarni 10-15% qisqartirish
+2. **Narxlash Strategiyasini Ko'rib Chiqing** - Narxlarni 5-10% oshiring agar bozor imkoniyat bersa
+3. **Mahsulot Aralashmasini Optimize Qiling** - Yuqori marja mahsulotlarga e'tibor qiling
+4. **Avtomatsiyani Oshiring** - Xarajatlarni kamaytirish uchun jarayonlarni avtomatlashtiring
+5. **Maqsad:** 12 oyda sof marjani 8-12% ga oshiring
+""")
+        elif net_margin > 15:
+            st.markdown(f"""
+1. **A'lo Rentabellik:** Hozirgi {net_margin:.1f}% marjangiz sanoat standartidan yuqori
+2. **O'shga Investitsiya Qiling** - Foydaning 5-10% ni R&D ga yo'naltiring
+3. **Yangi Mahsulotlar Tayyorlang** - Yuqori marja yangi mahsulotlar rivojlantiring
+4. **Bozor Kengaytiring** - Yangi geografik bozorlarni o'zlashtiring
+5. **Strategik Sotinlar:** Complementary kompaniyalarni sotib olishni ko'rib chiqing
+""")
+        else:
+            st.markdown(f"""
+1. **Yaxshi Holatda:** {net_margin:.1f}% marjanız sanoat o'rtacha qiymatiga yaqin
+2. **O'shga Jiddiy E'tibor:** Yillik 10-15% tushum o'shini maqsad qiling
+3. **Samaradorlikni Saqlang:** O'sish davrida marjalarni muhofaza qiling
+4. **Xarajat Nazorati:** Operatsion xarajat nisbatini kuzatib turing
+""")
+    
+    with tab_liq:
+        st.markdown("#### Likvidlik Strategiyasi")
+        st.markdown(f"""
+**Joriy Holat:**
+- Joriy Likvidlik: {current_ratio:.2f}
+- Maqbul Diapazoni: 1.5 - 2.5
+
+**Tavsiyalar:**
+""")
+        if current_ratio < 1.5:
+            st.markdown("""
+1. **Qisqa Muddatli Majburiyatlarni Kamaytiring** - Qisqa muddatli qarzlarni qaytaring
+2. **Receivables Sifatini Yaxshilang** - DPO (Days Sales Outstanding) ni 10-15 kuniga kamaytiring
+3. **Inventory Optimizatsiyasi** - Zaxiradagi pul 15-20% ga kamaytiring
+4. **Supplier Shartlarini Uzaytiring** - DPO (Days Payable Outstanding) ni 10-15 kuniga oshiring
+5. **Maqsad:** 6 oyda joriy likvidlikni 1.8+ ga ko'taring
+""")
+        elif current_ratio > 3:
+            st.markdown("""
+1. **Ortiqcha Likvidlik:** Naqd pul ortiqcha, samarasiz investitsiya qilingan
+2. **Resurslarni Joylashtiring** - Qisqa muddatli qimmatli qog'ozlarga investitsiya qiling
+3. **Dividend Taqsimi:** Shartnomalarni shartnomalariga dividend to'lang
+4. **Strategik Investitsiyalar:** O'sish proyektlariga investitsiya qiling
+5. **Qarzlarni Kamaytiring:** Qisqa muddatli qarzlarni qaytaring
+""")
+        else:
+            st.markdown(f"""
+1. **Maqbul Holat:** {current_ratio:.2f} likvidlik normasiga mos
+2. **Mavzularni Kuzatib Turing:** Likvidlikni 1.5-2.5 diapazonda saqlang
+3. **Pul Oqimini Rejalang:** Kunlik pul oqimi rejalashtirishiga e'tibor qiling
+""")
+    
+    with tab_debt:
+        st.markdown("#### Qarz Yuklama Strategiyasi")
+        st.markdown(f"""
+**Joriy Holat:**
+- Qarz/Kapital: {debt_to_equity:.2f}
+- Maqbul Diapazoni: 0.5 - 1.0
+
+**Tavsiyalar:**
+""")
+        if debt_to_equity > 1.5:
+            st.markdown(f"""
+1. **Qarzni Qaytarish Rejasi:** {debt_to_equity:.2f} dan 1.0 ga kamaytiring (24 oyda)
+2. **Yuqori Foizli Qarzlarni Birinchi Qaytaring**
+3. **Refiansirovalash:** Qarzlarni qulay foiz stavkasida qayta moliyalantirishni ko'rib chiqing
+4. **Operating Cash Flow Bilan Qarz Qaytaring:** OCF ning 30-50% ni qarz qaytarishga yo'naltiring
+5. **Asset Sotuvini Ko'rib Chiqing:** Agar zarur bo'lsa, ortiqcha aktivlarni sotuvni o'ylang
+""")
+        elif debt_to_equity < 0.5:
+            st.markdown(f"""
+1. **Past Qarz Yuklama:** {debt_to_equity:.2f} moliyaviy barqarorlik yuqori
+2. **Leverage Imkoniyatlari:** Strategik investitsiyalar uchun qarzdan foydalanishni ko'rib chiqing
+3. **Optimal Qarz/Kapital Nisbati:** Sanoatning optimal nisbatini aniqlab oling
+4. **Kreditni Saqlang:** Yaxshi kredit reyting uchun reytingni kuzatib turing
+""")
+        else:
+            st.markdown(f"""
+1. **Maqbul Holat:** {debt_to_equity:.2f} qarz yuklama maqbul darajada
+2. **Qarz Yuklama Nazorati:** Nisbatni 0.5-1.0 diapazonda saqlang
+3. **Foiz Qoplamasi:** Foiz xarajatlarini to'lashga qobiliyatni kuzatib turing
+""")
+    
+    with tab_cash:
+        st.markdown("#### Pul Oqimi Strategiyasi")
+        st.markdown(f"""
+**Joriy Holat:**
+- Operatsion Pul Oqimi: {ocf:,.0f} {data.get('currency', '')}
+- Kapital Xarajatlari: {capex:,.0f} {data.get('currency', '')}
+- Erkin Pul Oqimi: {fcff:,.0f} {data.get('currency', '')}
+
+**Tavsiyalar:**
+""")
+        if fcff < 0:
+            st.markdown(f"""
+1. **SHOSHQOQ:** Salbiy FCF ({fcff:,.0f}) - Tezkor choralar zarur
+2. **Kapital Xarajatlarini Kamaytiring** - Non-essential capex deferitsiyasi
+3. **Operatsion Samaradorlikni Oshiring** - OCF ni 15-20% oshiring
+4. **Ishchi Kapitalni Optimize Qiling** - DIO, DSO, DPO bilan ishlang
+5. **Maqsad:** 12 oyda musbat FCF ga erishish
+""")
+        elif fcff > ocf * 0.3:
+            st.markdown(f"""
+1. **Kuchli Pul Oqimi:** {fcff:,.0f} talab qo'yilgan
+2. **Strategik Joylashtiruv:**
+   - 40% qarzlarni qaytarishga
+   - 30% o'sish investitsiyalariga
+   - 30% dividend/zaxiralarni to'plab olishga
+3. **M&A Imkoniyatlari:** Complementary bizneslarni sotib olishni ko'rib chiqing
+4. **Shareholder Returns:** Dividend yoki share buyback ni o'ylang
+""")
+        else:
+            st.markdown(f"""
+1. **Normali Pul Oqimi:** {fcff:,.0f}
+2. **Balansli Foydalanish:**
+   - Qarzlarni qaytarish (20-30%)
+   - O'sish investitsiyasi (40-50%)
+   - Naqd zaxira (20-30%)
+3. **Pul Oqimi Rejalashi:** Kunlik/haftalik pul oqimini rejalashtiring
+""")
+    
+    with tab_growth:
+        st.markdown("#### O'sish Strategiyasi")
+        st.markdown(f"""
+**Joriy Holat:**
+- Tushum O'sishi: {revenue_growth:.1f}%
+- Tushum: {revenue:,.0f} {data.get('currency', '')}
+
+**Tavsiyalar:**
+""")
+        if revenue_growth < 0:
+            st.markdown("""
+1. **Tushum Kamayishi:** Bozor analizi zarur
+2. **Sababi Toping:** Misol uchun:
+   - Raqib tahdidi?
+   - Bozor talab kamayishi?
+   - Narxlashning muammosi?
+   - Sifat muammosi?
+3. **Qayta Pozitsionlash:** Mahsulot/xizmat rebranding
+4. **Yangi Bozor:** Yangi geografiya yoki customer segmentlarini o'zlash
+5. **Maqsad:** Yillik 10%+ tushum o'shini qayta boshida oling
+""")
+        elif revenue_growth > 15:
+            st.markdown(f"""
+1. **Kuchli O'sish:** {revenue_growth:.1f}% yillik o'sish
+2. **Scalingga Tayyorlaning:**
+   - Ishchi va texnika xaritalari
+   - Supply chain zichlashtiruvi
+   - IT infratuzilmasi kengaytiruvi
+3. **Profitabillikni Saqlang:** O'sish davrida marginlarni muhofaza qiling
+4. **Moliyalashtirishnni Rejalashtiring:** O'sish moliyalashtiruvi (qarz/kapital)
+5. **Maqsad:** {revenue * 1.25:,.0f} {data.get('currency', '')} 24 oyda erishish
+""")
+        else:
+            st.markdown(f"""
+1. **O'rtacha O'sish:** {revenue_growth:.1f}% yillik o'sish
+2. **O'shni Tezlashtiring:**
+   - Marketing kampaniyasini kuchaytiring (15-20% buxgetsini oshiring)
+   - Yangi mahsulotlar ishlab chiqing
+   - Yangi segmentlarni o'zlashni ko'rib chiqing
+3. **Bozor Analizi:** Raqiblar va bozor imkoniyatlarini tahlil qiling
+4. **Maqsad:** Yillik 12-15% tushum o'shini erishish
+""")
 
 # Footer
 st.divider()
 st.markdown("""
 <div style='text-align: center; color: #666; padding: 20px;'>
-    <p><strong>Moliyaviy Tahlil Tizimi</strong> | Barcha huquqlar himoyalangan © 2024</p>
-    <p style='font-size: 0.9em;'>Bu tizim kompaniyalarning moliyaviy holatini baholash va qarorlar qabul qilishda yordam berish uchun ishlab chiqilgan</p>
-    <p style='font-size: 0.8em;'>⚠️ Diqqat: Bu ma'lumotlar faqat tahlil maqsadida. Investitsiya qarorlari qabul qilishdan oldin professional maslahatchi bilan maslahatlashing</p>
+    <p><strong>Financial Analysis System</strong> | All rights reserved © 2024</p>
+    <p style='font-size: 0.9em;'>This system helps companies evaluate their financial status and make data-driven decisions</p>
+    <p style='font-size: 0.8em;'>Disclaimer: This information is for analysis purposes only. Consult with a financial professional before making investment decisions</p>
 </div>
 """, unsafe_allow_html=True)
-
-# Qo'shimcha funksiyalar - Qirg'oqda
-with st.sidebar:
-    st.divider()
-    st.subheader("📚 Qo'llanma")
-    
-    with st.expander("Ko'rsatkichlar haqida"):
-        st.markdown("""
-        **Rentabellik:**
-        - Yalpi marja: (Tushum - Tannarx) / Tushum
-        - ROE: Sof foyda / O'rtacha kapital
-        - ROA: Sof foyda / O'rtacha aktivlar
-        
-        **Likvidlik:**
-        - Joriy: Joriy aktivlar / Joriy majburiyatlar
-        - Tez: (Joriy aktivlar - Zaxiralar) / Joriy majburiyatlar
-        
-        **Qarz yuklama:**
-        - Qarz/Kapital: Jami qarz / Xususiy kapital
-        - Foiz qoplash: EBIT / Foiz xarajatlari
-        """)
-    
-    with st.expander("Benchmark qiymatlari"):
-        st.markdown("""
-        **Yaxshi ko'rsatkichlar:**
-        - ROE: > 15%
-        - ROA: > 5%
-        - Joriy likvidlik: 1.5 - 3.0
-        - Qarz/Kapital: < 1.0
-        - EBITDA marja: > 20%
-        - Foiz qoplash: > 3.0
-        
-        **Sanoatga bog'liq:**
-        - Zaxiralar aylanmasi
-        - Aktivlar aylanmasi
-        - P/E nisbati
-        """)
-    
-    with st.expander("Maslahatlar"):
-        st.markdown("""
-        1. **Aniq ma'lumot kiriting** - Natijalar kiritilgan ma'lumotlarga bog'liq
-        2. **O'tgan davr bilan solishtiring** - Trendlarni kuzating
-        3. **Sanoat o'rtacha ko'rsatkichlari bilan solishtiring**
-        4. **Bir nechta ko'rsatkichni birgalikda tahlil qiling**
-        5. **Moliyaviy konsultant bilan maslahatlashing**
-        """)
-    
-    st.divider()
-    
-    # Ma'lumotlarni tozalash
-    if st.button("🗑️ Barcha ma'lumotlarni tozalash", use_container_width=True):
-        st.rerun()
-    
-    # Versiya
-    st.caption("Versiya 1.0.0")
-    st.caption("Oxirgi yangilanish: 2024")
