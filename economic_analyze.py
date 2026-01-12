@@ -2583,8 +2583,5 @@ with tab5:
 st.divider()
 st.markdown("""
 <div style='text-align: center; color: #666; padding: 20px;'>
-    <p><strong>Financial Analysis System</strong> | All rights reserved © 2024</p>
-    <p style='font-size: 0.9em;'>This system helps companies evaluate their financial status and make data-driven decisions</p>
-    <p style='font-size: 0.8em;'>Disclaimer: This information is for analysis purposes only. Consult with a financial professional before making investment decisions</p>
-</div>
+    
 """, unsafe_allow_html=True)
