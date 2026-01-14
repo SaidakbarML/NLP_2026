@@ -2208,7 +2208,7 @@ def get_strategic_recommendations():
             'strategy': 'Tez o\'sishni qo\'llab-quvvatlash',
             'actions': [
                 'Sig\'im va infratuzilmaga investitsiya qiling',
-                'Kadrlarni jalb qilish va treninglarni o'tkazing',
+                'Kadrlarni jalb qilish va treninglarni otkazing',
                 'Ta\'minot zanjirini kengaytiring',
                 'Moliyalashtirish rejasini tuzing (qarz/kapital)'
             ]
@@ -2571,3 +2571,4 @@ st.markdown("""
 <div style='text-align: center; color: #666; padding: 20px;'>
     
 """, unsafe_allow_html=True)
+
