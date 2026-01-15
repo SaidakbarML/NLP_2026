@@ -55,7 +55,7 @@ st.markdown("""
 def call_openrouter_llm(prompt, max_tokens=2000):
     """Call OpenRouter API with DeepSeek R1T2 model"""
     try:
-        api_key = os.getenv("OPENROUTER_API_KEY", "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")
+        api_key = os.getenv("OPENROUTER_API_KEY", "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")
         if not api_key:
             st.warning("OPENROUTER_API_KEY not configured. Please set environment variable.")
             return None
