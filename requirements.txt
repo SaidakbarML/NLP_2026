@@ -1,3 +1,4 @@
 plotly
 reportlab
 kaleido
+xlsxwriter
