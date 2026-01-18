@@ -55,11 +55,15 @@ st.markdown("""
 def call_openrouter_llm(prompt, max_tokens=2000):
     """Call OpenRouter API with DeepSeek R1T2 model"""
     try:
+<<<<<<< HEAD
         api_key = os.getenv("OPENROUTER_API_KEY", "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")
+=======
+        api_key = os.getenv("OPENROUTER_API_KEY", "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")
+>>>>>>> 86e4a52 (uzbek version)
         if not api_key:
             st.warning("OPENROUTER_API_KEY not configured. Please set environment variable.")
             return None
-        
+        # fetch tutorial then update
         headers = {
             "Authorization": f"Bearer {api_key}",
             "HTTP-Referer": "https://streamlit.io",
@@ -1335,4 +1339,8 @@ st.markdown("""
 <div style='text-align: center; color: #666; padding: 20px;'>
     <p>Financial Analysis System v1.0 | © 2024</p>
 </div>
+<<<<<<< HEAD
 """, unsafe_allow_html=True)
+=======
+""", unsafe_allow_html=True)
+>>>>>>> 86e4a52 (uzbek version)
