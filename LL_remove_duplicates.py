@@ -121,7 +121,7 @@ ll = LinkedList(1)
 ll.append(1)
 ll.append(1)
 test_remove_duplicates(ll, [1])
-s
+# s
 # Test 4: List with consecutive duplicates
 ll = LinkedList(1)
 ll.append(2)
