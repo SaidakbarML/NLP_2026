@@ -1,0 +1,1602 @@
+? Ko’rsatkichlarni mazmuni bo’yicha tasnifi to’g’ri ko’rsatilgan javobni toping?
++ Miqdor va sifat ko’rsatkichlari
+- Umumiy va maxsus ko’rsatkichlar
+- Maxsus ko’rsatkichlar
+- Miqdoriy va maxsus ko’rsatkichlar
+
+? Ko’rsatkichlarni foydalanish doirasi bo’yicha tasnifi to’g’ri ko’rsatilgan javobni belgilang
++ Umumiy va maxsus ko’rsatkichlar
+- Miqdoriy va sifat ko’rsatkichlari
+- Maxsus ko’rsatkichlar
+- Miqdoriy va maxsus ko’rsatkichlar
+
+? Ko’rsatkichlarni ifodalanish shakli bo’yicha tasnifi to’g’ri ko’rsatilgan javobni toping?
++ Mutloq va nisbiy ko’rsatkichlar
+- Miqdoriy va sifat ko’rsatkichlari
+- Maxsus ko’rsatkichlar
+- Miqdoriy va maxsus ko’rsatkichlar
+
+? Ta’sir qilish xarakteri bo’yicha omillar to’g’ri ko’rsatilgan javobni belgilang!
++ Ekstensiv va intensiv omillar
+- Hisoblanadigan omillar
+- Hisoblanishi qiyin (mumkin bo’lmagan) omillar
+- Hisoblanadigan va hisoblanishi qiyin omillar
+
+? O’lchash imkoniyatining mavjudligi bo’yicha hisoblanadigan omillar to’g’ri ko’rsatilgan javobni toping?
++ Xodimlar soni, ularning tarkibi va malakasi
+- Aholi madaniy darajasining mehnat unumdarligiga ta’siri
+- Iqlim o’zgarishining ta’siri
+- Xodimlarning intellektual saviyasi, bilim darajasining ta’siri
+
+? “Sintez” atamasining lug‘aviy mazmuni nimani anglatadi?
++ Grekcha “syntezis” so‘zidan olingan bo‘lib, “birlashtiraman”, “qo‘shaman” degan ma’noni bildiradi
+- Frantsuzcha “syntezis” so‘zdan olingan bo‘lib, “butunni bo‘lakchalarga bo‘lib o‘rganaman” ma`nosini anglatadi
+- Lotincha so‘zdan olingan bo‘lib, “butunni bo‘lakchalarga bo‘lib o‘rganaman” ma`nosini anglatadi
+- Inglizcha so‘zdan olinib, “butunni bo‘lakchalarga bo‘lib o‘rganaman” ma`nosini anglatadi
+
+? Tahlil so‘zining lug‘aviy mazmuni nimani anglatadi?
++ “tahlil” grekcha so‘zdan olingan bo‘lib, “butunni bo‘lakchalarga bo‘lib o‘rganaman” ma`nosini anglatadi;
+- “tahlil” frantsuzcha so‘zdan olingan bo‘lib, “butunni bo‘lakchalarga bo‘lib o‘rganaman” ma`nosini anglatadi;
+- “tahlil” lotincha so‘zdan olingan bo‘lib, “butunni bo‘lakchalarga bo‘lib o‘rganaman” ma`nosini anglatadi;
+- “tahlil” inglizcha so‘zdan olinib, “butunni bo‘lakchalarga bo‘lib o‘rganaman” ma`nosini anglatadi;
+
+? Iqtisodiy tahlil fani ob`yekti bo‘lib nima hisoblanadi?
++ Korxonalar, ishlab chiqarish birlashmalari, tsexlar, uchastkalar
+- Iqtisodiy tumanlar
+- Milliy iqtisodiyot
+- Tarmoqlar
+
+? Iqtisodiy tahlil fani qaysi fan bilan ko‘proq chambarchas bog‘liq?
++ Buxgalteriya hisobi
+- Makroiqtisodiyot
+- Menejment
+- Iqtisodiy nazariya
+
+? Bir butunni bo‘laklarga bo‘lib o‘rganish -
++ Analiz
+- Sintez
+- Deduktsiya
+- Induktsiya
+
+? Parchalab o‘rganilgan jarayonlarni umumlashtirish –
++ Sintez
+- Analiz
+- Deduktsiya
+- Induktsiya
+
+? Umumiylikdan xususiylik sari o‘rganish –
++ Deduksiya
+- Analiz
+- Sintez
+- Induksiya
+
+? Xususiylikdan umumiylik sari o‘rganish –
++ induksiya
+- analiz
+- deduksiya
+- sintez
+
+? Odatda tahlil ....... dan boshlanadi.
++ Taqqoslash
+- Guruhlash
+- Omillarni aniqlash
+- Modellashtirish
+
+? Ushbu formulada ΔAa – ni topishda qaysi usullardan foydalanilgan?
+ΔAa = (a1 * b0*c0)- (a0 * b0*c0)
++ zanjirli o’rin almashtirish
+- indeks
+===
+qayta hisoblash
+- nisbiy farqlar
+
+? Ushbu formulada qaysi usulni qo’llab ΔAa aniqlangan?
+ΔAa = Δa1 * b0 + (Δa * Δb) /2
++ integral
+- indeks
+- qayta hisoblash
+- farqli
+
+? Tovar oborotiga baho o‘zgarishining ta`sirini indeks usuli bilan hisoblang.
++ ΔTp = (T0* ip) - T0
+- ΔTp = (p1*q0) * (p0*q0)
+- ΔTp = (p1*q1) - (p0*q0)
+- ΔTp = T1 / ip + T0
+
+? Iqtisodiy tahlilda qo‘llaniladigan usullar qanday guruhlarga bo‘linadi?
++ oddiy-an`anaviy va iqtisodiy-matematik
+- oddiy va murakkab
+- ichki va tashqi
+- additiv va multiplikativ
+
+? Tahlil vujudga kelgandan buyon qo’llanilib kelinayotgan usullar qanday usullar?
++ an`anaviy
+- matematik
+- doimiy
+- tahliliy
+
+? Nisbiy ko’rsatkichli usul bu -
++ Natijaga omillar ta’sirini aniqlashda ularning nisbiy o’zgarishi natijaning nisbiy o’zgarishidagi ulushida ifodalanishidir
+- Omillar ta’sirini aniqlash uchun teng taqsimlaydigan koeffitsiyent aniqlanadi va barcha omillar ta’siri shu koeffitsiyentga ko’paytiriladi
+- Natijaga ikki yoki undan ko’p omillar ta’sir qilganda turli bog’lanishlar bo’lganda qo’llaniladi. Ushbu usulning afzalligi  omillar ketma-ketligi o’zgarishi bilan natija ko’rsatkichga ta’siri bo’lmaydi
+- Qaysi omilning ta’siri aniqlansa o’sha omilning o’zgarishi bilan qayta hisoblab olinadi va o’zidan oldingi hisoblangan natija bo’ladi
+
+? Integral usuli bu -
++ Natijaga ikki yoki undan ko’p omillar ta’sir qilganda turli bog’lanishlar bo’lganda qo’llaniladi. Ushbu usulning afzalligi omillar ketma-ketligi o’zgarishi bilan natija ko’rsatkichga ta’siri bo’lmaydi
+- Natijaga omillar ta’sirini aniqlashda faqat multiplikativ modeldan foydalaniladi
+- Qaysi omilning ta’siri aniqlansa o’sha omilning o’zgarishi bilan qayta hisoblab olinadi va o’zidan oldingi hisoblangan natija bo’ladi
+- Omillar ta’sirini aniqlash uchun teng taqsimlaydigan koeffitsiyent aniqlanadi va barcha omillar ta’siri shu koeffitsiyentga ko’paytiriladi
+
+? Teng taqsimlash usuli bu -
++ Omillar ta’sirini aniqlash uchun teng taqsimlaydigan koeffitsiyent aniqlanadi va barcha omillar ta’siri shu koeffitsiyentga ko’paytiriladi
+- Natijaga omillar ta’sirini aniqlashda ularning nisbiy o’zgarishi natijaning nisbiy o’zgarishidagi ulushida ifodalanishidir
+- Natijaga ikki yoki undan ko’p omillar ta’sir qilganda turli bog’lanishlar bo’lganda qo’llaniladi. Ushbu usulning afzalligi  omillar ketma-ketligi o’zgarishi bilan natija ko’rsatkichga ta’siri bo’lmaydi
+- Qaysi omilning ta’siri aniqlansa o’sha omilning o’zgarishi bilan qayta hisoblab olinadi va o’zidan oldingi hisoblangan natija bo’ladi
+
+? Indeks usuli bu -
++ Umumiy va individual indekslar orqali natija o’zgarishiga omillar ta’sirini aniqlashda qo’llaniladi. Individual indekslar multiplikativ modelda ishlatiladi
+- Omillar ta’sirini aniqlash uchun teng taqsimlaydigan koeffitsiyent aniqlanadi va barcha omillar ta’siri shu koeffitsiyentga ko’paytiriladi
+- Natijaga ikki yoki undan ko’p omillar ta’sir qilganda turli bog’lanishlar bo’lganda qo’llaniladi. Ushbu usulning afzalligi  omillar ketma-ketligi o’zgarishi bilan natija ko’rsatkichga ta’siri bo’lmaydi
+- Natijaga omillar ta’sirini aniqlashda ularning nisbiy o’zgarishi natijaning nisbiy o’zgarishidagi ulushida ifodalanishidir
+
+? Taqqoslash (Solishtirish usuli) -
++ Tahlil taqqoslashdan boshlanadi. Bunda mutlaq, nisbiy va o’rtacha miqdorlar taqqoslanadi
+- Axborotlarning to’g’riligi va tengligini ta’minlash va omillar ta’sirini hisoblash uchun qo’llaniladi
+- Usul orqali omillar ta’sirini aniqlashda ta’sir qiluvchi omilning farqi, o’zidan oldingi omillarning haqiqiy miqdori va o’zidan keyingi omillarning rejadagi miqdori olinadi
+- Natijaga bitta yoki ikkita omil ta’sir qilganda qo’llaniladi. Omilning ta’sirini aniqlash uchun natija birinchi omilning o’zgarishi bilan qayta hisoblab olinadi
+
+? Muvozanat (Balans) usuli -
++ Natija bilan omillar o’rtasidagi bog’liqlik additiv model orqali ifodalanganda qo’llaniladi.
+- Omillar ta’sirini aniqlashda natija shu omilning haqiqiy miqdori bilan ketma-ket ravishda qayta hisoblanib olinadi va undan o’zidan oldingi hisoblangan miqdor ayriladi
+- Usul orqali omillar ta’sirini aniqlashda ta’sir qiluvchi omilning farqi, o’zidan oldingi omillarning haqiqiy miqdori va o’zidan keyingi omillarning rejadagi miqdori olinadi
+- Natijaga bitta yoki ikkita omil ta’sir qilganda qo’llaniladi. Omilning ta’sirini aniqlash uchun natija birinchi omilning o’zgarishi bilan qayta hisoblab olinadi
+
+? Mutloq farqlar usuli bu -
++ Omillar ta’sirini aniqlashda ta’sir qiluvchi omilning farqi, o’zidan oldingi omillarning haqiqiy miqdori va o’zidan keyingi omillarning rejadagi miqdori olinadi
+- Natijaga bitta yoki ikkita omil ta’sir qilganda qo’llaniladi. Omilning ta’sirini aniqlash uchun natija birinchi omilning o’zgarishi bilan qayta hisoblab olinadi
+- Natijaga ikkita yoki undan ko’p omillar ta’sir qilganda qilganda qo’llaniladi. Omillar ta’sirini aniqlashda natija shu omilning haqiqiy miqdori bilan ketma-ket ravishda qayta hisoblanib olinadi va undan o’zidan oldingi hisoblangan miqdor ayriladi
+- Axborotlarning to’g’riligi va tengligini ta’minlash va omillar ta’sirini hisoblash uchun qo’llaniladi
+
+? Qayta hisoblash usuli -
++ Natijaga bitta yoki ikkita omil ta’sir qilganda qo’llaniladi. Omilning ta’sirini aniqlash uchun natija birinchi omilning o’zgarishi bilan qayta hisoblab olinadi
+- Tahlil taqqoslashdan boshlanadi. Bunda mutlaq, nisbiy va o’rtacha miqdorlar taqqoslanadi
+- Axborotlarning to’g’riligi va tengligini ta’minlash va omillar ta’sirini hisoblash uchun qo’llaniladi
+- Usul orqali omillar ta’sirini aniqlashda ta’sir qiluvchi omilning farqi, o’zidan oldingi omillarning haqiqiy miqdori va o’zidan keyingi omillarning rejadagi miqdori olinadi
+
+? Zanjirli almashtirish usuli -
++ Natijaga ikkita yoki undan ko’p omillar ta’sir qilganda qilganda qo’llaniladi. Omillar ta’sirini aniqlashda natija shu omilning haqiqiy miqdori bilan ketma-ket ravishda qayta hisoblanib olinadi va undan o’zidan oldingi hisoblangan miqdor ayriladi
+- Tahlil taqqoslashdan boshlanadi. Bunda mutlaq, nisbiy va o’rtacha miqdorlar taqqoslanadi
+- Axborotlarning to’g’riligi va tengligini ta’minlash va omillar ta’sirini hisoblash uchun qo’llaniladi
+- usul orqali omillar ta’sirini aniqlashda ta’sir qiluvchi omilning farqi, o’zidan oldingi omillarning haqiqiy miqdori va o’zidan keyingi omillarning rejadagi miqdori olinadi
+
+? Nisbiy farq usuli yordamida natijaga uchinchi omilni ta’siri qanday aniqlanadi U=x*y*z, ∆Uz  - ?
++ ∆Uz = (U0+∆Ux+∆Uy) * ∆z/ z0
+- ∆Uz = (∆Ux+∆Uy) * ∆z/ z0
+- Uz = (U0+∆Ux+∆Uy) * ∆z
+- Uz = (U0+∆Ux+∆Uy) *z0
+
+? Mutloq farqlar usuli yordamida natijaga uchinchi omilni ta’sirini aniqlash formulasi to’g’ri yozilgan qatorni aniqlang. U=x*y*z, ∆Uz - ?
++ ∆Uz = ∆ z*x1*y1
+- ∆Uz = ∆ z*x0*y1
+- ∆Uz = ∆ z*x1*y0
+- ∆Uz = z0*x1*y1
+
+? Indeks usuli yordamida natijaga uchinchi omilning ta’siri qanday aniqlanadi U=x*y*z, ∆Uz - ?
++ ∆Uz = U0*ix*iy*iz - U0*ix*iy
+- ∆Uz = U0*ix*iy*iz - ix*iy
+- ∆Uz = U0*ix*iy*iz - U0*ix
+- ∆Uz = U0*ix*iy*iz - U0
+
+? Natija o‘zgarishiga ikki va undan ko‘p omillar ta`sir qilsa, ular o‘rtasidagi bog‘liqlik funktsional bo‘lsa, qaysi usuldan foydalanilmaydi?
++ korrelyatsion va regression tahlil
+- zanjirli almashtirish
+- logorifm
+- integral
+
+? Natijaga omillar ta`sirini hisoblashda omillarning ketma-ketligiga rioya qilmasdan hisoblash mumkin bo‘lgan usul qanday usul?
++ integral
+- indeks
+- qayta hisoblash
+- farqli
+
+? ΔTTM = S1 * M1 * (TM1 – TM0) formulada natijaning o‘zgarishiga omil ta`siri qaysi usul bilan aniqlangan?
++ mutloq farqlar
+- indeks
+- qayta hisoblash
+- integral
+
+? y = x1 + x2+x3+…+xn. Bu formula qaysi modelda ifodalangan?
++ additiv
+- multiplikativ
+- kasrli
+- matematik
+
+? Natija ko‘rsatkichiga omillar ta`sirini aniqlash uchun hisoblanayotgan omilning farqi, qolgan omillarning asos yoki hisobot davri miqdorlari olinib hisoblansa, qaysi usulga kiradi?
++ farqli
+- indeks
+- qayta hisoblash
+- integral
+
+? Qaysi javobda iqtisodiy – matematik usullari tarkibiga kiruvchi usul to‘g‘ri ko‘rsatib o‘tilgan?
++ Nazariy o‘yin usuli
+- Balansli bog‘lanish usuli
+- Guruhlashtirish usuli
+===
+Taqqoslash usuli
+
+? Iqtisodiy tahlilda qanday usullardan foydalaniladi?
++ taqqoslash, guruhlash, balansli bog‘lanish, zanjirli bog‘lanish
+- baholash, kalkulatsiya qilish, ikkiyoqlama yozuv
+- hujjatlashtirish, ikkiyoqlama yozuv
+- inventarizatsiya, kalkulatsiya qilish
+
+? Quyidagilarning qaysi biri boshqaruv tahlilining ob`ekti hisoblanmaydi?
++ iqtisodiyotning tarmoqlari
+- ishlab chiqarish birlashmalari
+- tsexlar
+- korxonalar
+
+? O’rganadigan davriga qarab iqtisodiy tahlilning turlari qaysi javobda to‘g‘ri aks ettirilgan?
++ Tezkor tahlil, joriy tahlil, istiqbolli tahlil
+- Joriy tahlil, boshqaruv tahlili, moliyaviy tahlil
+- Tezkor tahlil, ichki tahlil, tashqi tahlil
+- Tezkor tahlil, joriy tahlil, funktsional qiymatli tahlil, xo‘jaliklararo tahlil
+
+? Korxonalarni boshqarishdagi o‘rniga qarab Iqtisodiy tahlilning turini belgilang.
++ Boshqaruv (ichki) tahlil va moliyaviy (tashqi) tahlil
+- Boshqaruv tahlili va tezkor tahlil
+- Moliyaviy tahlil va joriy tahlil
+- Boshqaruv tahlili va istiqbolli tahlil
+
+? Tahlil jarayonida qanday turdagi axborot manbalaridan foydalaniladi?
++ Iqtisodiy, huquqiy-me`yoriy, ilmiy-texnologik, tabiiy-ekologik va boshqa turdagi ma`lumotlar
+- Iqtisodiy va huquqiy
+- Iqtisodiy
+- Huquqiy va tabiiy ekologik
+
+? Qaysi manbalar tahlil etish jarayonida asosiy manba bo‘lib hisoblanadi?
++ Buxgalteriya, statistika, operativ texnik hisob va hisobot, hisobdan tashqari manbalar
+- Iqtisodiy va ekologik
+- Hisob va huquqiy
+- Taftish natijasining dalolatnomasi
+
+? Tahlil uchun yig‘ilgan ma`lumotlarni tekshirish nechta va qanday usullarda olib boriladi?
++ 2 ta usul orqali: texnik (yuzaki) tekshirish usuli; mazmunan (mantiqiy) tekshirish usuli
+- 3 ta usul orqali: taqqoslash usuli; texnik (yuzaki) tekshirish usuli; mazmunan (mantiqiy) tekshirish usuli
+- 4 ta usul orqali: taqqoslab tekshirish usuli; guruhlashtirib tekshirish usuli; texnik (yuzaki) tekshirish usuli; mazmunan (mantiqiy) tekshirish usuli
+- 1 ta usul orqali: texnik (yuzaki) tekshirish usuli
+
+? Joriy tahlil deb nimani tushunasiz?
++ oy, chorak va yil yakuni bo‘yicha o‘tkaziladigan tahlilni
+- kunlik, smenalik va o‘n kunlik bo‘yicha o‘tkaziladigan tahlilni
+- yig‘ma hisobotlar bo‘yicha o‘tkaziladigan tahlilni
+- korxonalararo taqqoslama tahlilni
+
+? Tezkor tahlil deb nimani tushunasiz?
++ kunlik, smenalik va o‘n kunlik ish yakuni bo‘yicha o‘tkaziladigan tahlilni
+- milliy iqtisodiyotning tarmoqlari bo‘yicha o‘tkaziladigan tahlilni
+- milliy iqtisodiyot bo‘yicha o‘tkaziladigan tahlilni
+- yillik ish yakuni bo‘yicha o‘tkaziladigan tahlilni
+
+? Istiqbolli tahlil deb nimani tushunasiz?
++ kelgusi davr uchun o‘tkaziladigan tahlilni
+- oy, chorak va yil yakuni bo‘yicha o‘tkaziladigan tahlilni
+- milliy iqtisodiyotning tarmoqlari bo‘yicha o‘tkaziladigan tahlilni
+- milliy iqtisodiyot bo‘yicha o‘tkaziladigan tahlilni
+
+? Mahsulot hajmini ifodalovchi ko‘rsatkich –
++ Yalpi mahsulot, tayyor mahsulot, tovar mahsuloti, sotilgan mahsulot
+- Mahsulot sifati, brak mahsulot
+- Mahsulot ishlab chiqarishning o‘zgaruvchan va o‘zgarmas xarajatlari
+- Sotish uchun tayyorlab qo‘yilgan mahsulot
+
+? Kritik hajmdagi mahsulot -
++ Mahsulot ishlab chiqarishning o‘zgaruvchan va o‘zgarmas xarajatlarni qoplaydigan hajmi
+- Mahsulot ishlab chiqarishning eng yuqori hajmi
+- Mahsulot ishlab chiqarishning optimal hajmi
+- Mahsulot ishlab chiqarishning eng kam hajmi bo‘lib, faqat ishlab chiqarishdagi o‘zgaruvchan xarajatlarni qoplaydi
+
+? Assortiment rejasining bajarilishini aniqlashda kichik son usulining mohiyati nimadan iborat?
++ assortiment rejasining bajarilishi har bir mahsulot turining reja va haqiqiy ko‘rsatkichlaridan eng kichigi olinib, ularning yig‘indisi reja bo‘yicha jami mahsulot hajmiga bo‘lish orqali aniqlanadi
+- barcha mahsulot assortimentlarining jami mahsulotda tutgan ulushi aniqlanib, eng kichik ulushga ega bo‘lgan mahsulotning foizi assortiment rejasi bajarilishi ko‘rsatkichi sifatida olinadi
+- assortiment rejasining bajarilishi sifatida har bir mahsulot turi bo‘yicha reja bajarilishi ko‘rsatkichlarini aniqlab, ularning ichida eng kichik foizga bajarilgan reja ko‘rsatkichi olinadi.
+- Mahsulot turlari bo‘yicha rejasi bajarilgan assortimentdagi mahsulotlarning jami mahsulotdagi ulushi aniqlanib, assortiment rejasi bajarilishi ko‘rsatkichi sifatida olinadi
+
+? Assortiment rejasining bajarilishi koeffitsiyentini o‘zgarishiga qaysi omillar ta`sir etadi?
++ Reja baho va haqiqiy baho
+- Davr xarajatlari
+- Ish soati
+- Moliyaviy xarajatlar
+
+? Qaysi javobda ishlab chiqarish maromini ifodalovchi ko‘rsatkich noto‘g‘ri ko‘rsatilgan?
++ Moliyaviy mustaqillik koeffitsiyenti, o‘rtacha navlilik koeffitsiyenti
+- Variatsiya koeffitsiyenti
+- Har oyda ishlab chiqarilgan mahsulotni jami yillik mahsulotdagi ulushi, variatsiya koeffitsiyenti, mahsulot hajmining o‘sish sur`ati
+- Maromiylik koeffitsiyenti, oylik mahsulotning jami yillik mahsulotda tutgan ulushi
+
+? Ishlab chiqarish maromiyligini baholashda qo‘llaniladigan egri ko‘rsatkichlarga nimalar kiradi?
++ brakdan yo‘qotishlar, shartnoma buzilishi tufayli to‘langan jarimalar
+- maromiylik koeffitsiyenti
+- variatsiya koeffitsiyenti
+- oylik mahsulotning jami yillik mahsulotda tutgan ulushi
+
+? Qaysi javobda ishlab chiqarish maromini ifodalovchi ko‘rsatkichlar to‘g‘ri ko‘rsatilgan.
++ Maromiylik koeffitsiyenti, variatsiya koeffitsiyenti, oylik mahsulotning jami yillik mahsulotda tutgan ulushi
+- Brakdan yo‘qotish, mahsulot sotish hajmini o‘sishi, variatsiya koeffitsiyenti
+- Maromiylik koeffitsiyenti, variatsiya koeffitsiyenti, mahsulot ishlab chiqarish hajmini o‘sish sur`ati
+- Har oyda ishlab chiqarilgan mahsulotni jami yillik mahsulotdagi ulushi, variatsiya koeffitsiyenti, mahsulot hajmini o‘sish sur`ati
+
+? Tayyor mahsulot balansini formula orqali aniqlang?
+Tayyor mahsulot qoldig‘i:
+Yil boshiga – Yb
+Yil oxiriga – Yo
+Tovar mahsuloti – T
+Realizatsiya hajmi – R
++ Yb+T = Yo+R
+- Yb+Yo = T+R
+- Yb+R = T-Yo
+- Yb+T = R-Yo
+
+? Mahsulot hajmining o‘zgarishiga ta`sir etuvchi mehnat omillarini belgilang.
++ Ishchilar soni, ishlangan kishi kunlari, bir ish kunining davomiyligi va ishchilarning bir soatdagi unumdorligining o‘zgarishi
+- Ishchilar soni, ishlangan kishi kunlari va texnikalar sonining o‘zgarishi
+- Ishchilar soni, malakasi, ishlangan kishi kuni va kishi soatlarining o‘zgarishi
+- Ishchilar soni, tarkibi va mehnat unumdorligi
+
+? Umumiy hajmda mahsulot sotish rejasining bajarilishi qanday aniqlanadi
++ Umumiy sotilgan mahsulotlar qiymati rejadagi sotish hajmiga bo‘linib, yuzga ko‘paytiriladi
+- Umumiy sotilgan mahsulotlar qiymati rejadagi ishlab chiqarish hajmiga bo‘linib, yuzga ko‘paytiriladi
+- Umumiy ishlab chiqarilgan mahsulotlar qiymati rejadagi mahsulot qiymatiga bo‘linib, yuzga ko‘paytiriladi
+- Shartnoma majburiyatlari bo‘yicha sotilgan mahsulotlar qiymati rejadagi sotish hajmiga bo‘linib, yuzga ko‘paytiriladi
+
+? Shartnoma majburiyatlari bo‘yicha sotish rejasining bajarilishi qanday aniqlanadi
++ Shartnoma majburiyatlari bo‘yicha sotilgan mahsulotlar qiymati rejadagi sotish hajmiga bo‘linib, yuzga ko‘paytiriladi
+- Umumiy sotilgan mahsulotlar qiymati rejadagi ishlab chiqarish hajmiga bo‘linib, yuzga ko‘paytiriladi
+- Umumiy sotilgan mahsulotlar qiymati shartnoma bo‘yicha sotish hajmiga bo‘linib, yuzga ko‘paytiriladi
+- Umumiy ishlab chiqarilgan mahsulotlar qiymati rejadagi mahsulot qiymatiga bo‘linib, yuzga ko‘paytiriladi
+
+? Sifatni ifodalovchi egri ko‘rsatkichlar
++ sifatsiz mahsulot uchun to‘langan jarimalar
+- jami ishlab chiqarishdagi yangi mahsulot ulushi
+- mahsulotning nafliligi
+- mahsulotning foydaliligi
+
+? Kadrlar ko‘nimsizlik koeffitsiyentini aniqlang.
+Jami xodimlar soni - 168 ta
+Ishga qabul qilindi – 50 ta
+Ishdan bo‘shatildi – 20 ta
+Shu jumladan:
+o‘z xoxishiga muvofiq - 10
+mehnat intizomini buzganligi
+uchun – 2
++ 0,07
+- 0,3
+- 0,12
+- 0,77
+
+? Mehnat resurslari va ulardan foydalanishni tahlil etishdan maqsad -
++ Mehnat unumdorligini oshirish rezervlari hisobiga mahsulot hajmini o‘sishini, ish vaqtidan to‘liq foydalanish va boshqa omillar evaziga mahsulot tannarxini pasaytirish
+- Materiallardan samarali foydalanish imkoniyatlarini aniqlash
+- Asosiy vositalardan samarali foydalanish imkoniyatlarini aniqlash
+- Mahsulot tannarxini pasaytirish tashqi imkoniyatlarini aniqlash
+
+? Ishchilarning qo‘nimsizlik koeffitsiyenti qanday aniqlanadi?
++ (O’z hoxishiga ko‘ra ishdan bo‘shaganlar + mehnat intizomini bo‘zganligi uchun ishdan bo‘shaganlar) / ishchilarning ro‘yxatdagi o‘rtacha soni
+- (Nafaqaga chiqqanlar + mehnat intizomini bo‘zganligi uchun ishdan bo‘shaganlar) / ishchilarning ro‘yxatdagi o‘rtacha soni
+- (O’z hoxishiga ko‘ra ishdan bo‘shaganlar + vafot etganlar) / ishchilarning ro‘yxatdagi o‘rtacha soni
+- (O’z hoxishiga ko‘ra ishdan bo‘shaganlar + nafaqaga chiqqanlar) / xodimlarning ro‘yxatdagi o‘rtacha soni
+
+? Bir ishchini ishlagan kishi-soatlarini hisoblovchi ko‘rsatkich qanday aniqlanadi?
++ Jami ishlangan kishi-soatlari / ishchilar soni
+- Jami xodimlarning haqiqatda ishlagan kishi-soatlari / jami kalendar ish vaqti fondi
+- Jami ishlangan kishi-soatlari / xodimlar
+- Ishchilar soni / jami sanoat xodimlari
+
+? Ish kuni davomiyligi (soatda) qanday aniqlanadi?
++ Jami ishlangan kishi – soatlari / jami ishlangan kishi - kunlari
+- Jami ishlangan kishi - kunlari / jami ishlangan kishi - soatlari
+- Jami ishlangan kishi – kunlari / ishchilar soni
+- Jami ishlangan kishi – soatlari / ishchilar soni
+
+? Ish kuni davomiyligi ko‘rsatkichiga qanday omillar ta`sir etadi?
++ Jami ishlangan kishi – kunlari, kishi – soatlari
+- Ishchilar soni
+- Ish haqi
+- Mahsulot hajmi
+
+? Bir xodimga to‘g‘ri keluvchi o‘rtacha yillik ish unumini aniqlang.
++ tovar mahsulotini sanoat ishlab chiqarish xodimlarining o‘rtacha ro’yxatdagi soniga nisbati
+- tovar mahsulotini xamma ishchilar tomonidan bir yilda ishlangan kishi-kunlariga nisbati
+- tovar mahsulotini xamma ishchilar tomonidan bir yilda ishlangan kishi-soatlariga nisbati
+- tovar mahsulotini ishchilarning ruyxatdagi o‘rtacha soniga nisbati
+
+? Mehnat resurslaridan foydalanish samaradorligi tahliliga oid ko‘rsatkichlarni aniqlang.
++ Mehnat unumdorligining tahlili
+- Mehnat resurslari harakatining tahlili
+- Korxonaning mehnat resurslari bilan ta`minlanishining tahlili
+- Ish haqi tahlili
+
+? Bir ishchiga to‘g‘ri keluvchi o‘rtacha yillik ish unumining o‘zgarishiga qaysi omillar ta`sir ko‘rsatadi?
++ ish kunidan yo‘qotishlar, ish kuni davomiyliginig o‘zgarishi, bir ishchiga to‘g‘ri keluvchi o‘rtacha soatlik ish unumining o‘zgarishi
+- ishchilar soni, bir ishchi tomonidan bir yilda o‘rtacha ishlangan kishi soatlari, bir ishchiga to‘g‘ri keluvchi o‘rtacha kunlik ish unumi, fond qaytimi
+- hamma ishchilar tomonidan bir yilda ishlangan kishi-kunlari,  hamma ishchilar tomonidan bir yilda ishlangan kishi-soatlik ish unumi, fond sig’imi
+- o‘rtacha ishchilarning tarkibi, bir yilda hamma ishchilar tomonidan ishlangan kishi-kunlari, ish kunining o‘rtacha uzunligi
+
+? Mahsulot hajmiga qanday mehnat omillari ta`sir etadi?
++ Ishchilar soni, mehnat unumdorligi
+- Ish haqi
+- Moliyaviy resurslar bilan ta`minlanganlik
+- Moddiy resurslar bilan ta`minlanganlik
+
+? Mahsulot tannarxi nima?
++ Mahsulot ishlab chiqarish uchun ketgan barcha o‘zgaruvchan va doimiy xarajatlarning puldagi ifodasi
+- Barcha to‘g‘ri va egri xarajatlarning puldagi ifodasi
+- Me`yoriy ishlab chiqarish xarajatlarining puldagi ifodasi
+- Mahsulot ishlab chiqarish uchun ketgan barcha doimiy xarajatlarning puldagi ifodasi
+
+? “Xarajatlar tarkibi to‘g‘risidagi nizom”ga binoan xarajatlar qanday guruhlanadi?
++ Ishlab chiqarish xarajatlari, davr xarajatlari, moliyaviy faoliyat xarajatlari, favqulodda zararlar
+- Ishlab chiqarish xarajatlari, davr xarajatlari
+- Doimiy va o‘zgaruvchan xarajatlar
+- Davr va o‘zgaruvchan xarajatlar
+
+? O’zgaruvchan xarajatlar deb qanday xarajatlarga aytiladi?
++ Mahsulot hajmi o‘zgarishiga bog‘liq tarzda o‘zgaruvchi xarajatlarga aytiladi
+- To‘g‘ri va egri xarajatlarga aytiladi
+- Bevosita va bilvosita xarajatlarga aytiladi
+- Kelgusi davrda soliq bazasidan chegiriladigan xarajatlariga aytiladi
+
+? Mahsulotning rejadagi tannarxi bilan haqiqiy tannarxi o’rtasida qanday farq bor?
++ Reja tannarxi xarajatlarning kutilgan darajasini, haqiqiy tannarx esa uning real o‘lchovini bildiradi
+- Reja tannarxi haqiqiy tannarxdan kam bo‘ladi
+- Reja tannarxi haqiqiy tannarxdan normativ o‘zgarishlariga farqlanadi
+- Farq yo‘q
+
+? Doimiy xarajatlar deb qanday xarajatlarga aytiladi?
++ Mahsulot hajmining o‘zgarishiga bog‘liq bo‘lmagan xarajatlarga aytiladi
+- Mahsulot ishlab chiqarish bilan bog‘liq bo‘lmagan davr xarajatlariga aytiladi
+- Ma`muriy va boshqaruv xarajatlarga aytiladi
+- Barcha turdagi ish haqi xarajatlariga aytiladi
+
+? Bir so‘mlik mahsulotga to‘g‘ri keladigan xarajatlar qanday aniqlanadi?
++ Jami xarajatlar / mahsulot qiymati
+- Mahsulot qiymati / mahsulot miqdori
+- Mahsulot miqdori / jami xarajatlar
+- Mahsulot qiymati / ishchilar soni
+
+? Davr xarajatlariga qanday xarajatlar kiradi?
++ Sotish xarajatlari, ma`muriy-boshqaruv xarajatlari, boshqa operatsion xarajatlar
+- Sotish xarajatlari, material xarajatlari
+- Umumsex va umumkorxona xarajatlari
+- Amortizatsiya, telefon uchun to‘lov, ijara haqi
+
+? O’zbekiston Respublikasida yillik moliyaviy hisobot shakllariga qaysi shakllar kiritilgan?
++ Buxgalteriya balansi, Moliyaviy natijalar to‘g‘risidagi hisobot, Pul oqimlari to‘g‘risidagi hisobot, Xususiy kapital to‘g‘risidagi hisobot va moliyaviy hisobotga ilovalar
+- Buxgalteriya balansi, Moliyaviy natijalar to‘g‘risidagi hisobot, Xususiy kapital to‘g‘risidagi hisobot, ishlab chiqarish qarorlari to‘g‘risidagi hisobot
+- Buxgalteriya balansi, Moliyaviy natijalar to‘g‘risidagi hisobot, Debitorlik va kreditorlik qarzlar to‘g‘risidagi ma`lumotnoma, Asosiy vositalar harakati to‘g‘risidagi hisobot, Xususiy kapital to‘g‘risidagi hisobot
+- Buxgalteriya balansi, Asosiy vositalar harakati to‘g‘risidagi hisobot, Pul oqimlari to‘g‘risidagi hisobot, Xususiy kapital to‘g‘risidagi hisobot, Mehnat hisoboti
+
+? Asosiy vositalar deb nimaga aytiladi?
++ Moddiy ishlab chiqarish va noishlab chiqarish sohasida uzoq vaqt mobaynida ishlatiladigan, shuningdek, ijaraga berish uchun ham foydalaniladigan moddiy aktivlarga aytiladi
+- Moddiy ishlab chiqarish, hamda noishlab chiqarish sohasidagi moddiy aktivlarga aytiladi
+- Moddiy ishlab chiqarish sohasida uzoq muddat mobaynida ishlatiladigan vositalarga aytiladi
+- Moddiy ishlab chiqarish sohasida uzoq muddat mobaynida ishlatiladigan, ijaraga berish uchun ham foydalaniladigan moddiy aktivlarga aytiladi
+
+? Asosiy vositalar harakatini ifodalovchi koeffitsiyentlar qaysi javobda to‘g‘ri ko‘rsatilgan?
++ Asosiy vositalarni chiqib ketish, yangilanish koeffitsiyentlari
+- Asosiy vositalarni chiqib ketish, eskirish koeffitsiyentlari
+- Asosiy vositalarni tugatish, eskirish koeffitsiyentlari
+- Asosiy vositalarni yangilanish, eskirish koeffitsiyentlari
+
+? Asosiy vositalardan samarali foydalanish ko‘rsatkichlariga kiradi:
++ Fond qaytimi koeffitsiyenti
+- Material qaytimi koeffitsiyenti
+- Asosiy vositalarni ishga tushirish koeffitsiyenti
+- Asosiy vositalarning eskirish koeffitsiyenti
+
+? Asosiy fondlarning texnik holatini tahlil qilishda hisoblanadigan ko‘rsatkichlarni belgilang.
++ Yaroqlilik va eskirish darajasi
+- Yangilanish va ishga tushirish darajasi
+- Eskirish va yangilanish darajasi
+- Yaroklilik va yangilanish darajasi
+
+? Asosiy vositalarning eskirish darajasi qanday aniqlanadi?
++ Asosiy vositalarning eskirish qiymati ularning boshlang‘ich qiymatiga bo‘linib, yuzga ko‘paytiriladi
+- Asosiy vositalarning qoldiq qiymati ularning boshlang‘ich qiymatiga bo‘linib, yuzga ko‘paytiriladi
+- Asosiy vositalarning tugatilish qiymati ularning boshlang‘ich qiymatiga bo‘linib, yuzga ko‘paytiriladi
+- Asosiy vositalarning real bozor qiymati ularning boshlang‘ich qiymatiga bo‘linib, yuzga ko‘paytiriladi
+
+? Asosiy vositalarning yaroqlilik darajasi qanday aniqlanadi?
++ Asosiy vositalarning qoldiq qiymati ularning boshlang‘ich qiymatiga bo‘linib, yuzga ko‘paytiriladi
+- Asosiy vositalarning eskirish qiymati ularning boshlang‘ich qiymatiga bo‘linib, yuzga ko‘paytiriladi
+- Asosiy vositalarning tugatilish qiymati ularning boshlang‘ich qiymatiga bo‘linib, yuzga ko‘paytiriladi
+- Asosiy vositalarning real bozor qiymati ularning boshlang‘ich qiymatiga bo‘linib, yuzga ko‘paytiriladi
+
+? Asosiy vositalarning yangilanish koeffitsiyenti qanday aniqlanadi?
++ Yangidan kirim qilingan asosiy vositalar qiymatini asosiy vositalarning yil oxiridagi qiymatiga bo‘lish orqali
+- Yangidan kirim qilingan asosiy vositalar qiymatini asosiy vositalarning yil boshidagi qiymatiga bo‘lish orqali
+- Asosiy vositalarning tugatilish qiymatini ularning boshlang‘ich qiymatiga bo‘lish orqali
+- Hisobot davrida kirim qilingan asosiy vositalar qiymatini chiqim qilingan asosiy vositalar qiymatiga bo‘lish orqali
+
+? Asosiy vositalarning chiqib ketish koeffitsiyenti qanday aniqlanadi?
++ Hisobot davrida chiqim qilingan asosiy vositalar qiymatini asosiy vositalarning yil boshidagi qiymatiga bo‘lish orqali
+- Hisobot davrida chiqim qilingan asosiy vositalar qiymatini asosiy vositalarning yil oxiridagi qiymatiga bo‘lish orqali
+- Asosiy vositalarning tugatilish qiymatini ularning boshlang‘ich qiymatiga bo‘lish orqali
+- Hisobot davrida kirim qilingan asosiy vositalar qiymatini chiqim qilingan asosiy vositalar qiymatiga bo‘lish orqali
+
+? Asosiy vositalardan foydalanish samaradorligiga qaysi ko‘rsatkichlar orqali baho beriladi?
++ Fond qaytimi, Fond sig‘imi
+- Asosiy vositalarning yangilanish koeffitsiyenti
+- Asosiy vositalarning yaroqlilik darajasi
+- Asosiy vositalarning eskirish darajasi
+
+? Fond sig‘imi qanday aniqlanadi?
++ Asosiy vositalar o‘rtacha qiymatini ishlab chiqarilgan mahsulot qiymatiga bo‘lish orqali
+- Ishlab chiqarilgan mahsulot qiymatini asosiy vositalarning o‘rtacha qiymatiga bo‘lish orqali
+- Asosiy vositalar qoldiq qiymatini ularning boshlang‘ich qiymatiga bo‘lish orqali
+- Asosiy vositalarning eskirish qiymati ularning boshlang‘ich qiymatiga bo‘linib, yuzga ko‘paytiriladi
+
+? Fond qaytimi qanday aniqlanadi?
++ Ishlab chiqarilgan mahsulot qiymatini asosiy vositalarning o‘rtacha qiymatiga bo‘lish orqali
+- Asosiy vositalar o‘rtacha qiymatini ishlab chiqarilgan mahsulot qiymatiga bo‘lish orqali
+- Asosiy vositalar qoldiq qiymatini ularning boshlang‘ich qiymatiga bo‘lish orqali
+- Asosiy vositalarning eskirish qiymati ularning boshlang‘ich qiymatiga bo‘linib, yuzga ko‘paytiriladi
+
+? Gorizontal tahlilda....
++ Hisobot davridagi ko‘rsatkichlar o‘tgan yillar bilan taqqoslanib, ularni o‘zgarishi mutloq va nisbiy ko‘rsatkichlarda ifodalanadi
+- Ko‘rsatkichlar tarkibiy jihatdan tahlil etiladi
+- Ko‘rsatkichlarning bir necha yillar ichidagi o‘zgarishi aniqlanadi. Bunday tahlil istiqbolni belgilash uchun asos hisoblanadi.
+- Faoliyatga baho berishda koeffitsiyent, indeks va foizlardan foydalaniladi.
+
+? Vertikal tahlilda....
++ Ko‘rsatkichlar tarkibiy jihatdan tahlil etiladi
+- Hisobot davridagi ko‘rsatkichlar o‘tgan yillar bilan taqqoslanib, ularni o‘zgarishi mutloq va nisbiy ko‘rsatkichlarda ifodalanadi
+- Ko‘rsatkichlarning bir necha yillar ichidagi o‘zgarishi aniqlanadi. Bunday tahlil istiqbolni belgilash uchun asos hisoblanadi
+- Faoliyatga baho berishda koeffitsiyent, indeks va foizlardan foydalaniladi.
+
+? Trend tahlilida....
++ Ko‘rsatkichlarning bir necha yillar ichidagi o‘zgarishi aniqlanadi.
+- Bunday tahlil istiqbolni belgilash uchun asos hisoblanadi.
+- Ko‘rsatkichlar tarkibiy jihatdan tahlil etiladi	Hisobot davridagi ko‘rsatkichlar o‘tgan yillar bilan taqqoslanib, ularni o‘zgarishi mutloq va nisbiy ko‘rsatkichlarda ifodalanadi
+- Faoliyatga baho berishda koeffitsiyent, indeks va foizlardan foydalaniladi.
+
+? Nisbiy ko‘rsatkichlar tahlilida....
++ Faoliyatga baho berishda koeffitsiyent, indeks va foizlardan foydalaniladi.
+- Ko‘rsatkichlar tarkibiy jihatdan tahlil etiladi
+- Ko‘rsatkichlarning bir necha yillar ichidagi o‘zgarishi aniqlanadi. Bunday tahlil istiqbolni belgilash uchun asos hisoblanadi
+- Hisobot davridagi ko‘rsatkichlar o‘tgan yillar bilan taqqoslanib, ularni o‘zgarishi mutloq va nisbiy ko‘rsatkichlarda ifodalanadi
+
+? Asosiy vositalar ishlab chiqarishda ishtirok etishiga qarab qanday guruhlarga bo‘linadi?
++ Aktiv va passiv asosiy vositalarga
+- Passiv asosiy vositalarga va ishlab chikarish asosiy vositalariga
+- Sanoat ishlab chikarish asosiy vositalarga va aktiv asosiy vositalarga
+- Korxona ixtiyoridagi asosiy vositalarga va ijaraga berilgan asosiy vositalarga
+
+? Jami asosiy vositalar qiymatining xodimlarning o‘rtacha soniga nisbati ...
++ fond bilan qurollanish darajasini ifodalaydi
+- fond qaytimini ifodalaydi
+- fond sig‘imini ifodalaydi
+- mehnat unumdorligini ifodalaydi
+
+? Asosiy vositalarning texnik holat ko‘rsatkichi -
++ Eskirish darajasi
+- Fond sig‘imi
+- Fond qaytimi
+- Chiqib ketish koeffitsiyenti
+
+? Asosiy vositalarning harakat ko‘rsatkichi -
++ Chiqib ketish koeffitsiyenti
+- Fond sig‘imi
+- Fond qaytimi
+- Yaroqlilik darajasi
+
+? O’zgarmas xarajatlar bu -
++ Mahsulot ishlab chiqarish va xizmat ko‘rsatish hajmi o‘zgarishiga qaramay butunlay o‘zgarmay qoladigan xarajatlardir.
+- Korxonadagi jami xarajatlar
+- Ma’muriy boshqaruv xarajatlari
+- Moddiy xarajatlar
+
+? O’zgaruvchan xarajatlar bu -
++ Ishlab chiqariladigan mahsulot miqdorining oshishiga yoki kamayishiga bevosita ta’sir qiladigan xarajatlar
+- Mahsulot ishlab chiqarish va xizmat ko‘rsatish hajmi o‘zgarishiga qaramay butunlay o‘zgarmay qoladigan xarajatlar
+- Korxonadagi jami xarajatlar
+- Ma’muriy boshqaruv xarajatlari
+
+? O’zgarmas xarajatlar tarkibiga kiruvchi xarajatlar:
++ Korxona to‘lov majburiyatlari, Sug‘urta va resurs soliqlari to‘lovi, Amortizatsiya ajratmalari, Ijara haqi, Qo‘riqlash xizmati xarajatlari, Boshqaruv xodimlar maoshi va h.k.
+- Korxona to‘lov majburiyatlari, Xom-ashyo, Amortizatsiya ajratmalari, Ijara haqi, Qo‘riqlash xizmati xarajatlari, Boshqaruv xodimlar maoshi va h.k.
+- Korxona to‘lov majburiyatlari, Material xarajatlari, Amortizatsiya ajratmalari, Ijara haqi, Qo‘riqlash xizmati xarajatlari, Boshqaruv xodimlar maoshi va h.k.
+- Korxona to‘lov majburiyatlari, Yonilg‘i, Amortizatsiya ajratmalari, Ijara haqi, Qo‘riqlash xizmati xarajatlari, Boshqaruv xodimlar maoshi va h.k.
+
+? O’zgaruvchan xarajatlar tarkibiga kiruvchi xarajatlar:
++ Xom-ashyo; Material; Yonilg‘i; Transport xizmati; Ishbay ish haqi va shu kabilar uchun xarajatlar.
+- Korxona to‘lov majburiyatlari, Xom-ashyo, Amortizatsiya ajratmalari.
+- Korxona to‘lov majburiyatlari, Material, Amortizatsiya ajratmalari, Ijara haqi.
+- Korxona to‘lov majburiyatlari, Yonilg‘i, Amortizatsiya ajratmalari, Ijara haqi.
+
+? To‘liq iqtisodiy tahlil bu -
++ Korxona moliyaviy faoliyatining barcha jihatlarini kompleks o‘rganishni xarakterlaydi
+- Korxona moliyaviy faoliyatini o‘rganishni xarakterlaydi
+- Korxona investitsiya faoliyatini o‘rganishni xarakterlaydi
+- Korxona operatsion faoliyatini o‘rganishni xarakterlaydi
+
+? Tematik iqtisodiy tahlilda -
++ Korxona faoliyatining alohida jihatlarini va aspektlarini o‘rganishni xarakterlaydi
+- Korxona moliyaviy faoliyatini o‘rganishni xarakterlaydi
+- Korxona investitsiya faoliyatini o‘rganishni xarakterlaydi
+- Korxona operatsiyon faoliyatini o‘rganishni xarakterlaydi
+
+? Tayyor mahsulоt deb -
++ Barcha ishlоv оperatsiyalaridan o’tib, tayyor hоlga keltirilgan, belgilangan davlat standarti yoki texnik talablarga javоb beradigan, texnik nazоratdan o’tgan mahsulоtga aytiladi.
+- tayyor hоlga keltirilgan mahsulоt
+- Sotish uchun tayyorlangan mahsulot
+- Tayyor hоlga sotish uchun tayyorlangan mahsulot
+
+? Yalpi mahsulоt –
++ Kоrxоnaning ma`lum bir davrda (kun, оy, chоrak, yil) ishlab chiqargan mahsulоti, ko’rsatgan xizmat va bajargan ishlarining amaldagi va sоlishtirma bahоda o’lchangan hajmiga aytiladi.
+- Barcha ishlоv оperatsiyalaridan o’tib, tayyor hоlga keltirilgan, belgilangan davlat standarti yoki texnik talablarga javоb beradigan, texnik nazоratdan o’tgan mahsulоtga aytiladi.
+- tayyor hоlga keltirilgan mahsulоt
+- Sotish uchun tayyorlangan mahsulot
+
+? Tоvar mahsulоti –
++ Bu iste`mоlchilarga yetkazib berish uchun mo’ljallangan mahsulоt
+- Tayyor hоlga keltirilgan mahsulоt
+- Sotish uchun tayyorlangan sof mahsulot
+- Yalpi mahsulotga tayyor mahsulot qoldiqlari qo’shilgan mahsulot
+
+? Sоtilgan mahsulоt –
++ Iste`mоlchilarga jo’natilgan, yoki xaridоrlardan puli kelib tushgan mahsulоtlar qiymatiga aytiladi
+- tayyor hоlga keltirilgan mahsulоt
+- Sotish uchun tayyorlangan mahsulot
+- Tayyor hоlga sotish uchun tayyorlangan mahsulot
+
+? Mahsulоtlar nоmenkulaturasi – deb,
++ miqdоr hоlida tоvarlar guruhlari, kichik guruhlari va pоzitsiyalarini belgilashda hamda hisоbga оlishda qabul qilingan ro’yxat
+- hisоbga оlishda qabul qilingan ro’yxat
+- pоzitsiyalarini belgilashda hisоbga olingan ro’yhat
+- miqdоr hоlida tоvarlar guruhlari
+
+? Tоvar (ish, xizmat)lar assоrtimenti - deb
++ mahsulоtlarning ma`lum bir belgilariga  qarab, ya`ni, uning turlari,  navi, o’lchami, markasi, artikullariga qarab ajratiladigan mahsulоtlar xilidir
+- miqdоr hоlida tоvarlar guruhlari, kichik guruhlari va pоzitsiyalarini belgilashda hamda hisоbga оlishda qabul qilingan ro’yxatidir
+- pоzitsiyalarini belgilashda hisоbga olingan ro’yhat
+- miqdоr hоlida tоvarlar guruhlari
+
+? Mahsulоt strukturasi -
++ ayrim mahsulоt turlarini jami ishlab chiqarishda tutgan ulushidir
+- jami mahsulot
+- ayrim mahsulot turlarini farqi
+- rejadagi jami mahsulot hajmi ulushi
+
+? Ishlab chiqarish marоmi -
++ grafik asоsida bir marоmda mahsulоt ishlab chiqarishdir
+- bir kunda ishlab chiqarilgan mahsulot
+- bir oyda ishlab chiqarilgan mahsulot
+- o’n kunda ishlab chiqarilgan mahsulot
+
+? Marоmiylik kоeffitsienti
++ marоmiylik hisоbiga  ishlab chiqarilgan mahsulоtni (NH)  jami reja bo’yicha mahsulоt (NP) hajmiga bo’lish оrqali aniqlanadi.
+- marоmiylik hisоbiga  ishlab chiqarilgan mahsulоtni (NH)  jami reja bo’yicha mahsulоt (NP) hajmiga ko’paytirish оrqali aniqlanadi
+- marоmiylik hisоbiga  ishlab chiqarilgan mahsulоtni (NH)  jami haqiqat bo’yicha mahsulоt ulushiga (NP) hajmiga bo’lish оrqali aniqlanadi
+- marоmiylik hisоbiga  ishlab chiqarilgan mahsulоtni (NH)  jami haqiqat bo’yicha mahsulоt farqiga (NP) hajmiga bo’lish оrqali aniqlanadi
+
+? Reklamatsiya –
++ bu iste`mоlchi tоmоnidan mahsulоt sifati xususida bildirilgan e`tirоz demakdir.
+- bu iste`mоlchi tоmоnidan mahsulоt narxi xususida bildirilgan e`tirоz demakdir
+- bu iste`mоlchi tоmоnidan mahsulоt miqdori xususida bildirilgan e`tirоz demakdir
+- bu iste`mоlchi tоmоnidan mahsulоt sifati xususida bildirilgan maqtov demakdir
+
+? Mehnat ko’rsatkichlari tarkibiga оdatda quyidagilar kiradi
++ Ish haqi fоndi; Xоdimlar sоni;  Mehnat unumdоrligi; O’rtacha yillik ish haqi.
+- Ish haqi fоndi; Xоdimlar sоni;  Mahsulot hajmi; O’rtacha yillik ish haqi.
+- Ish haqi fоndi; Xоdimlar sоni;  Mahsulot hajmi; O’rtacha yillik ish haqi.
+- Foyda; Xоdimlar sоni;  Mahsulot hajmi; O’rtacha yillik ish haqi.
+
+? Ishchilarning ish vaqti fоndi quyidagicha aniqlanadi -
++ Ishchilar sоni, bir ishchini ishlagan kunlari va ish kuni davоmiyligini bir biriga ko’paytirish orqali aniqlanadi
+- Bir ishchini ishlagan kunlari va ish kuni davоmiyligini bir biriga ko’paytirish orqali aniqlanadi
+- Ishchilar sоni va ish kuni davоmiyligini bir biriga ko’paytirish orqali aniqlanadi
+- Ishchilar sоni, bir ishchini ishlagan kunlari va ish kuni davоmiyligini bir biriga qo’shish orqali aniqlanadi
+
+? Xarajatlar -
++ Jami ishlab chiqarish (tоvarlar, xizmatlar) uchun sarflangan resurslarning puldagi ifodasidir.
+- Jami ishlab chiqarish (tоvarlar, xizmatlar) uchun sarflangan moddiy resurslar.
+- Jami ishlab chiqarish (tоvarlar, xizmatlar) uchun sarflangan moliyaviy resurslar.
+- Xizmatlar uchun sarflangan moliyaviy resurslar
+
+? Mahsulоt tannarxi –
++ Shu mahsulоtni ishlab chiqarish uchun ketgan barcha bevоsita va bilvоsita xarajatlarning qiymat ifоdasidir.
+- Shu mahsulоtni ishlab chiqarish uchun ketgan barcha bevоsita xarajatlarning qiymat ifоdasidir.
+- Shu mahsulоtni ishlab chiqarish uchun ketgan barcha bilvоsita xarajatlarning qiymat ifоdasidir.
+- Shu mahsulоtni ishlab chiqarish uchun ketgan barcha bevоsita va bilvоsita xarajatlar ulushi.
+
+? Davr xarajatlari quyidagicha turkumlanadi:
++ Sоtish bo’yicha xarajatlar; Bоshqaruv xarajatlari; Bоshqa muоmala xarajatlari va zararlar.
+- Sоtish bo’yicha xarajatlar; Bоshqa muоmala xarajatlari va zararlar
+- Bоshqaruv xarajatlari; Bоshqa muоmala xarajatlari va zararlar
+- Sоtish bo’yicha xarajatlar; O’zgaruvchan xarajatlar; Bоshqa muоmala xarajatlari va zararlar.
+
+? Mahsulоt ishlab chiqarish hajmiga bоg’liqligi jihatidan xarajatlar quyidagi guruhlarga bo’linadi:
++ O’zgaruvchan xarajatlar; o’zgarmas xarajatlar; yarim o’zgaruvchan xarajatlar; yarimdoimiy xarajatlar
+- O’zgarmas xarajatlar; yarim o’zgaruvchan xarajatlar
+- O’zgaruvchan xarajatlar; yarim o’zgaruvchan xarajatlar
+- Ishlab chiqarish xarajatlari
+
+? Bir so’mlik tоvar mahsulоti uchun qilingan xarajat qanday aniqlanadi?
++ Ishlab chiqarish tannarxini tоvar mahsulоtini ulgurji bahоsiga bo’lish orqali.
+- Ishlab chiqarish tannarxini tоvar mahsulоtini ulgurji bahоsiga ko’paytirish orqali.
+- Ishlab chiqarish tannarxini tоvar mahsulоtini ulgurji bahоsiga qo’shish orqali.
+- Ishlab chiqarish tannarxini tоvar mahsulоtini ulgurji bahоsidan ayirish orqali.
+
+? Metоd -
++ Grekcha «methodos” so’zidan оlinib nazariya, ta`limоt va amaliyotni o’rganishdagi yondashuv yo’llaridir.
+- Metоd - inglizcha «methodos” so’zidan оlinib nazariya, ta`limоt va amaliyotni o’rganishdagi yondashuv yo’llaridir.
+- Metоd - ruscha «methodos” so’zidan оlinib nazariya, ta`limоt va amaliyotni o’rganishdagi yondashuv yo’llaridir.
+- Metоd - fransuzcha «methodos” so’zidan оlinib nazariya, ta`limоt va amaliyotni o’rganishdagi yondashuv yo’llaridir.
+
+? Metоdika -
++ Analitik tadqiqоtni yanada maqsadga muvоfiq bajarishning usullari va qоidalari majmuidir.
+- Analitik tadqiqоtni yanada maqsadga muvоfiq bajarish yo’li.
+- Tadqiqоtni yanada maqsadga muvоfiq bajarish yo’li
+- Usullari va qоidalar
+
+? Оmilli tahlil —
++ Bu natijaviy ko’rsatkichlar darajasiga оmillar ta`sirini kоmpleks hamda tizimli tadqiq qilish jarayonidir.
+- Natijaviy ko’rsatkichlarni o’rganish.
+- Mahsulot hajmini o’zgarishini o’rganish.
+- Natijaviy ko’rsatkichlar darajasiga baho berish.
+
+? Tipоlоgik guruhlashtirish –
++ Bir turdagi vоqeliklarni umumiy belgi bo’yicha bo’laklarga ajratishdir.
+- Belgisi bo’yicha guruhlarga ajratish.
+- Tarmoqlar bo’yicha guruhlarga ajratish.
+- Reyting bali bo’yicha guruhlarga ajratish.
+
+? Analitik guruhlash  -
++ Ko‘rsatkichlar orasidagi bog‘lanishlarni o‘rganish maqsadida amalga oshiriladigan guruhlashlarni anglatadi.
+- To‘plamni sifat jihatdan bir xil bo‘lgan guruhlarga ajratishni anglatadi.
+- Ko‘rsatkichni ichki tuzilishini, uning alohida qismlarini o‘zaro nisbatlarini o‘rganish maqsadida guruhlarga ajratishni anglatadi.
+- Tuzilishining murakkabligi jihatdan oddiy guruhlashlar va kombinatsiyali guruhlashlar tarkiblanadi.
+
+? Strukturali guruhlash –
++ Ko‘rsatkichni ichki tuzilishini, uning alohida qismlarini o‘zaro nisbatlarini o‘rganish maqsadida guruhlarga ajratish.
+- Ko‘rsatkichlar orasidagi bog‘lanishlarni o‘rganish maqsadida amalga oshiriladigan guruhlashlarni anglatadi.
+- To‘plamni sifat jihatdan bir xil bo‘lgan guruhlarga ajratishni anglatadi.
+- Tuzilishining murakkabligi jihatdan oddiy guruhlashlar va kombinatsiyali guruhlashlar tarkiblanadi.
+
+? Zanjirli bog‘lanish usulida -
++ Natijaviy ko‘rsatkichning o‘zgarishi va uning o‘zgarishiga ta’sir etuvchi omillar tizimli almashtirishlar orqali hisob-kitob qilinadi.
+- O’zgarishiga ta’sir etuvchi omillar hisob-kitob qilinadi.
+- Natijaviy ko‘rsatkichning o’zgarishi hisob-kitob qilinadi.
+- Ta’sir etuvchi omillar hisob-kitob qilinadi
+
+? Mutlaq farq usuli -
++ Natijaviy ko‘rsatkichga ta’sir etuvchi birlikning farqi qolgan omillarning reja, haqiqatdagi (uzviy ketma-ketlikda) ko‘rsatkichlarga ko‘paytirilgan holda aniqlanadi.
+- Natijaviy ko‘rsatkichning o‘zgarishi va uning o‘zgarishiga ta’sir etuvchi omillar tizimli almashtirishlar orqali hisob-kitob qilinadi.
+- O’zgarishiga ta’sir etuvchi omillar hisob-kitob qilinadi.
+- Natijaviy ko‘rsatkichning o’zgarishi hisob-kitob qilinadi.
+
+? Nisbiy farq usuli -
++ Omillar ta’sirini nisbiy ko’rsatkichlarda, natijani o‘zgartirishini uzviy ketma- ketlikda hisob-kitob qilinadi
+- Natijaviy ko‘rsatkichning o‘zgarishi va uning o‘zgarishiga ta’sir etuvchi omillar tizimli almashtirishlar orqali hisob-kitob qilinadi.
+- O’zgarishiga ta’sir etuvchi omillar hisob-kitob qilinadi.
+- Natijaviy ko‘rsatkichning o’zgarishi hisob-kitob qilinadi.
+
+? Sotishdan olingan sof tushum qanday aniqlanadi?
++ Mahsulot sotishdan tushgan yalpi tushumdan qo‘shilgan qiymat solig‘i va aksiz solig`i ayriladi.
+- Mahsulot sotishdan tushgan yalpi tushumdan ishlab chiqarish tannarxi ayriladi
+- Mahsulot sotishdan tushgan yalpi tushumga qo‘shilgan qiymat solig‘i qo‘shilib, ishlab  chiqarish tannarxi ayriladi
+- Mahsulot sotishdan tushgan yalpi tushumga qo‘shilgan qiymat solig‘i va aksiz solig‘i qo‘shiladi.
+
+? Sof foyda qanday aniqlanadi?
++ Soliq to‘lagunga qadar umumiy moliyaviy natijadan  foyda solig’i  va foydadan boshqa soliqlar va ajratmalar ayriladi
+- Soliq to‘lagunga qadar umumiy moliyaviy natijaga boshqa soliq va ajratmalar qo‘shiladi.
+- Soliq to‘lagunga qadar umumiy moliyaviy natijadan daromad solig‘i ayriladi
+- Soliq to‘lagunga qadar umumiy moliyaviy natijaga boshqa soliq va ajratmalar ko‘paytiriladi
+
+? Yalpi foyda qanday aniqlanadi?
++ Sotishdan olingan sof tushumdan ishlab chiqarish tannarxi ayriladi
+- Sotishdan olingan sof tushumga ishlab chiqarish tannarxi qo‘shiladi
+- Sotishdan olingan sof tushum 100 ga ko‘paytirilib, ishlab chiqarish tannarxiga bo‘linadi
+- Sotishdan olingan sof tushum 100 ga bo‘linib, ishlab chiqarish tannarxiga ko‘paytiriladi
+
+? Buxgalteriya balansi quyidagi elementlarni o‘z ichiga oladi:
++ Aktivlar, o’z kapitali va qarz kapitali
+- Aktivlar va majburiyatlar;
+- Uzoq muddatli aktivlar va o‘z kapitali;
+- Joriy aktivlar va majburiyatlar;
+
+? Balansning aktiv qismi quyidagi tahliliy guruhlardan iborat:
++ Uzoq muddatli va joriy aktivlar.
+- Uzoq mudatli aktivlar va xisobdagi mablag‘lar.
+- Materiallar va zaxiralar, pul mablag‘lari va xisobdagi mablag‘lar.
+- Asosiy vositalar va oborotdan tashqari aktivlar.
+
+? Balansning passiv qismi quyidagi tahliliy guruhlardan iborat:
++ O‘z va qarz mablag‘lari
+- Uzoq muddatli va qisqa muddatli aktivlar.
+- Qisqa muddatli aktivlar va kreditorlik qarzlari.
+- Qarz mablag‘lari va taqsimlanmagan foyda.
+
+? Agar tovar mahsuloti hajmining qiymati 100 ming. so‘mni tashkil etsa, mahsulotni ishlab chiqarish tannarxi 80 ming. so‘m bo‘lsa, u holda ishlab chiqarishning yalpi foydasini toping.
++ 20 ming. so‘m
+- 50 ming. so‘m
+- 60 ming. so‘m
+- 180 ming. so‘m
+
+? Moliyaviy natijalar qaysi element moddalardan iborat?
++ Daromadlar va xarajatalar
+- Daromadlar
+- Xarajatlar
+- To‘g‘ri javob yo‘q.
+
+? Daromadlar-...
++ Bu hisobot davrida iqtisodiy foydaning  aktivlarning oqimi yoki ko‘payishi shaklida o`sishi yoki passivlarning qatnashchilarning kapitaldagi omonatlaridan farq etuvchi o`sishiga olib keluvchi kamayishidir
+- Hisobot davrida iqtisodiy foydaning aktivlarning chiqib ketishi  yoki ulardan foydalanish  shaklida kamayishi, shuningdek, qatnashchilar o‘rtasida kapitalning kamayishiga olib keluvchi  majburiyatlarning yuzaga kelishidir
+- Boshqaruv xarajatlari, mahsulotni sotish xarajatlari va umumxo‘jalik ahamiyatiga ega bo‘lgan boshqa xarajatlar
+- Hisobot davrida kapitalning o’sgan qismi
+
+? Moliyaviy natijalar tahlilida nimalarga baho beriladi?
++ Daromadlar va xarajatalar, foyda va zarar
+- Daromadlar va foyda
+- Xarajatlar va zarar
+- Moliyaviy holat
+
+? Moliyaviy natijalar to‘g‘risidagi hisobotning asosiy ko‘rsatkichlariga qaysilar kiritiladi?
++ Mahsulot sotishdan yalpi foyda (zarar), davr xarajatlari jami, asosiy faoliyatning foyda (zarar)si, moliyaviy faoliyat bo’yicha daromad (xarajat)lari, umumxo‘jalik faoliyatining foyda (zarar)si, favqulodda foyda (zarar)lar, daromad (foyda) solig‘i
+- Moliyaviy faoliyat bo’yicha daromad (xarajat)lari, umumxo‘jalik faoliyatining foyda (zarar)si, favqulodda foyda (zarar)lar, daromad (foyda) solig‘ini  to‘langunga qadar foyda (zarar)si.
+- Boshqaruv xarajatlari, mahsulotni sotish xarajatlari va umumxo‘jalik ahamiyatiga ega bo‘lgan boshqa xarajatlar
+- Aktivlar qiymati, taqsimlanmagan foyda, favqulodda foyda
+
+? Moliyaviy natijalarning shakllanish qatorlariga qaysilar kiritiladi?
++ Sotishdan yalpi moliyaviy natija, Asosiy faoliyatdan moliyaviy natija, Umumxo’jalik faoliyatdan natija, Soliq to’langunga qadar moliyaviy natija
+- Moliyaviy faoliyatdan natija, Favqulodda kutilmagan holatlardan natija
+- Sotish xarajatlari, Moliyaviy faoliyat bo’yicha xarajatlar
+- Favqulodda foyda, sof foyda
+
+? Mahsulot sotishdan olingan foyda o‘zgarishiga qaysi omillar ta’sir etishi mumkin?
++ Sotilgan mahsulot hajmi, bahosi va tannarx
+- Sotilgan mahsulot hajmi, kreditlar foizi va tannarx
+- Sotib olingan tovarlar hajmi, narxi va valyuta kursi
+- Ishlab chiqarish hajmi, tannarx va inflatsiya
+
+? Moliyaviy xarajatalar tarkibiga ... kiradi.
++ valyuta kurs farqidan zarar
+- boshqa umumxo‘jalik xarajatlari
+- ma’muriy xarajatlar
+- favqulodda zarar
+
+? Soliq to’loviga qadar foydaga ta’sir qilmaydigan omil qaysi qatorda berilgan?
++ Foyda solig’i va uning stavkasi
+- Mahsulot sotishdan olingan yalpi foyda
+- Moliyaviy faoliyatdan foyda va zararlar
+- Asosiy faoliyatning boshqa jarayonlaridan daromad va yo‘qotishlar, mahsulot sotishdan olingan yalpi foyda
+
+? Quyidagilardan qaysi biri buxgalteriya balansining aktiv qismiga taalluqli emas?
++ Kelgusi to’lovlar va xarajatlar uchun rezerv
+- Kelgusi davr xarajatlari
+- Kechiktirilgan xarajatlar
+- Tugallanmagan ishlab chiqarish
+
+? To‘lov qobiliyati deyilganda....
++ Xo‘jalikning muddati kelgan to’lov majburiyatlarni bajarish uchun zurur bo‘lgan mablag‘larni yetarli yoki kamchiligini aniqlash tushuniladi
+- Asosiy va aylanma mablag‘larning holatini bajarish uchun zurur bo‘lgan mablag‘larni yetarli yoki kamchiligini aniqlash tushuniladi
+- Majburiyatlarni qoplash uchun o’zlik mablag’larining mavjudligi tushuniladi
+- Aylanma mablag‘larga o’zlik mablag’larining mavjudligi
+
+? Korxonaning to‘lov qobiliyatining tahlilida qo’llaniladigan to‘lash uchun mablag‘lar guruhiga qaysilar kiradi?
++ Pul mablag‘lari, valyuta mablag‘lari, qisqa muddatli moliyaviy qo`yilmalar, debitorlik qarzlari, tayyor mahsulot
+- Pul mablag‘lari, jo`natilgan tovar va mahsulotlar qiymati, kreditorlar, tayyor mahsulot
+- Pul mablag‘lari, valyuta mablag‘lari, jo’natilgan tovar va mahsulotlar qiymati
+- Pul mablag’lari, ustav kapitali, debitorlik qarzlari
+
+? Mutloq likvidlik koeffitsiyenti qanday aniqlanadi?
++ Pul mablag’lari+qisqa muddatli investitsiyalar/joriy majburiyatlar
+- Pul mablag’lari+qisqa muddatli investitsiyalar+TMZ/joriy majburiyatlar
+- Pul mablag’lari+qisqa muddatli investitsiyalar+debitorlik qarzlari/joriy majburiyatlar
+- Joriy aktivlar/joriy majburiyatlar
+
+? Oraliqni qoplash (tez) likvidlik koeffitsiyenti qanday aniqlanadi?
++ Pul mablag’lari+qisqa muddatli investitsiyalar+debitorlik qarzlari/joriy majburiyatlar
+- Pul mablag’lari+qisqa muddatli investitsiyalar+TMZ/joriy majburiyatlar
+- Pul mablag’lari+qisqa muddatli investitsiyalar/joriy majburiyatlar
+- Joriy aktivlar/joriy majburiyatlar
+
+? Pul shakliga aylanish tezligiga qarab, korxona aktivlari qaysi guruhlarga ajratiladi?
++ Doimiy harakatdagi aktivlar; tez sotiluvchi aktivlar; sekin sotiluvchi aktivlar; qiyin sotiluvchi aktivlar
+- Doimiy harakatdagi aktivlar, muddati kelgan to’lov majburiyatlar; tez sotiluvchi aktivlar, qisqa muddatli passivlar; sekin sotiluvchi aktivlar, o‘rta va uzoq  muddatli passivlar; qiyin sotiluvchi aktivlar
+- Yuqori, o’rta va quyi likvidlik aktivlar
+- Doimiy harakatdagi aktivlar; tez sotiluvchi aktivlar; sekin sotiluvchi aktivlar, doimiy passivlar
+
+? Mahsulot sotishdan tushgan summaning aylanma mablag‘larning o‘rtacha qoldiqlar summasiga nisbati bu –
++ aylanma mablag‘larning aylanuvchanlik koeffitsienti.
+- aylanma mablag‘larning bir aylanma davomiyligi.
+- aylanma mablag‘larni ish bilan yuklash koeffitsienti.
+- aylanma uzunligi.
+
+? Ishlab chiqarish xarajatlarining ishlab chiqarish hajmiga bog’liqligiga ko’ra turlari qaysi javobda to‘g‘ri ko‘rsatilgan?
++ doimiy va o‘zgaruvchan.
+- doimiy va kvartallik.
+- aniq xarajatlar va o‘zgaruvchan xarajatlar.
+- doimiy xarajatlar va tashqi xarajatlar.
+
+? Hisobot yilida reja bo‘yicha mahsulot ishlab chiqarish hajmi oldingi yilga nisbatan 30% ga oshirilishi lozim edi. Ammo reja 90%ga bajarildi. O‘tgan yilga nisbatan mahsulot ishlab chiqarish hajmi necha foizga o‘sgan?
++ 17 %ga.
+- 40 %ga.
+- 120 %ga.
+- 135 %ga.
+
+? Soliqlar to‘langunga qadar korxona daromadi va xarajatlarining ayirmasi – bu
++ soliq to’langunga qadar foyda
+- sof foyda
+- qo‘shimcha foyda
+- balans foydasi
+
+? Soliq to’langunga qadar foydadan qonunlar bilan belgilangan soliqlar to‘langandan keyingi qoldiq – bu
++ sof foyda.
+- yalpi foyda.
+- foyda.
+- balans foydasi.
+
+? Buxgalteriya balansida aks ettirladigan foyda ko’rsatkichini ko’rsating
++ taqsimlanmagan foyda.
+- yalpi foyda.
+- umumxo’jalik faoliyat foydasi.
+- asosiy faoliyat foydasi.
+
+? Ishlab chiqarish rentabelligi qanday aniqlanadi?
++ foydani ishlab chiqarish xarajatlariga nisbati orqali.
+- ishlab chiqarish hajmini xarajatga taqqoslash natijasida.
+- foydani asosiy ishlab chiqarish va aylanma fondlariga nisbati natijasida.
+- ishlab chiqarish smetasi hajmini foydaga taqqoslash natijasida.
+
+? Buxgalteriya balansi nima?
++ korxona mulki joylashtirilishi va manbalari qiymat ko‘rinishida aks ettirilgan hujjat.
+- tovar zaxiralari, debitorlik qarzlari.
+- nomoddiy aktivlar, moddiy aktivlar, moliyaviy aktivlar.
+- qimmatli qog‘ozlarga uzoq muddatli qo‘yilmalar.
+
+? Korxonaning daromadliligi qanday aniqlanadi?
++ korxona jami daromadlarini uning jami xarajatlariga nisbati orqali.
+- korxona yalpi tushumining uning kapitaliga nisbati sifatida.
+- tovar realizatsiya bahosi bilan o‘zgaruvchan xarajatlar o‘rtasidagi farqni aniqlash yo‘li bilan.
+- yillik pul tushumlari summasini aniqlash yo‘li bilan.
+
+? Hisobot nima?
++ o‘tgan muayyan davr uchun korxona xo‘jalik faoliyatining haqiqiy iqtisodiy natijalari aks ettirilgan hujjat.
+- korxona mulki joylashtirilishi va manbalari qiymat ko‘rinishida aks ettirilgan hujjat.
+- korxona faoliyatining asosiy yo‘nalishlari aks ettirilgan hujjat.
+- korxona ta’sischilari haqida barcha ma’lumotlar aks ettirilgan hujjat.
+
+? Qisqa muddatli debitorlik qarzi – bu
++ to‘lov muddati bir yildan oshmaydigan korxonaning olishi lozim bo’lgan qarzlar.
+- to‘lov muddati bir yil davomida keladigan korxona majburiyatlari.
+- to‘lov muddati bir yildan keyin keladigan korxona majburiyatlari.
+- balans tuzish paytigacha sotib olingan, hali sotilmagan tovarlar.
+
+? Korxonada hisobot davrida pul tushumlari va xarajatlari o‘rtasidagi ijobiy farq – bu
++ foyda.
+- daromad.
+- doimiy xarajatlar.
+- yalpi pul tushum.
+
+? Majburiyatlar bu:
++ korxonaning qarzlari
+- korxonaning xususiy kapitali
+- korxonaning qo‘shilgan kapitali
+- korxonaning foydasi
+
+? Asosiy vosita tarkibiga kirmaydigan elementni aniqlang.
++ Gudvill
+- Binolar
+- Kompyuter
+- Ish hayvonlari
+
+? Dividend – bu:
++ Aksiyadan olinadigan daromad
+- Bir shaxs tomonidan ikkinchisiga yozib berilgan qarz majburiyatini ifodalovchi qimmatli qog‘ozning bir turi
+- Emitentning qarzdorligi va bu qarz uchun foiz to‘lash zarurligi xaqida guvohlik beruvchi qimmatli  qog‘oz
+- Obligatsiyalardan olinadigan daromad
+
+? Mahsulotlarni qarzga sotish natijasida yuzaga keladigan qarz qanday ataladi?
++ debitorlik qarz
+- pul mablaglari
+- uzoq muddatli majburiyatlar
+- kreditorlik qarz
+
+? Asosiy faoliyatdan olingan boshqa daromadlarga qaysilar kiradi?
++ Undirilgan yoki qarzdor tomonidan etirof etilgan jarimalar, peniyalar, vaqtida to‘lanmagan qarzlar va xo‘jalik shartnomalari shartini buzganlik uchun boshqa xil jazo jarimalari, shuningdek, yetkaziladigan zararlarni undirish bo‘yicha daromadlar
+- Mahsulot (ishlar, xizmatlar)ni sotishdan olingan tushum
+- Ko‘zda tutilmagan, tasodifiy tusga ega bo‘lgan, hodisa yoki xo‘jalik yurituvchi sub’ektning   odatdagi  faoliyati doirasidan chetga chiqadigan tusdagi operatsiyalar natijasida paydo bo‘ladigan va olinishi kutilmagan daromadlar
+- Moliyaviy faoliyatdan olinadigan dividend va foiz shaklidagi daromadlar
+
+? Favqulodda foyda moddalari –
++ Bu ko‘zda tutilmagan, tasodifiy tusga ega bo‘lgan, hodisa yoki xo‘jalik yurituvchi sub’ektning odatdagi  faoliyati doirasidan chetga chiqadigan tusdagi operatsiyalar natijasida paydo bo‘ladigan va olinishi kutilmagan foydadir
+- Mahsulot (ishlar, xizmatlar)ni sotishdan olingan, undan qo‘shilgan qiymat, aksiz solig‘i va   eksport bank poshlinasi chegirilgan tushum sifatida aniqlanadi
+- Undirilgan  yoki qarzdor tomonidan etirof etilgan jarimalar, peniyalar, vaqtida to‘lanmagan qarzlar va xo‘jalik shartnomalari shartini buzganlik uchun boshqa xil jazo jarimalari, shuningdek, yetkaziladigan zararlarni undirish bo‘yicha daromadlar
+- Bu ko‘zda tutilgan, tasodifiy tusga ega bo‘lmagan, hodisa yoki xo‘jalik yurituvchi sub’ektning odatdagi  faoliyati doirasidan chetga chiqmaydigan tusdagi operatsiyalar natijasida olinadigan foydadir
+
+? Marjinal foyda -
++ Sotilgan mahsulot bo‘yicha tushum va o’zgaruvchan ishlab chiqarish xarajatlari orasidagi farq
+- Marjinal foyda va hisobot yilidagi doimiy (boshqaruv va tijorat) xarajatlar miqdorlari orasidagi farq
+- Mahsulot, ish va xizmatlarni sotishdan olinadigan moliyaviy natijalar, investitsiyaviy va moliyaviy faoliyatdan olinadigan daromad va xarajatlar, sotishdan tashqari va favqulodda daromad yig‘indisidan iborat
+- Soliqqa tortilganga qadar umumiy moliyaviy  natijadan daromad (foyda) solig‘i va boshqa majburiy to‘lovlar to‘langandan so‘nggi foydadir;
+
+? Sof foyda –
++ Bu hamma soliqlar, iqtisodiy jarimalar, favqulodda xarajatlar va boshqa majburiy  to‘lovlardan so‘ng korxona ixtiyorida qoladigan foydaning bir qismi
+- Dividendlarni to‘lash, korxona xodimlari yoki ijtimoiy dasturlar uchun sarflanuvchi  foydaning bir qismi;
+- Bu aktivlarni ko‘paytirish uchun yo’naltirilgan foydaning bir qismi.
+- Buxgalteriya balansida aks ettiriladigan foydaning bir qismi
+
+? Korxonalar moliyaviy natijalari........
++ Olingan foyda miqdori va rentabellik darajasi bilan xarakterlanadi
+- Daromadlilik  miqdori bilan xarakterlanadi
+- Foiz  bilan xarakterlanadi
+- Sotish rentabelligi bilan xarakterlanadi
+
+? Sof foyda qaysi hujjatga asosan taqsimlanadi?
++ Ta’sischilar umumiy yig’ilishi bayonnomasi
+- Reja
+- Shtatlar jadvali
+- Hisobot ilovasi
+
+? Iqtisodiy ahvoliga qarab korxonalar qaysi guruhlarga ajratiladi?
++ Iqtisodiy barqaror, iqtisodiy tavakkalchilik, iqtisodiy nochor;
+- Baquvvat korxonalar; «xavf-xatar» guruhidagi korxonalar;
+- «Tang» guruhdagi korxonalar; to‘lovga noqobil korxonalar;
+- «Bo‘lajak korxonalar» (iqtisodiy nochorlar) guruhidagi korxonalar.
+
+? Aktivlarning rentabelligi aniqlanishi to’g’ri ko’rsatilgan qatorni ko’rsating.
++ Sof foydani aktivlarning o’rtacha yillik qiymatiga bo’lish orqali
+- Sof foydani uzoq muddatli aktivlarning o’rtacha yillik qiymatiga bo’lish orqali
+- Sof foydani joriy aktivlarning o’rtacha yillik qiymatiga bo’lish orqali
+- Sof foydani majburiyatlarning o’rtacha yillik qiymatiga bo’lish orqali
+
+? Quyida berilgan ko‘rsatkichlardan qaysilari korxonaning moliyaviy barqarorlik darajasini ifodalaydi?
++ Qarzga olingan va o‘z mablag‘lari nisbati;
+- Debitorlik qarzlarini aylanishi;
+- Joriy aktivlarni aylanishi;
+- Operatsion davr;
+
+? Buxgalteriya balansi quyidagi elementlardan qaysilari aks etmaydi?
++ Daromadlar, xarajatlar, moliyaviy natija.
+- Aktivlar va majburiyatlar;
+- Uzoq muddatli aktivlar va o‘z kapitali;
+- Joriy aktivlar va majburiyatlar;
+
+? Daromadlar va xarajatlar nisbati koeffitsiyentining 1 dan past bo’lishi nimani anglatadi?
++ Hisobot davri zarar bilan yakunlanganligini
+- Hisobot davri foyda bilan yakunlanganligini
+- Hisobot davrida kritik nuqtaga erishilganligini
+- Hisobot davrida moliyaviy holat yaxshilanganligini
+
+? Qaysi ko’rsatkich joriy to’lov qobiliyatini ifodalaydi?
++ joriy aktivlar /joriy majburiyatlar
+- pul mablag’lari va boshqa aktivlar / qisqa muddatli to’lov majburiyatlari
+- (pul mablag’lari + qimmatli qog’ozlar) /qisqa muddatli to’lov majburiyatlari
+- pul mablag’lari / qisqa muddatli to’lov majburiyatlari
+
+? Aylanma mablag’larning aylanish koeffitsienti qanday aniqlanadi?
++ Mahsulotni sotishdan tushgan tushum / aylanma mablag’larning yillik o’rtacha qiymati
+- (Mahsulotni sotishdan tushgan tushum + tayyor mahsulot) / aylanma mablag’larning yillik o’rtacha qiymati
+- Sotilgan mahsulotning tannarxi / aylanma mablag’larning yillik o’rtacha qiymati
+- Mahsulotni sotishdan tushgan tushum / aylanma aktivlar
+
+? Doimiy harakatdagi aktivlarga nimalar kiradi?
++ Pul mablag’lari
+- Nomoddiy aktivlar
+- Tayyor mahsulot
+- Asosiy vositalar
+
+? Balans aktiv qismining 1 bo’limida aks ettiriladi –
++ Asosiy vositalar
+- Tayyor mahsulot
+- Pul mablag’lari
+- Qisqa muddatli moliyaviy qo’yilmalar
+
+? Zaxira va xarajatlarni qoplashga tegishli o’zlik manbalari aniqlanadi -
++ O’zlik mablag’larning manbalari minus uzoq muddatli aktivlar
+- O’zlik mablag’larning manbalari minus kreditorlik qarzlari
+- O’zlik mablag’larning manbalari minus uzoq muddatli kredit va qarzlar
+- O’zlik mablag’larning manbalari minus qisqa muddatli kredit va qarzlar
+
+? Moliyaviy mustaqillik koeffitsienti qanday aniqlanadi?
++ Korxona jami o’zlik mablag’lari manbalarini balansining jamiga nisbati bilan
+- Korxona balansi passivining jamini majburiyatlar jamiga nisbati bilan
+- Korxonaning jami majburiyatlarini jami o’zlik mablag’larining manbalariga nisbati bilan
+- Korxonaning jami o’zlik mablag’larining manbalarini majburiyatlar jamiga nisbati bilan
+
+? Balans aktivining 2-bo’limida … aks ettiriladi
++ Tovar-moddiy zaxiralar
+- Daromad va xarajatlar
+- Asosiy vositalar
+- Ustav kapitali
+
+? Aylanma mablag’lar aylanish davrini aniqlash formulasi qaysi qatorda to’g’ri ko’rsatilgan?
++ Tovar-moddiy zaxiralar * hisobot davri (kun) / sotishdan sof tushum
+- Zaxira va xarajatlar / jami mulk
+- Pul mablag’lari / jami mulk
+- Aylanma aktivlar / jami mulk
+
+? Pul mablag’lari harakatdagi aktivlarning qaysi qatoriga kiradi?
++ Doimiy harakatdagi aktivlarga
+- Qiyin sotiluvchi aktivlarga
+- Tez sotiluvchi aktivlarga
+- Sekin sotiluvchi aktivlarga
+
+? Qiyin sotiluvchi aktivlar deb nimalar sanaladi?	
+===
+# Asosiy vositalar
+- Uzoq muddatli qarzlar
+- Aylanma aktivlar
+- Pul mablag’lari
+
+? Buxgalteriya balansi ma`lumotlari asosida quyidagi ko’rsatkichlar aniqlanadi:	
+===
+# Korxonaning moliyaviy barqarorlik darajasi
+- Korxona daromadlarini tuzilishi
+- Sotishdan kelgan tushum o’sishi
+- Asosiy faoliyat bo’yicha xarajatlarning dinamikasi
+
+? Hisobot davridagi korxonaning sof foydasi qanday maqsadlarga sarflanmaydi?
++ Kelgusi davr daromadlarini shakllanishiga
+- Ishlab chiqarish xarakteridagi qurilish ob`ektlariga
+- O’tgan yilga tegishli zararni qoplashga
+- Yangi texnikani sotib olishga
+
+? Balans aktivining rentabellik darajasiga qanday omillar ta`sir etadi?
++ Sotishdan ko’rilgan rentabellik, daromadning har so’miga to’g’ri keladigan tushum, balans aktivining har so’miga to’g’ri keladigan tushum
+- Sotishdan ko’rilgan rentabellik, mahsulot birligining rentabelligi, daromadning har so’miga to’g’ri keladigan tushum
+- Balans aktivining har so’miga to’g’ri keladigan tushum, sotishdan ko’rilgan rentabellik, asosiy faoliyatdan ko’rilgan rentabellik	
+===
+Sotishdan ko’rilgan rentabellik, daromadning har so’miga to’g’ri keladigan tushum, asosiy faoliyatdan ko’rilgan rentabellik
+
+? Ko’rsatkichlardan qaysi biri korxonaning moliyaviy barqarorligini aniqroq ifodalaydi?
++ Jami mablag’ tarkibidagi korxonaning o’ziga qarashli mablag’ ulushi
+- Majburiyatlar bilan o’z  aylanma mablag’i o’rtasidagi nisbat
+- O’ziga qarashli aylanma mablag’ bilan jami o’ziga qarashli mablag’ o’rtasidagi nisbat
+- Majburiyatlar bilan jami mablag’ o’rtasidagi nisbat
+
+? Mahsulot sotishdan ko’rilgan foydaga qanday omillar ta`sir etadi?
++ Mahsulot sotish hajmi, sotilgan mahsulot tannarxi, sotilgan mahsulot bahosi
+- Sotish hajmi, sotilgan mahsulot tannarxi, operatsion daromad
+- Mahsulot ishlab chiqarish hajmi, sotilgan mahsulot bahosi, davr xarajatlari
+- Mahsulot sotish hajmi, sotilgan mahsulot tannarxi, operatsion daromadlar
+
+? Sotishdan ko’rilgan foydaga qanday omillar funksional bog’liqlikda ta`sir ko’rsatadi?
+===
+# Sotilgan mahsulot hajmi, mahsulot tannarxi, sotilgan mahsulot bahosi, mahsulot tarkibidagi strukturaviy o’zgarishlar
+- Sotish hajmi, bozorni tuzilishi, mahsulotni raqobatga bardoshligi, ishlab chiqarish hajmi
+===
+Mahsulot sifati, sotish hajmi, mahsulot bahosi, ishlab chiqarish hajmi
+- Ishlab chiqarish maromiyligi, mahsulot sifati, mahsulot rentabelligi, sotilmay qolgan mahsulot hajmi
+
+? Sotish rentabelligi qanday aniqlanadi?
++ (Sotishdan yalpi foyda x 100) / mahsulot sotishdan tushgan sof tushum
+- (Sotishdan yalpi daromad x 100) / mahsulot sotishdan tushgan tushum	
+===
+(Mahsulotni sotishdan tushgan tushum x 100) / yalpi foyda
+- (Mahsulotni sotishdan tushgan yalpi tushum x 100) / yalpi sarflar
+
+? Sof rentabellik darajasi qanday aniqlanadi?
++ sof foydani sof tushumga nisbati bilan
+- sof foydani aktivlar summasiga nisbati bilan
+- sof foydani xususiy kapitalga nisbati bilan
+- sof foydani asosiy vositalar va moddiy aylanma mablag’larga nisbati bilan
+
+? Sotish rentabelligi darajasining o’zgarishiga ta`sir etadi
++ sotishdan olingan sof tushumning o’zgarishi 
+===
+asosiy faoliyat bo’yicha foyda (zarar)ni o’zgarishi
+- sof foydani o’zgarishi
+- korxona aktivlari summasini o’zgarishi
+
+? Quyida keltirilgan ko’rsatkichlarning qaysi biri rentabellik ko’rsatkichini ifodalaydi?
+===
+# sof foydani korxona aktivlariga nisbati
+- qarzga olingan kapitalning o’z kapitaliga nisbati koeffitsienti	
+===
+debitor qarzlarning aylanish koeffitsienti
+- joriy likvidlik koeffitsienti
+
+? Debitorlik qarzlarining shartli aylanish kuni qanday aniqlanadi?	
+===
+# O’tgan yilgi debitorlik qarzlari summasini hisobot davridagi sotishdan sof tushum summasiga bo’linib, hisobot davridagi kunlarga ko’paytiriladi
+- Hisobot davridagi sotishdan sof tushum summasi o’tgan yilgi debitorlik qarzlari summasiga bo’linadi
+- Hisobot davridagi sotishdan sof tushum summasi hisobot davridagi debitorlik qarzlari summasiga bo’linadi
+- Hisobot davridagi debitorlik qarzlari summasi hisobot davridagi sotishdan sof tushum summasiga bo’linib, hisobot davri kuniga ko’paytiriladi
+
+? Qaysi ko’rsatkich debitorlik qarzlari tarkibiga kirmaydi?
++ Kechiktirilgan daromadlar
+- Xaridor va buyurtmachilarning qarzi
+- Olinadigan operativ ijara
+- Ta sischilar ustav kapitaliga ulushlari bo’yicha qarzlari
+
+? Debitorlik qarzlarining muddati o’tishi korxona moliyaviy holatiga qanday ta`sir ko’rsatadi?
+===
+# Korxonada qarz mablag’lariga bo’lgan ehtiyojni oshiradi
+- Kreditorlik qarzlarining aylanishi tezlashadi	
+===
+Aktivlarning aylanishi tezlashadi
+- Korxona aylanmasida ortiqcha mablag’lar hosil bo’ladi
+
+? Kreditorlik qarzlarining muddati o’tishi korxona moliyaviy holatiga qanday ta`sir ko’rsatadi?
++ Korxonada qarz mablag’larini jalb etish imkoniyati pasayadi
+- Korxona aylanmasida ortiqcha mablag’lar hosil bo’ladi
+- Aktivlarning aylanishi tezlashadi
+- Kreditorlik qarzlarining aylanishi tezlashadi
+
+? Kreditorlik qarzlari aylanish koeffitsienti qanday aniqlanadi?
++ Sotilgan mahsulot tannarxi kreditor qarzlarning o’rtacha qiymatiga bo’linadi
+- Kreditor qarzlarning o’rtacha qiymati joriy majburiyatlar summasiga bo’linadi
+- Joiy majburiyatlar summasi kreditor qarzlarning o’rtacha qiymatiga bo’linadi
+===
+Mahsulot sotishdan sof tushum summasi kreditor qarzlarning o’rtacha qiymatiga bo’linadi
+
+? Kreditorlik qarzlarining o’rtacha aylanish kuni qanday aniqlanadi?
++ Kreditor qarzlarning o’rtacha qiymati hisobot davri kuniga ko’paytirilib, sotilgan mahsulot tannarxiga bo’linadi
+- Sotilgan mahsulot tannarxi kreditor qarzlarning o’rtacha qiymatiga bo’linadi
+- Joriy majburiyatlar summasi kreditor qarzlarning o’rtacha qiymatiga bo’linadi
+- Kreditor qarzlarning o’rtacha qiymati joriy majburiyatlar summasiga bo’linib, yuzga ko’paytiriladi
+
+? Pul oqimi deganda nimani tushunasiz?
++ Pul mablag’larining kirimi va chiqimini
+- Pul mablag’lari kirimini
+- Pul mablag’lari chiqimini	
+===
+Pul balansini
+
+? Quyida qayd qilingan qaysi ma`lumotlar valyuta mablag’lari harakatini to’liq ifodalaydi?
++ Valyuta mablag’larining yil boshidagi qoldig’i, jami tushum va chiqim, yil oxiridagi qoldiq
+- Valyuta mablag’larining chiqimi	
+===
+Valyuta mablag’larining kirimi
+- Valyuta mablag’larini hisobot davri boshidagi qoldig’i
+
+? Korxonaning pul mablag’lari qanday faoliyatlarda harakat qiladi?
++ Operatsion, investitsiya, soliqqa tortish va moliyaviy faoliyatlarda
+- Operatsion, investitsiya, soliqqa tortish va tashqi iqtisodiy faoliyatlarda
+- Operatsion, investitsiya, soliqqa tortish va valyuta mablag’lar harakatida
+- Operatsion, investitsiya, soliqqa tortish va ijara majburiyatlarida
+
+? Moliyaviy faoliyatdagi pul oqimini tahlil qilishda o’rganiladigan ko’rsatkichlarni belgilang.
++ Olingan va to’langan foizlar, olingan va to’langan dividendlar
+- Mol yetkazib beruvchilarga to’langan pul mablag’lari
+- Mahsulotlarni sotishdan kelib tushgan pul mablag’lari
+- Xodimlarga va ular nomidan to’langan pul mablag’lari
+
+? Investitsion faoliyatdagi pul oqimini tahlil qilishda o’rganiladigan ko’rsatkichlarni belgilang.
++ Asosiy vositalarni sotib olish va sotish, nomoddiy aktivlarni sotib olish va sotish
+- To’langan daromad (foyda) solig’i, to’langan boshqa soliqlar
+- Mahsulotlarni sotishdan kelib tushgan pul mablag’lari, mol yetkazib beruvchilarga to’langan pul mablag’lari
+- Olingan va to’langan foizlar, olingan va to’langan dividendlar
+
+? Korxonada qaysi faoliyat turi bo’yicha pul oqimlari tahlili asosida qisqa muddatli kredit va qarzlarga yo’naltirilgan pul mablag’larini aniqlash mumkin?
++ Moliyaviy faoliyatdagi pul mablag’lari harakati tahlili asosida
+- Operatsion faoliyatidagi pul mablag’lari harakati tahlili asosida
+- Investitsion faoliyatdagi pul mablag’lari harakati tahlili asosida
+- Soliqqa tortishdagi pul mablag’lari harakati tahlili asosida
+
+? Pul oqimi koeffitsienti qanday aniqlanadi?
++ Kelib tushgan va sarflangan pul mablag’larining nisbati orqali
+- Kelib tushgan va sarflangan pul mablag’larining ayirmasi orqali
+- Yil boshidagi va yil oxiridagi pul mablag’larini qo’shib ikkiga bo’lish orqali
+- Pul mablag’lari o’rtacha qoldig’ini hisobot davri kuniga ko’paytirib, oborot summasiga bo’lish orqali
+
+? Pul mablag’larining aylanish davri qanday aniqlanadi?
++ Pul mablag’lari o’rtacha qoldig’ini hisobot davri kuniga ko’paytirib, oborot summasiga bo’lish orqali
+- Kelib tushgan va sarflangan pul mablag’larining ayirmasi orqali
+- Kelib tushgan va sarflangan pul mablag’larining nisbati orqali
+- Yil boshidagi va yil oxiridagi pul mablag’larini qo’shib ikkiga bo’lish orqali
+
+? Xususiy kapital qatoriga kiruvchi elementlar to’liq ko’rsatilgan qatorni toping.
++ Ustav kapitali, qo’shilgan kapital, zaxira kapitali, taqsimlanmagan foyda, qoplanmagan zarar, maqsadli tushumlar
+- Ustav kapitali, taqsimlanmagan foyda, maqsadli tushumlar
+- Zaxira kapitali, qo’shilgan kapital, taqsimlanmagan foyda, maqsadli tushumlar
+- Zaxira kapitali, taqsimlanmagan foyda, maqsadli tushumlar
+
+? Xususiy kapital rentabelligi nimani ifodalaydi?
++ har bir so’mlik xususiy kapital hisobiga to’g’ri kelgan sof foyda qiymati
+- har bir so’mlik xususiy kapital hisobiga to’g’ri kelgan daromadlar qiymati
+- har bir so’mlik xususiy kapital hisobiga to’g’ri kelgan mahsulot sotishdan sof tushum qiymati
+- har bir so’mlik xususiy kapital hisobiga to’g’ri kelgan mahsulot tannarxi qiymati
+
+? Quyidagi ma’lumotlar asosida moliyaviy mustaqillik koeffitsiyentini aniqlang. Jami aktiv 500 mln so‘m, jami majburiyatlar 280 mln so‘m, sof foyda 30 mln so‘m.
++ 0,44
+- 0,56
+- 0,5
+- 0,06
+
+? Quyidagi ma’lumotlar asosida moliyaviy barqarorlik koeffitsiyentini aniqlang. Jami aktiv 500 mln so‘m, jami majburiyatlar 280 mln so‘m, sof foyda 30 mln so‘m, uzoq muddatli kredit va qarzlar 80 mln so‘m, o‘z mablag‘lari manbayi 220 mln so‘m.
++ 0,6
+- 0,44
+- 0,5
+- 0,16
+
+? Quyidagi ma’lumotlar asosida sof aktivlar miqdorini aniqlang. Jami aktiv 500 mln so‘m, jami majburiyatlar 280 mln so‘m, sof foyda 30 mln so‘m, uzoq muddatli kredit va qarzlar 80 mln so‘m, o‘z mablag‘lari manbayi 220 mln so‘m.
++ 220 mln so‘m
+- 280 mln so‘m
+- 80 mln so‘m
+- 250 mln so‘m
+
+? Quyidagi ma’lumotlar asosida aktivlar rentabelligini aniqlang. Jami aktiv 500 mln so‘m, jami majburiyatlar 280 mln so‘m, sof foyda 30 mln so‘m, uzoq muddatli kredit va qarzlar 80 mln so‘m, o‘z mablag‘lari manbayi 220 mln so‘m.
++ 6 foiz
+- 5 foiz
+- 50 foiz
+- 10 foiz
+
+? Quyidagi ma’lumotlar asosida sof rentabellikni aniqlang. Jami aktiv 500 mln so‘m, jami majburiyatlar 280 mln so‘m, sof foyda 30 mln so‘m, uzoq muddatli kredit va qarzlar 80 mln so‘m, o‘z mablag‘lari manbayi 220 mln so‘m, sof tushum 600 mln so‘m.
++ 5 foiz
+- 6 foiz
+- 50 foiz
+- 10 foiz
+
+? Quyidagi ma’lumotlar asosida sotish rentabelligini aniqlang. Jami aktiv 500 mln so‘m, jami majburiyatlar 280 mln so‘m, yalpi foyda 150 mln so‘m, uzoq muddatli kredit va qarzlar 80 mln so‘m, o‘z mablag‘lari manbayi 220 mln so‘m, sof tushum 600 mln so‘m.
++ 25 foiz
+- 6 foiz
+- 5 foiz
+- 10 foiz
+
+? Quyidagi ma’lumotlar asosida tannarx rentabelligini aniqlang. Jami aktiv 500 mln so‘m, jami majburiyatlar 280 mln so‘m, sof foyda 30 mln so‘m, yalpi foyda 150 mln so‘m, uzoq muddatli kredit va qarzlar 80 mln so‘m, o‘z mablag‘lari manbayi 220 mln so‘m, sof tushum 600 mln so‘m, sotilgan mahsulotlar tannarxi 450 mln so‘m.
++ 6,67 foiz
+- 50 foiz
+- 5 foiz
+- 17 foiz
+
+? Quyidagi ma’lumotlar asosida aylanma mablag‘lar aylanuvchanlik koeffitsiyentini aniqlang. Jami aktiv 500 mln so‘m, joriy aktivlar 300 mln so‘m, jami majburiyatlar 280 mln so‘m, sof foyda 30 mln so‘m, yalpi foyda 150 mln so‘m, uzoq muddatli kredit va qarzlar 80 mln so‘m, o‘z mablag‘lari manbayi 220 mln so‘m, sof tushum 600 mln so‘m, sotilgan mahsulotlar tannarxi 450 mln so‘m.
++ 2
+- 1,2
+- 1,5
+- 4
+
+? Quyidagi ma’lumotlar asosida aylanma mablag‘lar aylanish davrini aniqlang. Jami aktiv 500 mln so‘m, joriy aktivlar 300 mln so‘m, jami majburiyatlar 280 mln so‘m, sof foyda 30 mln so‘m, yalpi foyda 150 mln so‘m, uzoq muddatli kredit va qarzlar 80 mln so‘m, o‘z mablag‘lari manbayi 220 mln so‘m, sof tushum 600 mln so‘m, sotilgan mahsulotlar tannarxi 450 mln so‘m. Hisobot davri 360 kundan iborat.
++ 180
+- 90
+- 270
+- 60
+
+? Quyidagi ma’lumotlar asosida uzoq muddatli aktivlarning jami aktivlardagi ulushini  aniqlang. Jami aktiv 500 mln so‘m, joriy aktivlar 300 mln so‘m, jami majburiyatlar 280 mln so‘m, sof foyda 30 mln so‘m, yalpi foyda 150 mln so‘m, uzoq muddatli kredit va qarzlar 80 mln so‘m, o‘z mablag‘lari manbayi 220 mln so‘m, sof tushum 600 mln so‘m, sotilgan mahsulotlar tannarxi 450 mln so‘m. Hisobot davri 360 kundan iborat.
++ 40 %
+- 60 %
+- 30 %
+- 25 %
+
+? Quyidagi ma’lumotlar asosida joriy likvidlik koeffitsiyentini aniqlang. Jami aktiv 500 mln so‘m, joriy aktivlar 300 mln so‘m, jami majburiyatlar 280 mln so‘m, sof foyda 30 mln so‘m, yalpi foyda 150 mln so‘m, o‘z mablag‘lari manbayi 220 mln so‘m, sof tushum 600 mln so‘m, joriy majburiyatlar 220 mln so‘m.
++ 1,36
+- 2,27
+- 1,07
+- 1,26
+
+? Quyidagi ma’lumotlar asosida tez likvidlik koeffitsiyentini aniqlang. Jami aktiv 500 mln so‘m, joriy aktivlar 300 mln so‘m, jami majburiyatlar 280 mln so‘m, pul mablag‘lari 30 mln so‘m, qisqa muddatli investitsiyalar 20 mln so‘m, debitorlik qarzlar 100 mln so‘m, TMZ 150 mln so‘m, o‘z mablag‘lari manbayi 220 mln so‘m, sof tushum 600 mln so‘m, joriy majburiyatlar 220 mln so‘m.
++ 0,68
+- 0,9
+- 1,07
+- 0,23
+
+? Quyidagi ma’lumotlar asosida mutloq likvidlik koeffitsiyentini aniqlang. Jami aktiv 500 mln so‘m, joriy aktivlar 300 mln so‘m, jami majburiyatlar 280 mln so‘m, pul mablag‘lari 30 mln so‘m, qisqa muddatli investitsiyalar 20 mln so‘m, debitorlik qarzlar 100 mln so‘m, TMZ 150 mln so‘m, o‘z mablag‘lari manbayi 220 mln so‘m, sof tushum 600 mln so‘m, joriy majburiyatlar 250 mln so‘m.
++ 0,2
+- 0,12
+- 0,4
+- 0,53
+
+? Quyidagi ma’lumotlar asosida sotishdan yalpi foyda summasini aniqlang. Jami aktiv 500 mln so‘m, joriy aktivlar 300 mln so‘m, jami majburiyatlar 280 mln so‘m, pul mablag‘lari 30 mln so‘m, qisqa muddatli investitsiyalar 20 mln so‘m, debitorlik qarzlar 100 mln so‘m, TMZ 150 mln so‘m, sotilgan mahsulotlar tannarxi 480 mln so‘m, o‘z mablag‘lari manbayi 220 mln so‘m, sof tushum 600 mln so‘m, joriy majburiyatlar 250 mln so‘m.
++ 120 mln
+- 280 mln
+- 350 mln
+- 200 mln
+
+? Quyidagi ma’lumotlar asosida asosiy faoliyat bo‘yicha moliyaviy natija miqdorini aniqlang. Jami aktiv 500 mln so‘m, davr xarajatlari 300 mln so‘m, jami majburiyatlar 280 mln so‘m, asosiy faoliyatdan boshqa daromadlar 130 mln so‘m, qisqa muddatli investitsiyalar 20 mln so‘m, debitorlik qarzlar 100 mln so‘m, TMZ 150 mln so‘m, sotilgan mahsulotlar tannarxi 480 mln so‘m, o‘z mablag‘lari manbayi 220 mln so‘m, sof tushum 600 mln so‘m, joriy majburiyatlar 250 mln so‘m.
++ -50 mln
+- -350 mln
+- 350 mln
+- 200 mln
+
+? Quyidagi ma’lumotlar asosida umumxo‘jalik faoliyat bo‘yicha moliyaviy natija miqdorini aniqlang. Jami aktiv 500 mln so‘m, davr xarajatlari 300 mln so‘m, jami moliyaviy faoliyat daromadlari 280 mln so‘m, asosiy faoliyatdan boshqa daromadlar 130 mln so‘m, moliyaviy faoliyat xarajatlari 120 mln so‘m, sotilgan mahsulotlar tannarxi 480 mln so‘m, sof tushum 600 mln so‘m.
++ 110 mln
+- -350 mln
+- -50 mln
+- -110 mln
+
+? Quyidagi ma’lumotlar asosida soliq to‘langunga qadar foydani aniqlang. Jami aktiv 500 mln so‘m, davr xarajatlari 300 mln so‘m, moliyaviy faoliyat daromadlari 280 mln so‘m, asosiy faoliyatdan boshqa daromadlar 130 mln so‘m, moliyaviy faoliyat xarajatlari 120 mln so‘m, sotilgan mahsulotlar tannarxi 480 mln so‘m, sof tushum 600 mln so‘m, favqulodda zarar 15 mln.
++ 95 mln
+- -350 mln
+- -50 mln
+- 110 mln
+
+? Quyidagi ma’lumotlar asosida TMZ aylanuvchanlik koeffitsiyentini toping. Jami aktiv 500 mln so‘m, TMZ 120 mln so‘m, moliyaviy faoliyat daromadlari 280 mln so‘m, asosiy faoliyatdan boshqa daromadlar 130 mln so‘m, moliyaviy faoliyat xarajatlari 120 mln so‘m, sotilgan mahsulotlar tannarxi 480 mln so‘m, sof tushum 600 mln so‘m, favqulodda zarar 15 mln.
++ 4
+- 3
+- 6
+- 3,2
+
+? Quyidagi ma’lumotlar asosida TMZ aylanish davrini toping. Jami aktiv 500 mln so‘m, TMZ 120 mln so‘m, moliyaviy faoliyat daromadlari 280 mln so‘m, asosiy faoliyatdan boshqa daromadlar 130 mln so‘m, moliyaviy faoliyat xarajatlari 120 mln so‘m, sotilgan mahsulotlar tannarxi 480 mln so‘m, sof tushum 600 mln so‘m, favqulodda zarar 15 mln. Hisobot davri 90 kun.
++ 22,5
+- 9
+- 360
+- 180
+
+? Quyidagi ma’lumotlar asosida debitorlik qarzlar aylanish davrini toping. Jami aktiv 500 mln so‘m, debitorlik qarzlar 100 mln so‘m, moliyaviy faoliyat daromadlari 280 mln so‘m, asosiy faoliyatdan boshqa daromadlar 130 mln so‘m, moliyaviy faoliyat xarajatlari 120 mln so‘m, sotilgan mahsulotlar tannarxi 480 mln so‘m, sof tushum 600 mln so‘m, favqulodda zarar 15 mln. Hisobot davri 90 kun.
++ 15
+- 18,75
+- 75
+- 60
+
+? Quyidagi ma’lumotlar asosida doimiy passivlarning uzoq muddatli aktivlarga nisbati koeffitsiyentini toping. Jami aktiv 500 mln so‘m, debitorlik qarzlar 100 mln so‘m, joriy aktivlar 360 mln so‘m, asosiy faoliyatdan boshqa daromadlar 130 mln so‘m, jami majburiyatlar 240 mln so‘m.
++ 1,86
+- 0,48
+- 0,72
+- 2,08
+
+? Quyidagi ma’lumotlar asosida asosiy vositalarning eskirish darajasini toping. Boshlang’ich qiymati 1,2 mlrd so‘m, jamg’arilgan eskirish summasi 800 mln so‘m, qoldiq qiymat 400 mln so‘m, tugatish qiymati 200 mln so‘m, bozor qiymati 600 mln so‘m.
++ 66,7%
+- 33,3 %
+- 50 %
+- 16,7 %
+
+? Quyidagi ma’lumotlar asosida asosiy vositalarning yaroqlilik darajasini toping. Boshlang’ich qiymati 1,2 mlrd so‘m, jamg’arilgan eskirish summasi 800 mln so‘m, qoldiq qiymat 400 mln so‘m, tugatish qiymati 200 mln so‘m, bozor qiymati 600 mln so‘m.
++ 33,3 %
+- 66,7%
+- 50 %
+- 16,7 %
+
+? Quyidagi ma’lumotlar asosida asosiy vositalar rentabelligini aniqlang. Yil boshidagi qoldiq qiymat 400 mln so‘m, yil oxiridagi qoldiq qiymat 500 mln so‘m. Hisobot davridagi sof foyda 90 mln so‘m, sof tushum 500 mln so‘m.
++ 20 %
+- 22,5 %
+- 18 %
+- 16,7 %
+
+? Quyidagi ma’lumotlar asosida yuqori likvidlik aktivlar (A1) summasini aniqlang. Jami aktivlar 800 mln so‘m, uzoq muddatli aktivlar jami aktivlarning 45 foizini tashkil etadi. Joriy aktivlarning 50 foizi TMZlardan iborat. Debitorlik qarzlari 100 mln so‘m, pul mablag‘lari 70 mln so‘m, qisqa muddatli investitsiyalar 50 mln so‘m.
++ 120 mln
+- 360 mln
+- 220 mln
+- 70 mln
+
+? Quyidagi ma’lumotlar asosida qiyin sotiluvchi aktivlar (A4) summasini aniqlang. Jami aktivlar 800 mln so‘m, uzoq muddatli aktivlar jami aktivlarning 45 foizini tashkil etadi. Joriy aktivlarning 50 foizi TMZlardan iborat. Debitorlik qarzlari 100 mln so‘m, pul mablag‘lari 70 mln so‘m, qisqa muddatli investitsiyalar 50 mln so‘m.
++ 360 mln
+- 440 mln
+- 220 mln
+- 70 mln
+
+? Quyidagi ma’lumotlar asosida sekin sotiluvchi aktivlar (A3) summasini aniqlang. Jami aktivlar 800 mln so‘m, uzoq muddatli aktivlar jami aktivlarning 45 foizini tashkil etadi. Joriy aktivlarning 50 foizi TMZlardan iborat. Debitorlik qarzlari 100 mln so‘m, pul mablag‘lari 60 mln so‘m, qisqa muddatli investitsiyalar 50 mln so‘m, boshqa joriy aktivlar 10 mln so‘m.
++ 230 mln
+- 440 mln
+- 220 mln
+- 360 mln
+
+? Quyidagi ma’lumotlar asosida tez sotiluvchi aktivlar (A2) summasini aniqlang. Jami aktivlar 800 mln so‘m, uzoq muddatli aktivlar jami aktivlarning 45 foizini tashkil etadi. Joriy aktivlarning 50 foizi TMZlardan iborat. Debitorlik qarzlari 100 mln so‘m, pul mablag‘lari 60 mln so‘m, qisqa muddatli investitsiyalar 50 mln so‘m, boshqa joriy aktivlar 10 mln so‘m.
++ 100 mln
+- 440 mln
+- 220 mln
+- 360 mln
+
+? Quyidagi ma’lumotlar asosida tez sotiluvchi aktivlarning (A2) jami aktivlardagi ulushini aniqlang. Jami aktivlar 800 mln so‘m, uzoq muddatli aktivlar jami aktivlarning 45 foizini tashkil etadi. Joriy aktivlarning 50 foizi TMZlardan iborat. Debitorlik qarzlari 100 mln so‘m, pul mablag‘lari 60 mln so‘m, qisqa muddatli investitsiyalar 50 mln so‘m, boshqa joriy aktivlar 10 mln so‘m.
++ 12,5 %
+- 25 %
+- 50 %
+- 27,5 %
+
+? Quyidagi ma’lumotlar asosida yuqori likvidli aktivlarning (A1) joriy aktivlardagi ulushini aniqlang. Jami aktivlar 800 mln so‘m, uzoq muddatli aktivlar jami aktivlarning 45 foizini tashkil etadi. Joriy aktivlarning 50 foizi TMZlardan iborat. Debitorlik qarzlari 100 mln so‘m, pul mablag‘lari 60 mln so‘m, qisqa muddatli investitsiyalar 50 mln so‘m, boshqa joriy aktivlar 10 mln so‘m.
++ 25 %
+- 13,6 %
+- 11,4 %
+- 22,7 %
+
+? Quyidagi ma’lumotlar asosida korxona moliyaviy barqarorligining toifasini aniqlang. Joriy aktivlar 440 mln so‘m, shu jumladan TMZ 200 mln so‘m, uzoq muddatli aktivlar 160 mln so’m, o‘z mablag’lari manbalari 330 mln so‘m, uzoq muddatli majburiyatlar 70 mln so‘m, qisqa muddatli kredit va qarzlar 50 mln so‘m.
++ Barqaror (normal)
+- Mutloq barqaror
+- Nobarqaror
+- Krisiz holat
+
+? Quyidagi ma’lumotlar asosida korxona moliyaviy barqarorligining toifasini aniqlang. Joriy aktivlar 440 mln so‘m, shu jumladan TMZ 150 mln so‘m, uzoq muddatli aktivlar 160 mln so’m, o‘z mablag’lari manbalari 330 mln so‘m, uzoq muddatli majburiyatlar 70 mln so‘m, qisqa muddatli kredit va qarzlar 50 mln so‘m.
++ Mutloq barqaror
+- Barqaror (normal)
+- Nobarqaror
+- Krisiz holat
+
+? Quyidagi ma’lumotlar asosida korxona moliyaviy barqarorligining toifasini aniqlang. Joriy aktivlar 440 mln so‘m, shu jumladan TMZ 280 mln so‘m, uzoq muddatli aktivlar 160 mln so’m, o‘z mablag’lari manbalari 330 mln so‘m, uzoq muddatli majburiyatlar 70 mln so‘m, qisqa muddatli kredit va qarzlar 50 mln so‘m.
++ Nobarqaror
+- Barqaror (normal)
+- Mutloq barqaror
+- Krisiz holat
+
+? Quyidagi ma’lumotlar asosida korxona moliyaviy barqarorligining toifasini aniqlang. Joriy aktivlar 440 mln so‘m, shu jumladan TMZ 200 mln so‘m, uzoq muddatli aktivlar 220 mln so’m, o‘z mablag’lari manbalari 330 mln so‘m, uzoq muddatli majburiyatlar 70 mln so‘m, qisqa muddatli kredit va qarzlar 50 mln so‘m.
++ Krizis holat
+- Barqaror (normal)
+- Mutloq barqaror
+- Nobarqaror
+
+? Quyidagi ma’lumotlar asosida korxonaning o‘z oborot mablag‘lari mavjud summasini aniqlang. Joriy aktivlar 440 mln so‘m, uzoq muddatli aktivlar 360 mln so’m, o‘z mablag’lari manbalari 200 mln so‘m, uzoq muddatli kredit va qarzlar 170 mln so‘m, qisqa muddatli kredit va qarzlar 50 mln so‘m.
++ 10 mln
+- 60 mln
+- 140 mln
+- 120 mln
+
+? Quyidagi ma’lumotlar asosida korxonaning o‘z oborot mablag‘lari mavjud summasini aniqlang. Joriy aktivlar 440 mln so‘m, uzoq muddatli aktivlar 260 mln so’m, o‘z mablag’lari manbalari 200 mln so‘m, uzoq muddatli kredit va qarzlar 170 mln so‘m, qisqa muddatli kredit va qarzlar 50 mln so‘m.
++ 110 mln
+- 220 mln
+- 30 mln
+- 120 mln
+
+? Quyidagi ma’lumotlar asosida o‘z oborot mablag‘lari mavjud summasining balans jamiga nisbati koeffitsiyentini aniqlang. Joriy aktivlar 440 mln so‘m, uzoq muddatli aktivlar 220 mln so’m, o‘z mablag’lari manbalari 200 mln so‘m, uzoq muddatli kredit va qarzlar 130 mln so‘m, qisqa muddatli kredit va qarzlar 50 mln so‘m.
++ 0,167
+- 0,303
+- 0,333
+- 0,257
+
+? Quyidagi ma’lumotlar asosida o‘z mablag‘larining harakatchanlik (xususiy kapital manyovrlashganlik) koeffitsiyentini aniqlang. Joriy aktivlar 440 mln so‘m, uzoq muddatli aktivlar 220 mln so’m, o‘z mablag’lari manbalari 200 mln so‘m, uzoq muddatli kredit va qarzlar 170 mln so‘m, qisqa muddatli kredit va qarzlar 50 mln so‘m.
++ 0,75
+- 0,85
+- 0,25
+- 0,91
+
+? Quyidagi ma’lumotlar asosida xususiy kapital rentabelligini aniqlang. Joriy aktivlar 440 mln so‘m, uzoq muddatli aktivlar 220 mln so’m, o‘z mablag’lari manbalari 200 mln so‘m, uzoq muddatli kredit va qarzlar 170 mln so‘m, sof foyda 50 mln so‘m.
++ 25 %
+- 29 %
+- 22,7 %
+- 11,3 %
+
+? Quyidagi ma’lumotlar asosida aktivlar aylanuvchanligini aniqlang. Joriy aktivlar 440 mln so‘m, uzoq muddatli aktivlar 220 mln so’m, o‘z mablag’lari manbalari 200 mln so‘m, uzoq muddatli kredit va qarzlar 170 mln so‘m, sof foyda 50 mln so‘m, sof tushum 924 mln so‘m.
++ 1,4
+- 2,1
+- 0,113
+- 4,2
+
+? Quyidagi ma’lumotlar asosida sotishdan yalpi foyda summasini aniqlang. Mahsulot birligining sotish narxi 5000 so‘m, sotilgan mahsulot miqdori 10000 dona, mahsulot birligining tannarxi 4200 so‘m, o‘z mablag’lari manbalari 200 mln so‘m, uzoq muddatli kredit va qarzlar 170 mln so‘m.
++ 8 mln
+- 50 mln
+- 42 mln
+- 92 mln
+
+? Quyidagi ma’lumotlar asosida operatsion faoliyatdan sof pul oqimini aniqlang. Mahsulot sotishdan kelgan pul mablag‘lari 50 mln so’m, xodimlarga to‘langan ish haqi 20 mln so‘m, mol yetkazib beruvchilarga to‘langan summalar 18 mln so‘m, operativ ijaraga to‘langan summa 7 mln so‘m, sotilgan mahsulotlar tannarxi 40 mln so‘m, asosiy vositalarni sotishdan kelgan tushum 10 mln so‘m.
++ 5 mln
+- 15 mln
+- -35 mln
+- -20 mln
+
+? Quyidagi ma’lumotlar asosida investitsiya faoliyatidan jami pul kirimini aniqlang. Mahsulot sotishdan kelgan pul mablag‘lari 50 mln so’m, xodimlarga to‘langan ish haqi 20 mln so‘m, mol yetkazib beruvchilarga to‘langan summalar 18 mln so‘m, qimmatli qog’ozlarni sotishdan olingan pul mablag‘lari 12 mln,  olingan kreditlar 40 mln so‘m, asosiy vositalarni sotishdan kelgan tushum 28 mln so‘m.
++ 40 mln
+- 80 mln
+- 130 mln
+- 68 mln
+
+? Quyidagi ma’lumotlar asosida jami pul kirimini aniqlang. Mahsulot sotishdan kelgan pul mablag‘lari 50 mln so’m, xodimlarga to‘langan ish haqi 20 mln so‘m, mol yetkazib beruvchilarga to‘langan summalar 18 mln so‘m, qimmatli qog’ozlarni sotishdan olingan pul mablag‘lari 12 mln,  olingan kreditlar 40 mln so‘m, asosiy vositalarni sotishdan kelgan tushum 28 mln so‘m.
++ 130 mln
+- 80 mln
+- 150 mln
+- 168 mln
+
+? Quyidagi ma’lumotlar asosida moliyaviy faoliyatga doir jami pul chiqimini aniqlang. Mahsulot sotishdan kelgan pul mablag‘lari 150 mln so’m, to‘langan kreditlar 120 mln so‘m, mol yetkazib beruvchilarga to‘langan summalar 18 mln so‘m, to‘langan foizlar 12 mln,  olingan kreditlar 40 mln so‘m, to‘langan dividendlar 28 mln so‘m.
++ 160 mln
+- 200 mln
+- 120 mln
+- 138 mln
+
+? Quyidagi ma’lumotlar asosida moliyaviy faoliyatga doir sof pul oqimini aniqlang. Mahsulot sotishdan kelgan pul mablag‘lari 150 mln so’m, to‘langan kreditlar 120 mln so‘m, mol yetkazib beruvchilarga to‘langan summalar 18 mln so‘m, to‘langan foizlar 12 mln,  olingan kreditlar 40 mln so‘m, olingan dividendlar 80 mln so‘m, to‘langan dividendlar 28 mln so‘m.
++ -40 mln
+- +240 mln
+- -22 mln
+- +58 mln
+
+? Quyidagi ma’lumotlar asosida sof aktivlarning jami aktivlardagi ulushini aniqlang. Jami aktiv 500 mln so‘m, jami majburiyatlar 280 mln so‘m, sof foyda 30 mln so‘m, uzoq muddatli kredit va qarzlar 80 mln so‘m, o‘z mablag‘lari manbayi 220 mln so‘m.
++ 44 %
+- 60 %
+- 15 %
+- 25 %
+
+? Quyidagi ma’lumotlar asosida muddati o‘tgan debitorlik qarzlarning jami debitorlik qarzlardagi ulushini aniqlang. Jami aktiv 500 mln so‘m, jami debitorlik qarzlari 120 mln so‘m, sof foyda 30 mln so‘m, muddati o‘tgan debitorlik qarzlari 30 mln so‘m, o‘z mablag‘lari manbayi 220 mln so‘m.
++ 25 %
+- 6 %
+- 15 %
+- 44 %
+
+? Quyidagi ma’lumotlar asosida yuqori likvidli aktivlar jami summasini toping. Jami aktiv 500 mln so‘m, jami debitorlik qarzlari 120 mln so‘m, hisob-kitob schyotidagi pul mablag‘lari 30 mln so‘m, valyuta schyotidagi mablag’lar 60 mln so‘m, o‘z mablag‘lari manbayi 220 mln so‘m, qisqa muddatli investitsiyalar 40 mln so‘m.
++ 130 mln
+- 250 mln
+- 500 mln
+- 350 mln
+
+? Quyidagi ma’lumotlar asosida mutloq likvidlik koeffitsiyentini toping. Joriy majburiyatlar 100 mln so‘m, jami debitorlik qarzlari 120 mln so‘m, hisob-kitob schyotidagi pul mablag‘lari 30 mln so‘m, valyuta schyotidagi mablag’lar 60 mln so‘m, o‘z mablag‘lari manbayi 220 mln so‘m, qisqa muddatli investitsiyalar 40 mln so‘m.
++ 1,3
+- 2,5
+- 5,0
+- 3,5
