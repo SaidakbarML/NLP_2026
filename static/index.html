@@ -1,0 +1,893 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loan Repayment Predictor</title>
+
+  <!-- Font (optional) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Chart.js (simple charts) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#64748b;
+      --line:#e2e8f0;
+      --accent:#2a5298;
+      --good:#16a34a;
+      --bad:#dc2626;
+      --warn:#f59e0b;
+      --shadow: 0 10px 25px rgba(2,6,23,.08);
+      --radius: 14px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+    }
+
+    /* Navbar */
+    .nav{
+      position:sticky; top:0; z-index:10;
+      background:rgba(255,255,255,.9);
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      max-width:1100px;
+      margin:0 auto;
+      padding:14px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .logo{
+      width:34px; height:34px;
+      border-radius:10px;
+      background: linear-gradient(135deg, var(--accent), #1e3c72);
+      box-shadow: 0 8px 20px rgba(42,82,152,.25);
+    }
+    .nav-actions{
+      display:flex; align-items:center; gap:10px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .pill{
+      border:1px solid var(--line);
+      background:#fff;
+      padding:6px 10px;
+      border-radius:999px;
+    }
+
+    /* Page layout */
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:18px 16px 40px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:16px;
+      align-items:start;
+    }
+
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    /* Cards */
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+    .card h2{
+      margin:0 0 10px 0;
+      font-size:16px;
+      letter-spacing:.2px;
+    }
+    .sub{
+      color:var(--muted);
+      font-size:13px;
+      margin:0 0 12px 0;
+      line-height:1.4;
+    }
+    .divider{
+      height:1px;
+      background:var(--line);
+      margin:14px 0;
+    }
+
+    /* Input table */
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:12px;
+    }
+    thead th{
+      background:#f8fafc;
+      font-size:12px;
+      color:var(--muted);
+      text-align:left;
+      padding:10px 10px;
+      border-bottom:1px solid var(--line);
+    }
+    tbody td{
+      padding:10px 10px;
+      border-bottom:1px solid var(--line);
+      vertical-align:middle;
+    }
+    tbody tr:last-child td{ border-bottom:none; }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    .label{
+      font-size:12px;
+      color:var(--muted);
+    }
+    input, select{
+      width:100%;
+      padding:10px 10px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:#fff;
+      color:var(--text);
+      outline:none;
+      font-size:14px;
+    }
+    input:focus, select:focus{
+      border-color: rgba(42,82,152,.55);
+      box-shadow: 0 0 0 4px rgba(42,82,152,.12);
+    }
+
+    /* Buttons */
+    .btn-row{
+      display:flex;
+      gap:10px;
+      margin-top:12px;
+      flex-wrap:wrap;
+    }
+    button{
+      border:none;
+      border-radius:12px;
+      padding:11px 14px;
+      font-weight:600;
+      cursor:pointer;
+      font-size:14px;
+    }
+    .btn-primary{
+      background:var(--accent);
+      color:#fff;
+      box-shadow: 0 10px 20px rgba(42,82,152,.22);
+    }
+    .btn-ghost{
+      background:#fff;
+      border:1px solid var(--line);
+      color:var(--text);
+    }
+    .btn-primary:disabled{ opacity:.65; cursor:not-allowed; }
+
+    /* Prediction panel */
+    .status{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#fbfdff;
+    }
+    .status-left{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      min-width: 0;
+    }
+    .status-title{
+      font-size:13px;
+      color:var(--muted);
+    }
+    .status-main{
+      font-size:20px;
+      font-weight:800;
+      letter-spacing:.2px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .badge{
+      font-size:12px;
+      font-weight:700;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    .badge.good{ color:var(--good); border-color: rgba(22,163,74,.25); background: rgba(22,163,74,.08); }
+    .badge.bad{ color:var(--bad); border-color: rgba(220,38,38,.25); background: rgba(220,38,38,.08); }
+
+    .confidence{
+      font-weight:700;
+      font-size:14px;
+      color:var(--text);
+    }
+
+    .mini{
+      color:var(--muted);
+      font-size:12px;
+      margin-top:2px;
+    }
+
+    .two-charts{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+      margin-top:14px;
+    }
+
+    .chart-card{
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:12px;
+      background:#fff;
+    }
+    .chart-title{
+      display:flex;
+      justify-content:space-between;
+      align-items:baseline;
+      gap:10px;
+      margin-bottom:8px;
+    }
+    .chart-title span:first-child{
+      font-weight:700;
+      font-size:13px;
+    }
+    .chart-title span:last-child{
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    /* Alerts */
+    .alerts{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top:14px;
+    }
+    .alert{
+      border-radius:12px;
+      padding:12px;
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    .alert.good{ border-color: rgba(22,163,74,.25); background: rgba(22,163,74,.08); }
+    .alert.bad{ border-color: rgba(220,38,38,.25); background: rgba(220,38,38,.08); }
+    .alert.warn{ border-color: rgba(245,158,11,.3); background: rgba(245,158,11,.10); }
+    .alert h3{
+      margin:0 0 6px 0;
+      font-size:13px;
+      font-weight:800;
+    }
+    .alert p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.4;
+    }
+
+    /* Loading */
+    .loading{
+      display:none;
+      margin-top:10px;
+      color:var(--muted);
+      font-size:13px;
+      align-items:center;
+      gap:10px;
+    }
+    .spinner{
+      width:16px;height:16px;
+      border:2px solid var(--line);
+      border-top-color: var(--accent);
+      border-radius:999px;
+      animation: spin .9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Footer hint */
+    .hint{
+      margin-top:10px;
+      font-size:12px;
+      color:var(--muted);
+    }
+    .kpi{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;
+    }
+    .kpi .pill{
+      font-size:12px;
+      color:var(--muted);
+      background:#fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="logo"></div>
+        <div>
+          Loan Repayment Predictor
+          <div style="font-weight:500;color:var(--muted);font-size:12px;margin-top:2px;">
+            Binary classification • Explainable results
+          </div>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <span class="pill">API: <span id="apiStatus">/predict</span></span>
+        <span class="pill">UI v1.0</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="grid">
+
+      <!-- LEFT: INPUT -->
+      <div class="card">
+        <h2>Applicant Data Input</h2>
+        <p class="sub">Enter personal and financial details. Then click <b>Run Prediction</b>.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th style="width:33%">Personal</th>
+              <th style="width:34%">Financial</th>
+              <th style="width:33%">Payment & Risk</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="field">
+                  <div class="label">Age</div>
+                  <input id="age" type="number" min="18" max="100" value="30" />
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <div class="label">Annual Income</div>
+                  <input id="income" type="number" min="0" step="100" value="50000" />
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <div class="label">Payment History (%)</div>
+                  <input id="payment_history" type="number" min="0" max="100" value="90" />
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="field">
+                  <div class="label">Employment Type</div>
+                  <select id="employment_type">
+                    <option value="salaried" selected>Salaried</option>
+                    <option value="self_employed">Self-employed</option>
+                    <option value="contract">Contract</option>
+                    <option value="unemployed">Unemployed</option>
+                  </select>
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <div class="label">Loan Amount</div>
+                  <input id="loan_amount" type="number" min="0" step="100" value="15000" />
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <div class="label">Late Payments (last 12 mo)</div>
+                  <input id="late_payments" type="number" min="0" step="1" value="1" />
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="field">
+                  <div class="label">Employment Years</div>
+                  <input id="employment_years" type="number" min="0" step="1" value="5" />
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <div class="label">Existing Debt</div>
+                  <input id="debt" type="number" min="0" step="100" value="8000" />
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <div class="label">Credit Score</div>
+                  <input id="credit_score" type="number" min="300" max="850" value="650" />
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="field">
+                  <div class="label">Dependents</div>
+                  <input id="dependents" type="number" min="0" step="1" value="0" />
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <div class="label">Monthly Expenses</div>
+                  <input id="monthly_expenses" type="number" min="0" step="50" value="1200" />
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <div class="label">Has Previous Default?</div>
+                  <select id="previous_default">
+                    <option value="0" selected>No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="btn-row">
+          <button id="predictBtn" class="btn-primary" onclick="runPrediction()">Run Prediction</button>
+          <button class="btn-ghost" onclick="fillExample('lowRisk')">Load Low-Risk Example</button>
+          <button class="btn-ghost" onclick="fillExample('highRisk')">Load High-Risk Example</button>
+          <button class="btn-ghost" onclick="resetForm()">Reset</button>
+        </div>
+
+        <div class="loading" id="loading">
+          <div class="spinner"></div>
+          <div>Running model…</div>
+        </div>
+
+        <div class="hint">
+          Tip: Serve this UI from FastAPI to avoid CORS. Use a relative fetch path (<code>/predict</code>).
+        </div>
+      </div>
+
+      <!-- RIGHT: PREDICTION -->
+      <div class="card">
+        <h2>Model Output</h2>
+        <p class="sub">Binary outcome + confidence + simple reasoning.</p>
+
+        <div class="status" id="statusBox">
+          <div class="status-left">
+            <div class="status-title">Prediction</div>
+            <div class="status-main" id="statusMain">
+              <span class="badge" id="badge">—</span>
+              <span id="statusText">Waiting for input</span>
+            </div>
+            <div class="mini" id="statusMini">Submit applicant data to get a prediction.</div>
+          </div>
+          <div style="text-align:right;">
+            <div class="confidence" id="confidenceText">Confidence: —</div>
+            <div class="mini" id="probText">Probability: —</div>
+          </div>
+        </div>
+
+        <div class="kpi">
+          <span class="pill" id="kpiDTI">DTI: —</span>
+          <span class="pill" id="kpiScore">Credit: —</span>
+          <span class="pill" id="kpiHistory">History: —</span>
+        </div>
+
+        <div class="two-charts">
+          <div class="chart-card">
+            <div class="chart-title">
+              <span>Repayment Probability</span>
+              <span>Gauge</span>
+            </div>
+            <canvas id="gaugeChart" height="140"></canvas>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-title">
+              <span>Top Factors</span>
+              <span>Feature impact</span>
+            </div>
+            <canvas id="barChart" height="170"></canvas>
+          </div>
+        </div>
+
+        <div class="alerts" id="alerts">
+          <div class="alert warn">
+            <h3>Awaiting Prediction</h3>
+            <p>Enter details and run the model to see risk alerts and recommendations.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+<script>
+  // ---------- Charts ----------
+  let gaugeChart, barChart;
+
+  function initCharts(){
+    const gaugeCtx = document.getElementById('gaugeChart');
+    const barCtx = document.getElementById('barChart');
+
+    gaugeChart = new Chart(gaugeCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Probability', 'Remaining'],
+        datasets: [{
+          data: [0, 100],
+          borderWidth: 0,
+          hoverOffset: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        cutout: '72%',
+        plugins: {
+          legend: { display: false },
+          tooltip: { enabled: false }
+        }
+      }
+    });
+
+    barChart = new Chart(barCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Credit Score','Income','Debt-to-Income','Payment History','Late Payments'],
+        datasets: [{
+          label: 'Impact (relative)',
+          data: [0,0,0,0,0],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { callback: (v)=> v + '%' },
+            max: 100
+          }
+        }
+      }
+    });
+  }
+
+  function updateGauge(prob){
+    const p = Math.round(prob * 100);
+    gaugeChart.data.datasets[0].data = [p, 100 - p];
+    gaugeChart.update();
+  }
+
+  function updateBars(items){
+    // items: [{name, impact}] impact in [0..1] or [0..100]
+    const labels = items.map(x => x.name);
+    const values = items.map(x => x.impact > 1 ? x.impact : Math.round(x.impact * 100));
+    barChart.data.labels = labels;
+    barChart.data.datasets[0].data = values;
+    barChart.update();
+  }
+
+  // ---------- Helpers ----------
+  function valNum(id){
+    const v = document.getElementById(id).value;
+    const n = Number(v);
+    return Number.isFinite(n) ? n : 0;
+  }
+
+  function setLoading(on){
+    document.getElementById('loading').style.display = on ? 'flex' : 'none';
+    document.getElementById('predictBtn').disabled = on;
+  }
+
+  function computeDTI(monthlyDebtPaymentEstimate, incomeAnnual){
+    const incomeMonthly = incomeAnnual / 12;
+    if (incomeMonthly <= 0) return 1;
+    return monthlyDebtPaymentEstimate / incomeMonthly;
+  }
+
+  // Simple fallback "reasoning" if backend doesn't return feature importance
+  function fallbackFeatureImportance(payload){
+    const score = payload.credit_score || 0;
+    const income = payload.income || 0;
+    const debt = payload.debt || 0;
+    const paymentHistory = payload.payment_history || 0;
+    const late = payload.late_payments || 0;
+
+    // normalize-ish to create relative contributions (not real SHAP)
+    const creditImpact = Math.min(1, Math.max(0, (score - 300) / 550)); // 300..850
+    const incomeImpact = Math.min(1, income / 120000);
+    const dtiImpact = Math.min(1, debt / Math.max(1, income)); // rough
+    const historyImpact = Math.min(1, paymentHistory / 100);
+    const lateImpact = Math.min(1, late / 10);
+
+    // Convert to "importance" percentages (higher = more influential)
+    // We want DTI and Late to represent risk, but chart is "impact magnitude" not direction.
+    const raw = [
+      { name: 'Credit Score', impact: creditImpact },
+      { name: 'Income', impact: incomeImpact },
+      { name: 'Debt-to-Income', impact: dtiImpact },
+      { name: 'Payment History', impact: historyImpact },
+      { name: 'Late Payments', impact: lateImpact }
+    ];
+
+    // normalize to sum=1
+    const sum = raw.reduce((a,b)=>a+b.impact,0) || 1;
+    return raw.map(x => ({ name: x.name, impact: x.impact / sum }));
+  }
+
+  function setStatus(prediction, prob){
+    // prediction can be 1/0 or "Can Repay"/"Cannot Repay"
+    const isRepay = (prediction === 1) || (String(prediction).toLowerCase().includes('repay') && !String(prediction).toLowerCase().includes('cannot'));
+
+    const badge = document.getElementById('badge');
+    const statusText = document.getElementById('statusText');
+    const mini = document.getElementById('statusMini');
+
+    badge.className = 'badge ' + (isRepay ? 'good' : 'bad');
+    badge.textContent = isRepay ? 'LOW RISK' : 'HIGH RISK';
+    statusText.textContent = isRepay ? 'Can Repay' : 'Cannot Repay';
+    mini.textContent = isRepay
+      ? 'Model indicates applicant is likely to repay.'
+      : 'Model indicates elevated risk of default. Review factors below.';
+
+    const conf = Math.round(prob * 100);
+    document.getElementById('confidenceText').textContent = `Confidence: ${conf}%`;
+    document.getElementById('probText').textContent = `Probability: ${conf}% repay`;
+  }
+
+  function setKPIs(payload){
+    const income = payload.income || 0;
+    const debt = payload.debt || 0;
+    const monthlyExpenses = payload.monthly_expenses || 0;
+
+    // A rough monthly payment estimate: (existing debt + loan) / 36 months
+    const estMonthlyDebtPay = ((debt + (payload.loan_amount || 0)) / 36) + monthlyExpenses;
+    const dti = computeDTI(estMonthlyDebtPay, income);
+
+    document.getElementById('kpiDTI').textContent = `DTI: ${(dti*100).toFixed(0)}%`;
+    document.getElementById('kpiScore').textContent = `Credit: ${payload.credit_score ?? '—'}`;
+    document.getElementById('kpiHistory').textContent = `History: ${(payload.payment_history ?? '—')}%`;
+  }
+
+  function renderAlerts(prediction, prob, payload){
+    const isRepay = (prediction === 1) || (String(prediction).toLowerCase().includes('repay') && !String(prediction).toLowerCase().includes('cannot'));
+    const conf = Math.round(prob * 100);
+
+    const income = payload.income || 0;
+    const debt = payload.debt || 0;
+    const score = payload.credit_score || 0;
+    const late = payload.late_payments || 0;
+    const history = payload.payment_history || 0;
+
+    const alerts = [];
+    if (isRepay){
+      alerts.push({
+        type:'good',
+        title:'Low Risk Applicant',
+        text:`Prediction suggests likely repayment. Confidence is ${conf}%. Consider standard approval policy.`
+      });
+
+      if (score < 600) alerts.push({ type:'warn', title:'Credit Score Watch', text:'Credit score is on the lower side. Consider a slightly higher interest rate or lower limit.' });
+      if (late > 2) alerts.push({ type:'warn', title:'Late Payment Pattern', text:'Applicant has multiple late payments. Consider tighter terms or verification.' });
+      if (history < 80) alerts.push({ type:'warn', title:'Payment History', text:'Payment history % is not strong. Consider requesting additional documentation.' });
+
+      alerts.push({
+        type:'good',
+        title:'Recommendation',
+        text:'If approved, suggest autopay setup and a manageable monthly installment plan.'
+      });
+    } else {
+      alerts.push({
+        type:'bad',
+        title:'High Risk Warning',
+        text:`Prediction indicates a higher chance of default. Confidence is ${conf}%. Consider risk mitigation.`
+      });
+
+      if (score < 620) alerts.push({ type:'bad', title:'Low Credit Score', text:'Credit score is low. Recommend improving score before applying again.' });
+      if (debt > income * 0.5) alerts.push({ type:'bad', title:'High Debt Load', text:'Debt appears high relative to income. Recommend reducing outstanding liabilities.' });
+      if (late >= 2) alerts.push({ type:'bad', title:'Late Payments', text:'Recent late payments suggest instability. Consider rejecting or requiring collateral.' });
+      if (history < 75) alerts.push({ type:'warn', title:'Weak Repayment Record', text:'Payment history percentage is weak. Consider smaller loan amount or guarantor.' });
+
+      alerts.push({
+        type:'warn',
+        title:'Practical Advice',
+        text:'Suggest reducing monthly expenses, paying down debt, and applying for a smaller loan amount.'
+      });
+    }
+
+    const root = document.getElementById('alerts');
+    root.innerHTML = alerts.map(a => `
+      <div class="alert ${a.type}">
+        <h3>${a.title}</h3>
+        <p>${a.text}</p>
+      </div>
+    `).join('');
+  }
+
+  // ---------- Main ----------
+  async function runPrediction(){
+    const payload = {
+      age: valNum('age'),
+      income: valNum('income'),
+      employment_type: document.getElementById('employment_type').value,
+      employment_years: valNum('employment_years'),
+      dependents: valNum('dependents'),
+      loan_amount: valNum('loan_amount'),
+      debt: valNum('debt'),
+      monthly_expenses: valNum('monthly_expenses'),
+      payment_history: valNum('payment_history'),
+      late_payments: valNum('late_payments'),
+      credit_score: valNum('credit_score'),
+      previous_default: Number(document.getElementById('previous_default').value)
+    };
+
+    // quick validation
+    if (payload.age < 18){
+      alert("Age must be 18+");
+      return;
+    }
+
+    setLoading(true);
+
+    try{
+      // Use relative path so it works when served from FastAPI
+      const res = await fetch("/predict", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      if(!res.ok){
+        const text = await res.text();
+        throw new Error(text || "Request failed");
+      }
+
+      const out = await res.json();
+
+      // Accept multiple backend shapes:
+      // - {prediction: 0/1, probability: 0..1}
+      // - {label: "...", confidence: 0..1}
+      const prediction = (out.prediction !== undefined) ? out.prediction : (out.label ?? "—");
+      const prob = (out.probability !== undefined) ? out.probability : (out.confidence ?? 0.5);
+
+      setStatus(prediction, prob);
+      setKPIs(payload);
+      updateGauge(prob);
+
+      // Feature importance from backend:
+      // out.feature_importance: [{name, impact}] or {name:impact}
+      // fallback if missing
+      let importance = null;
+
+      if (Array.isArray(out.feature_importance)) {
+        importance = out.feature_importance;
+      } else if (out.feature_importance && typeof out.feature_importance === 'object') {
+        importance = Object.entries(out.feature_importance).map(([name, impact]) => ({name, impact}));
+      } else if (Array.isArray(out.top_features)) {
+        importance = out.top_features;
+      }
+
+      if (!importance) importance = fallbackFeatureImportance(payload);
+
+      // keep top 6
+      importance = importance
+        .slice()
+        .sort((a,b) => (b.impact > 1 ? b.impact : b.impact*100) - (a.impact > 1 ? a.impact : a.impact*100))
+        .slice(0,6);
+
+      updateBars(importance);
+      renderAlerts(prediction, prob, payload);
+
+    } catch(err){
+      console.error(err);
+      alert("Could not reach /predict. If using separate frontend, enable CORS in FastAPI or serve UI from the same app.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  function resetForm(){
+    fillExample('lowRisk');
+    document.getElementById('badge').className = 'badge';
+    document.getElementById('badge').textContent = '—';
+    document.getElementById('statusText').textContent = 'Waiting for input';
+    document.getElementById('statusMini').textContent = 'Submit applicant data to get a prediction.';
+    document.getElementById('confidenceText').textContent = 'Confidence: —';
+    document.getElementById('probText').textContent = 'Probability: —';
+    document.getElementById('kpiDTI').textContent = 'DTI: —';
+    document.getElementById('kpiScore').textContent = 'Credit: —';
+    document.getElementById('kpiHistory').textContent = 'History: —';
+    updateGauge(0);
+    updateBars([
+      {name:'Credit Score', impact:0},
+      {name:'Income', impact:0},
+      {name:'Debt-to-Income', impact:0},
+      {name:'Payment History', impact:0},
+      {name:'Late Payments', impact:0},
+    ]);
+    document.getElementById('alerts').innerHTML = `
+      <div class="alert warn">
+        <h3>Awaiting Prediction</h3>
+        <p>Enter details and run the model to see risk alerts and recommendations.</p>
+      </div>
+    `;
+  }
+
+  function fillExample(which){
+    if(which === 'lowRisk'){
+      document.getElementById('age').value = 32;
+      document.getElementById('income').value = 75000;
+      document.getElementById('employment_type').value = 'salaried';
+      document.getElementById('employment_years').value = 6;
+      document.getElementById('dependents').value = 1;
+      document.getElementById('loan_amount').value = 12000;
+      document.getElementById('debt').value = 6000;
+      document.getElementById('monthly_expenses').value = 1300;
+      document.getElementById('payment_history').value = 95;
+      document.getElementById('late_payments').value = 0;
+      document.getElementById('credit_score').value = 720;
+      document.getElementById('previous_default').value = 0;
+    } else {
+      document.getElementById('age').value = 28;
+      document.getElementById('income').value = 28000;
+      document.getElementById('employment_type').value = 'contract';
+      document.getElementById('employment_years').value = 1;
+      document.getElementById('dependents').value = 2;
+      document.getElementById('loan_amount').value = 20000;
+      document.getElementById('debt').value = 22000;
+      document.getElementById('monthly_expenses').value = 1700;
+      document.getElementById('payment_history').value = 65;
+      document.getElementById('late_payments').value = 4;
+      document.getElementById('credit_score').value = 560;
+      document.getElementById('previous_default').value = 1;
+    }
+  }
+
+  // boot
+  initCharts();
+  resetForm();
+</script>
+
+</body>
+</html>
